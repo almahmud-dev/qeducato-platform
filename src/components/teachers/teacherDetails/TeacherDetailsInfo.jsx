@@ -96,7 +96,7 @@ export default function TeacherDetailsInfo({ teacher }) {
           </a>
         </div>
 
-        {/* Read More — teachers list e ফিরে যাবে */}
+        {/* Read More — teachers list e back korbe */}
         <Link
           href="/teachers"
           className="inline-flex items-center gap-2 bg-[--primary] text-white text-sm font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity duration-200"

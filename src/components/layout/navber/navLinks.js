@@ -15,15 +15,15 @@ export const navLinks = [
     dropdown: [
       {
         label: "Course",
-        href: "/course",
+        href: "/courses",
       },
       {
         label: "Course 02",
-        href: "/course-02",
+        href: "/courses-02",
       },
       {
         label: "Course Details",
-        href: "/course-details",
+        href: "/courses-details",
       },
     ],
   },
