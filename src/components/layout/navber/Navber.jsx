@@ -3,15 +3,16 @@
 import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile";
 
-
-
-const Navbar = () => {
+export default function Navbar() {
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-sm">
-      <NavbarDesktop />
-      <NavbarMobile />
-    </header>
-  );
-};
+    <>
+      <div className="hidden lg:block">
+        <NavbarDesktop />
+      </div>
 
-export default Navbar;
+      <div className="lg:hidden">
+        <NavbarMobile />
+      </div>
+    </>
+  );
+}

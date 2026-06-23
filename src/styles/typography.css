@@ -1,0 +1,80 @@
+body {
+  font-family: var(--font-body);
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-heading);
+}
+
+.headingOne {
+  font-size: clamp(2.75rem, 5vw, 5rem);
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.headingTwo {
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.headingThree {
+  font-size: clamp(1.875rem, 3vw, 3rem);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.headingFore {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.headingFive {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.headingSix {
+  font-size: clamp(1.125rem, 1.5vw, 1.25rem);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.lead {
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
+  line-height: 1.8;
+}
+
+.PeraOne {
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.PeraTwo {
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.PeraThree {
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+.caption {
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}

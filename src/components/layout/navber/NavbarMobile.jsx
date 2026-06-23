@@ -2,129 +2,148 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  FaBars,
-  FaTimes,
-  FaChevronDown,
-} from "react-icons/fa";
+import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 
 import { navLinks } from "./navLinks";
 
-const NavbarMobile = () => {
-  const [open, setOpen] = useState(false);
-  const [dropdown, setDropdown] = useState(null);
+export default function NavbarMobile() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (label) => {
+    setOpenDropdown(openDropdown === label ? null : label);
+  };
 
   return (
-    <div className="lg:hidden">
-
-      <div className="h-16 px-4 flex items-center justify-between">
-
-        <Link
-          href="/"
-          className="text-2xl font-bold text-[#0D5C63]"
-        >
-          EduCato
+    <nav className="bg-white shadow-sm relative z-50">
+      {/* Top */}
+      <div className="container mx-auto px-4 h-20 flex items-center justify-between">
+        <Link href="/">
+          <h2 className="text-2xl font-bold">
+            <span className="text-[#0B5975]">QEDU</span>
+            <span className="text-[#FF7448]">CATO</span>
+          </h2>
         </Link>
 
-        <button
-          onClick={() => setOpen(!open)}
-        >
-          {open ? (
-            <FaTimes size={22} />
-          ) : (
-            <FaBars size={22} />
-          )}
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? <FiX size={30} /> : <FiMenu size={30} />}
         </button>
       </div>
 
-      {open && (
-        <div className="border-t bg-white">
-
+      {/* Mobile Menu */}
+      <div
+        className={`
+          absolute
+          left-0
+          top-full
+          w-full
+          bg-white
+          shadow-xl
+          transition-all
+          duration-300
+          overflow-hidden
+          ${isMenuOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}
+        `}
+      >
+        <ul>
           {navLinks.map((item) => (
-            <div key={item.label}>
-
-              {item.children ? (
+            <li key={item.label} className="border-b border-gray-100">
+              {item.dropdown ? (
                 <>
                   <button
-                    onClick={() =>
-                      setDropdown(
-                        dropdown === item.label
-                          ? null
-                          : item.label
-                      )
-                    }
+                    onClick={() => toggleDropdown(item.label)}
                     className="
                       w-full
                       flex
                       items-center
                       justify-between
-                      px-4
+                      px-5
                       py-4
+                      font-medium
                     "
                   >
                     {item.label}
 
-                    <FaChevronDown />
+                    <FiChevronDown
+                      className={`
+                        transition-transform
+                        duration-300
+                        ${openDropdown === item.label ? "rotate-180" : ""}
+                      `}
+                    />
                   </button>
 
-                  {dropdown === item.label && (
-                    <div className="bg-gray-50">
-
-                      {item.children.map(
-                        (child) => (
-                          <Link
-                            key={child.label}
-                            href={child.href}
-                            className="
-                              block
-                              px-8
-                              py-3
-                            "
-                          >
-                            {child.label}
-                          </Link>
-                        )
-                      )}
-
-                    </div>
-                  )}
+                  <div
+                    className={`
+                      overflow-hidden
+                      transition-all
+                      duration-300
+                      ${
+                        openDropdown === item.label
+                          ? "max-h-[500px]"
+                          : "max-h-0"
+                      }
+                    `}
+                  >
+                    {item.dropdown.map((subItem) => (
+                      <Link
+                        key={subItem.label}
+                        href={subItem.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="
+                            block
+                            pl-10
+                            pr-5
+                            py-3
+                            text-sm
+                            text-gray-600
+                            hover:text-[#FF7448]
+                            hover:bg-gray-50
+                          "
+                      >
+                        {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
                 </>
               ) : (
                 <Link
                   href={item.href}
+                  onClick={() => setIsMenuOpen(false)}
                   className="
                     block
-                    px-4
+                    px-5
                     py-4
+                    font-medium
                   "
                 >
                   {item.label}
                 </Link>
               )}
-
-            </div>
+            </li>
           ))}
+        </ul>
 
-          <div className="p-4">
-            <Link
-              href="/contact"
-              className="
-                block
-                text-center
-                bg-[#FF6B3D]
-                text-white
-                py-3
-                rounded-lg
-              "
-            >
-              Apply Now
-            </Link>
-          </div>
-
+        {/* Admission Button */}
+        <div className="p-5">
+          <Link
+            href="/admission"
+            className="
+              w-full
+              flex
+              justify-center
+              items-center
+              bg-[#FF7448]
+              text-white
+              py-3
+              rounded-lg
+              font-semibold
+            "
+          >
+            ADMISSION OPEN
+          </Link>
         </div>
-      )}
-    </div>
+      </div>
+    </nav>
   );
-};
-
-export default NavbarMobile;
+}

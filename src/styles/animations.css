@@ -1,0 +1,15 @@
+.hover-lift {
+  transition: all .3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+.hover-scale {
+  transition: all .3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}

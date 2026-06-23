@@ -5,30 +5,40 @@ export const navLinks = [
   },
 
   {
-    label: "About",
+    label: "About Us",
     href: "/about",
   },
 
   {
     label: "Courses",
-    children: [
+    href: "#",
+    dropdown: [
       {
-        label: "Courses 01",
-        href: "/courses",
+        label: "Course",
+        href: "/course",
       },
       {
-        label: "Courses 02",
-        href: "/courses/page-2",
+        label: "Course 02",
+        href: "/course-02",
+      },
+      {
+        label: "Course Details",
+        href: "/course-details",
       },
     ],
   },
 
   {
     label: "Pages",
-    children: [
+    href: "#",
+    dropdown: [
       {
-        label: "Events",
-        href: "/events",
+        label: "Event",
+        href: "/event",
+      },
+      {
+        label: "Event Details",
+        href: "/event-details",
       },
       {
         label: "Gallery",
@@ -43,18 +53,31 @@ export const navLinks = [
         href: "/faq",
       },
       {
-        label: "Teachers",
-        href: "/teachers",
+        label: "Teacher",
+        href: "/teacher",
+      },
+      {
+        label: "Teacher Details",
+        href: "/teacher-details",
+      },
+      {
+        label: "404 Error",
+        href: "/404",
       },
     ],
   },
 
   {
     label: "Blog",
-    children: [
+    href: "#",
+    dropdown: [
       {
         label: "Blog",
         href: "/blog",
+      },
+      {
+        label: "Blog Details",
+        href: "/blog-details",
       },
     ],
   },

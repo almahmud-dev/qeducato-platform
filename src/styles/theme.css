@@ -1,0 +1,15 @@
+:root {
+  --primary: #ff6b35;
+  --primary-hover: #f45a22;
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --secondary: #083344;
+  --foreground: #0f172a;
+  --muted: #64748b;
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --border: #e2e8f0;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+}
