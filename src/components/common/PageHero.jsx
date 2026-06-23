@@ -4,63 +4,72 @@ import Container from "@/components/ui/Container";
 export const heroDataMap = {
   blog: {
     title: "Our Blog",
-    subtitle: "Insights, updates, and stories from the EduFilos team",
+    subtitle: "News, research, and insights from Qeducato University",
   },
   "blog-details": {
     title: "Blog Details",
   },
   teachers: {
-    title: "Our Teachers",
+    title: "Our Faculty",
     subtitle:
-      "Learn from experienced and passionate educators dedicated to your growth",
+      "Meet the distinguished academics and educators shaping the next generation",
   },
   "teachers-details": {
-    title: "Teacher Profile",
+    title: "Faculty Profile",
   },
   pricing: {
-    title: "Simple Pricing",
+    title: "Tuition & Fees",
     subtitle:
-      "Transparent plans designed for madrasas of every size — no hidden fees",
+      "Transparent and affordable plans for every student — no hidden charges",
   },
   faq: {
     title: "FAQ",
-    subtitle: "Have questions? We have got the answers you need",
+    subtitle:
+      "Find answers to the most common questions about Qeducato University",
   },
   gallery: {
-    title: "Gallery",
-    subtitle:
-      "A glimpse into life and learning at EduFilos-powered institutions",
+    title: "Campus Gallery",
+    subtitle: "A visual journey through campus life, events, and achievements",
   },
   event: {
-    title: "Events",
-    subtitle:
-      "Stay updated with upcoming programs, seminars, and community events",
+    title: "Events & Programs",
+    subtitle: "Discover upcoming seminars, workshops, and university events",
   },
   "event-details": {
     title: "Event Details",
   },
   about: {
-    title: "About Us",
+    title: "About Qeducato",
     subtitle:
-      "Building the future of madrasa education through technology and care",
+      "Empowering minds and shaping futures through world-class university education",
   },
   contact: {
     title: "Contact Us",
     subtitle:
-      "We would love to hear from you — reach out and we will respond promptly",
+      "Reach out to our admissions or support team — we are happy to help",
   },
   courses: {
-    title: "Our Courses",
+    title: "Academic Programs",
     subtitle:
-      "Explore a wide range of courses designed to nurture knowledge and character",
+      "Explore undergraduate, postgraduate, and professional courses at Qeducato",
   },
   "courses-02": {
-    title: "Our Courses",
+    title: "All Courses",
     subtitle:
-      "Browse our carefully curated curriculum built for every level of learner",
+      "Browse our full catalogue of programs designed for every academic goal",
   },
   "courses-details": {
     title: "Course Details",
+  },
+  admissions: {
+    title: "Admissions",
+    subtitle:
+      "Begin your journey at Qeducato — learn how to apply and what to expect",
+  },
+  departments: {
+    title: "Departments",
+    subtitle:
+      "Explore our faculties and academic departments across diverse disciplines",
   },
 };
 
