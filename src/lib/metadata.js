@@ -31,7 +31,7 @@ export const metaDataMap = {
     description:
       "A visual journey through campus life, events, and achievements",
   },
-  event: {
+  events: {
     title: "Events & Programs | Qeducato University",
     description: "Discover upcoming seminars, workshops, and university events",
   },
@@ -54,7 +54,7 @@ export const metaDataMap = {
     description:
       "Explore undergraduate, postgraduate, and professional courses at Qeducato",
   },
-  "courses-02": {
+  "coursesTwo": {
     title: "All Courses | Qeducato University",
     description:
       "Browse our full catalogue of programs designed for every academic goal",

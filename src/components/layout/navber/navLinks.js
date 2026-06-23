@@ -19,11 +19,15 @@ export const navLinks = [
       },
       {
         label: "Course 02",
-        href: "/courses-02",
+        href: "/coursesTwo",
       },
       {
         label: "Course Details",
         href: "/courses-details",
+      },
+      {
+        label: "Course 02 Details",
+        href: "/coursestwo-details",
       },
     ],
   },
@@ -34,7 +38,7 @@ export const navLinks = [
     dropdown: [
       {
         label: "Event",
-        href: "/event",
+        href: "/events",
       },
       {
         label: "Event Details",

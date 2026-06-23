@@ -31,7 +31,7 @@ export const heroDataMap = {
     title: "Campus Gallery",
     subtitle: "A visual journey through campus life, events, and achievements",
   },
-  event: {
+  events: {
     title: "Events & Programs",
     subtitle: "Discover upcoming seminars, workshops, and university events",
   },
@@ -53,7 +53,7 @@ export const heroDataMap = {
     subtitle:
       "Explore undergraduate, postgraduate, and professional courses at Qeducato",
   },
-  "courses-02": {
+  "coursesTwo": {
     title: "All Courses",
     subtitle:
       "Browse our full catalogue of programs designed for every academic goal",
