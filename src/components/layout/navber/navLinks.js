@@ -54,11 +54,11 @@ export const navLinks = [
       },
       {
         label: "Teacher",
-        href: "/teacher",
+        href: "/teachers",
       },
       {
         label: "Teacher Details",
-        href: "/teacher-details",
+        href: "/teachers-details",
       },
       {
         label: "404 Error",

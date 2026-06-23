@@ -1,0 +1,63 @@
+// ========================================
+// Teachers Data — TeachersGrid + Details Page
+// প্রতিটা teacher এর slug দিয়ে details page এ navigate করা হবে
+// ========================================
+
+export const teachersData = [
+  {
+    id: 1,
+    slug: "howard-holmes",
+    name: "Howard Holmes",
+    role: "CEO & Founder",
+    avatar: "/images/teacher/teacher1.png",
+    courses: 5,
+    students: 120,
+    experience: "12 Years",
+    phone: "+(963) 2145 3654",
+    email: "howard@example.com",
+    bio: "Fusce eleifend donec sapien sed phase lusa pellentesque lacus. Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit. The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.",
+    social: { facebook: "#", instagram: "#", twitter: "#" },
+  },
+  {
+    id: 2,
+    slug: "ella-thompson",
+    name: "Ella Thompson",
+    role: "Kids Teacher",
+    avatar: "/images/teacher/teacher2.png",
+    courses: 3,
+    students: 85,
+    experience: "7 Years",
+    phone: "+(963) 2145 3655",
+    email: "ella@example.com",
+    bio: "Fusce eleifend donec sapien sed phase lusa pellentesque lacus. Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit. The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.",
+    social: { facebook: "#", instagram: "#", twitter: "#" },
+  },
+  {
+    id: 3,
+    slug: "vincent-cooper",
+    name: "Vincent Cooper",
+    role: "Kids Teacher",
+    avatar: "/images/teacher/teacher3.png",
+    courses: 4,
+    students: 95,
+    experience: "9 Years",
+    phone: "+(963) 2145 3656",
+    email: "vincent@example.com",
+    bio: "Fusce eleifend donec sapien sed phase lusa pellentesque lacus. Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit. The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.",
+    social: { facebook: "#", instagram: "#", twitter: "#" },
+  },
+  {
+    id: 4,
+    slug: "danielle-bryant",
+    name: "Danielle Bryant",
+    role: "Kids Teacher",
+    avatar: "/images/teacher/teacher4.png",
+    courses: 2,
+    students: 60,
+    experience: "5 Years",
+    phone: "+(963) 2145 3657",
+    email: "danielle@example.com",
+    bio: "Fusce eleifend donec sapien sed phase lusa pellentesque lacus. Vivamus lorem arcu semper duiac. Cras ornare arcu avamus nda leo Etiam ind arcu. Morbi justo mauris tempus pharetra interdum at congue semper purus. Lorem ipsum dolor sit. The world of search engine optimization is complex and ever-changing, but you can easily understand the basics.",
+    social: { facebook: "#", instagram: "#", twitter: "#" },
+  },
+];
