@@ -2,12 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 
-// TeacherCard — click করলে /teachers/[slug] এ navigate করবে
+// TeacherCard — click korle /teachers/[slug] e navigate korbe
 export default function TeacherCard({ teacher }) {
   const { name, role, avatar, social, slug } = teacher;
 
   return (
-    // পুরো card টা Link এ wrap করা হয়েছে
+    // Full card ta Link এ wrap kora hoyeche
     <Link href={`/teachers/${slug}`} className="group block">
       <div className="flex flex-col items-center text-center bg-white rounded-2xl px-6 pt-8 pb-6 shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow duration-300">
         {/* Circular avatar */}
@@ -32,32 +32,26 @@ export default function TeacherCard({ teacher }) {
         {/* Divider */}
         <div className="w-full h-px bg-gray-100 mb-4" />
 
-        {/* Social icons — e গুলো আলাদা link তাই card click থেকে আলাদা করতে e.preventDefault chain ভাঙা হয়েছে */}
+        {/* Social icons — link alada tai card click theke alda korte e.preventDefault chain vanga hoyeche */}
         <div className="flex items-center gap-3">
-          <a
-            href={social.facebook}
-            aria-label={`${name} Facebook`}
-            onClick={(e) => e.stopPropagation()}
-            className="text-gray-400 hover:text-[--primary] transition-colors duration-200"
-          >
-            <FaFacebookF size={14} />
-          </a>
-          <a
-            href={social.instagram}
-            aria-label={`${name} Instagram`}
-            onClick={(e) => e.stopPropagation()}
-            className="text-gray-400 hover:text-[--primary] transition-colors duration-200"
-          >
-            <FaInstagram size={14} />
-          </a>
-          <a
-            href={social.twitter}
-            aria-label={`${name} Twitter`}
-            onClick={(e) => e.stopPropagation()}
-            className="text-gray-400 hover:text-[--primary] transition-colors duration-200"
-          >
-            <FaTwitter size={14} />
-          </a>
+          {[
+            { href: social.facebook, label: "Facebook", Icon: FaFacebookF },
+            { href: social.instagram, label: "Instagram", Icon: FaInstagram },
+            { href: social.twitter, label: "Twitter", Icon: FaTwitter },
+          ].map(({ href, label, Icon }) => (
+            <button
+              key={label}
+              aria-label={`${name} ${label}`}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(href, "_blank", "noopener,noreferrer");
+              }}
+              className="text-gray-400 hover:text-[--primary] transition-colors duration-200"
+            >
+              <Icon size={14} />
+            </button>
+          ))}
         </div>
       </div>
     </Link>
