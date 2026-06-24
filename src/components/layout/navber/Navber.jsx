@@ -10,7 +10,7 @@ export default function Navbar() {
         <NavbarDesktop />
       </div>
 
-      <div className="lg:hidden">
+      <div className="lg:hidden sticky top-0 z-50">
         <NavbarMobile />
       </div>
     </>
