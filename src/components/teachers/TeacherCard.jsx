@@ -22,12 +22,12 @@ export default function TeacherCard({ teacher }) {
         </div>
 
         {/* Name */}
-        <h3 className="text-[17px] font-bold text-gray-900 leading-snug group-hover:text-[--primary] transition-colors duration-200">
-          {name}
-        </h3>
+        <h3 className="text-[17px] font-bold text-gray-900 leading-snug group-hover:text-[var(--primary)] transition-colors duration-200">
+  {name}
+</h3>
 
         {/* Role */}
-        <p className="text-sm text-[--primary] mt-1 mb-4">{role}</p>
+        <p className="text-sm text-[var(--primary)] mt-1 mb-4">{role}</p>
 
         {/* Divider */}
         <div className="w-full h-px bg-gray-100 mb-4" />
@@ -47,7 +47,7 @@ export default function TeacherCard({ teacher }) {
                 e.stopPropagation();
                 window.open(href, "_blank", "noopener,noreferrer");
               }}
-              className="text-gray-400 hover:text-[--primary] transition-colors duration-200"
+              className="text-gray-400 hover:text-[var(--primary)] transition-colors duration-200"
             >
               <Icon size={14} />
             </button>
