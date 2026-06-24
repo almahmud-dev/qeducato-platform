@@ -27,7 +27,7 @@ const SocialLink = ({ href, label, children }) => (
   <a
     href={href}
     aria-label={label}
-    className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white/70 hover:bg-[#FF6B3D] hover:border-[#FF6B3D] hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF6B3D] focus:ring-offset-2 focus:ring-offset-[#062d3a]"
+    className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white/70 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF6B3D] focus:ring-offset-2 focus:ring-offset-[#062d3a]"
   >
     {children}
   </a>
@@ -51,7 +51,7 @@ const FooterLink = ({ href, children }) => (
 //==========================================
 const ContactRow = ({ icon, children }) => (
   <div className="flex items-start gap-3">
-    <span className="w-9 h-9 rounded-full bg-[#FF6B3D] flex items-center justify-center shrink-0 text-white">
+    <span className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0 text-white">
       {icon}
     </span>
     <div className="text-sm text-white/75 leading-relaxed pt-1.5">
@@ -130,16 +130,15 @@ const Footer = () => {
             {/* ------ About ----- */}
             <div>
               <Image
-                src="/images/logo/navlogo.png"
+                src="/images/logo/footerlogo.png"
                 alt="QEDUCATO Logo"
                 width={240}
-                height={66}
+                height={62}
                 priority
                 className="h-12 w-auto"
               />
-              <span className="block w-8 h-0.75 rounded-full bg-primary mb-5" />
 
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-white/70 text-sm leading-relaxed pt-4">
                 Empowering students with quality education, practical skills,
                 and meaningful learning experiences that prepare them for
                 success in the real world.

@@ -105,7 +105,7 @@ export default function NavbarDesktop() {
         >
           <div className="container mx-auto h-[72px] flex items-center justify-between">
             {/* Social links — contrast fix: bg darker (#d45f2e) white icon */}
-            <div className="relative bg-[#c45328] h-full px-12 flex items-center gap-5">
+            <div className="relative bg-primary h-full px-12 flex items-center gap-5">
               {/*
                 Contrast fix:
                 Aage #FF7448 background e white text/icon → ratio 2.8:1 (fail)
@@ -144,7 +144,7 @@ export default function NavbarDesktop() {
 
               {/* Diagonal cut shape */}
               <div
-                className="absolute right-[-70px] top-0 w-0 h-0 border-t-[72px] border-t-[#c45328] border-r-[70px] border-r-transparent"
+                className="absolute right-[-70px] top-0 w-0 h-0 border-t-[72px] border-t-primary border-r-[70px] border-r-transparent"
                 aria-hidden="true"
               />
             </div>
@@ -158,7 +158,7 @@ export default function NavbarDesktop() {
                 />
                 <div>
                   <p className="text-xs">Call Now!</p>
-                  <p className="font-semibold">+91 7052 101 786</p>
+                  <p className="font-semibold">+15 8022 151 986</p>
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ export default function NavbarDesktop() {
                 <FiMail className="text-primary text-2xl" aria-hidden="true" />
                 <div>
                   <p className="text-xs">Email Now</p>
-                  <p className="font-semibold">info@example.com</p>
+                  <p className="font-semibold">info@qeducato.com</p>
                 </div>
               </div>
             </div>
@@ -251,7 +251,7 @@ export default function NavbarDesktop() {
               className="
                 h-full px-10
                 flex items-center
-                bg-[#c45328] hover:bg-[#b84a24]
+                bg-primary hover:bg-[#b84a24]
                 text-white font-semibold
                 transition-colors duration-200
               "
