@@ -102,7 +102,7 @@ export default function PageHero({ title, subtitle, breadcrumb }) {
         {/* Content */}
         <Container size="xl" className="relative z-10">
           <div className="flex flex-col items-center justify-center py-16 md:py-24 lg:py-28 text-center">
-            <span className="block w-18 h-0.75 bg-[#c49a1a] mb-4 rounded-full" />
+            <span className="block w-18 h-0.75 bg-primary mb-4 rounded-full" />
 
             <h1 className="text-3xl md:text-4xl lg:text-7xl font-bold text-white leading-tight">
               {title}
@@ -114,7 +114,7 @@ export default function PageHero({ title, subtitle, breadcrumb }) {
               </p>
             )}
 
-            <span className="block w-18 h-0.75 bg-[#c49a1a] mt-4 rounded-full" />
+            <span className="block w-18 h-0.75 bg-primary mt-4 rounded-full" />
           </div>
         </Container>
       </section>

@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #ff6b35;
+  --color-primary-hover: #f45a22;
+  --color-secondary: #083344;
+  --color-foreground: #0f172a;
+  --color-muted: #64748b;
+  --color-surface: #f8fafc;
+  --color-border: #e2e8f0;
+  --color-background: #ffffff;
+}
+
 @import "./theme.css";
 @import "./typography.css";
 @import "./utilities.css";
@@ -28,7 +39,7 @@ img {
 }
 
 a {
-  transition: 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 ::selection {
