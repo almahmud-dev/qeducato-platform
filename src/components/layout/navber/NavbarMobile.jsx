@@ -25,7 +25,11 @@ export default function NavbarMobile() {
           </h2>
         </Link>
 
-        <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+        >
           {isMenuOpen ? <FiX size={30} /> : <FiMenu size={30} />}
         </button>
       </div>
@@ -52,15 +56,9 @@ export default function NavbarMobile() {
                 <>
                   <button
                     onClick={() => toggleDropdown(item.label)}
-                    className="
-                      w-full
-                      flex
-                      items-center
-                      justify-between
-                      px-5
-                      py-4
-                      font-medium
-                    "
+                    aria-label={`${item.label} submenu`}
+                    aria-expanded={openDropdown === item.label}
+                    className="w-full flex items-center justify-between px-5 py-4 font-medium"
                   >
                     {item.label}
 

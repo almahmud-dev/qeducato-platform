@@ -67,8 +67,3 @@ p, span, li, a, label, input, textarea, select {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-
-/* Link hover */
-a:hover {
-  color: var(--primary-hover);
-}
