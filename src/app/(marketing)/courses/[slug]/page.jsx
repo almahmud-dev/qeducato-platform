@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { coursesDetailsData } from "@/helper/courses/coursesDetailsData";
 import CourseDetailsContent from "@/components/courses/CourseDetailsContent";
+import PageHero, { heroDataMap } from "@/components/common/PageHero";
 
 export async function generateStaticParams() {
   return coursesDetailsData.map((course) => ({ slug: course.slug }));
@@ -23,7 +24,7 @@ export default async function CourseDetailsPage({ params }) {
 
   return (
     <>
-      {/* <PageHero title="Course Details" /> তোমার already আছে */}
+      <PageHero {...heroDataMap["courses-details"]} />
       <CourseDetailsContent course={course} />
     </>
   );
