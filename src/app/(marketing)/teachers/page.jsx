@@ -4,7 +4,7 @@ import PartnersStrip from "@/components/teachers/PartnersStrip";
 import ExpertTeachers from "@/components/teachers/ExpertTeachers";
 
 export const metadata = {
-  title: "Our Teacher | EduFilos",
+  title: "Our Teacher | Qeducato",
   description: "Meet our expert teaching staff",
 };
 

@@ -76,21 +76,21 @@ export default function TeacherDetailsInfo({ teacher }) {
           <a
             href={social.facebook}
             aria-label={`${name} Facebook`}
-            className="w-9 h-9 rounded-full bg-[--primary] flex items-center justify-center text-white hover:opacity-85 transition-opacity duration-200"
+            className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white hover:opacity-85 transition-opacity duration-200"
           >
             <FaFacebookF size={14} />
           </a>
           <a
             href={social.instagram}
             aria-label={`${name} Instagram`}
-            className="w-9 h-9 rounded-full bg-[--primary] flex items-center justify-center text-white hover:opacity-85 transition-opacity duration-200"
+            className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white hover:opacity-85 transition-opacity duration-200"
           >
             <FaInstagram size={14} />
           </a>
           <a
             href={social.twitter}
             aria-label={`${name} Twitter`}
-            className="w-9 h-9 rounded-full bg-[--primary] flex items-center justify-center text-white hover:opacity-85 transition-opacity duration-200"
+            className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-white hover:opacity-85 transition-opacity duration-200"
           >
             <FaTwitter size={14} />
           </a>
