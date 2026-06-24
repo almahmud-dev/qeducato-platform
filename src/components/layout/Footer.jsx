@@ -8,185 +8,245 @@ import {
   FaEnvelope,
   FaLocationDot,
 } from "react-icons/fa6";
+import Container from "../ui/Container";
+import Image from "next/image";
+
+//============================================
+// Section heading with orange underline accent
+//============================================
+const FooterHeading = ({ children }) => (
+  <div className="mb-6">
+    <h3 className="text-base font-bold text-white">{children}</h3>
+    <span className="mt-2 block w-8 h-0.75 rounded-full bg-primary" />
+  </div>
+);
+//=============================
+// Social icon button
+//=============================
+const SocialLink = ({ href, label, children }) => (
+  <a
+    href={href}
+    aria-label={label}
+    className="w-9 h-9 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-white/70 hover:bg-primary hover:border-primary hover:text-white transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#FF6B3D] focus:ring-offset-2 focus:ring-offset-[#062d3a]"
+  >
+    {children}
+  </a>
+);
+//==============================
+// Nav link with animated dash
+//==============================
+const FooterLink = ({ href, children }) => (
+  <li>
+    <Link
+      href={href}
+      className="group inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors duration-200 focus:outline-none focus:text-white"
+    >
+      <span className="w-0 h-px bg-[#FF6B3D] group-hover:w-3 transition-all duration-300 shrink-0" />
+      {children}
+    </Link>
+  </li>
+);
+//==========================================
+// Contact row with circular accent icon
+//==========================================
+const ContactRow = ({ icon, children }) => (
+  <div className="flex items-start gap-3">
+    <span className="w-9 h-9 rounded-full bg-primary flex items-center justify-center shrink-0 text-white">
+      {icon}
+    </span>
+    <div className="text-sm text-white/75 leading-relaxed pt-1.5">
+      {children}
+    </div>
+  </div>
+);
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0B3B4A] text-white mt-20">
-      {/* Newsletter */}
-      <div className="border-b border-white/10">
-        <div className="container mx-auto px-4 py-10">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            <div>
-              <h3 className="text-2xl font-bold">Subscribe for Newsletter</h3>
+    <footer className="mt-20">
+      {/* ---------- Newsletter Strip ----------*/}
 
-              <p className="text-white/70 mt-2">
-                Get latest updates, news and educational resources.
-              </p>
+      <div className="bg-[#0e4558] relative overflow-hidden">
+        {/* subtle diagonal texture */}
+        <div className="pointer-events-none absolute inset-0 opacity-[0.03] bg-[repeating-linear-gradient(45deg,#fff_0px,#fff_1px,transparent_1px,transparent_12px)]" />
+
+        <Container size="xl">
+          <div className="py-10 xl:py-20 flex flex-col lg:flex-row items-center justify-between gap-8 relative">
+            {/* Left */}
+            <div className="flex items-center gap-5">
+              {/* decorative icon block */}
+              <div className="hidden sm:flex w-14 h-14 rounded-xl bg-[#FF6B3D]/15 border border-[#FF6B3D]/20 items-center justify-center shrink-0">
+                <FaEnvelope
+                  size={22}
+                  className="text-[#FF6B3D]"
+                  aria-hidden="true"
+                />
+              </div>
+
+              <div>
+                <h3 className="headingFive font-bold text-white leading-tight">
+                  Subscribe for Newsletter
+                </h3>
+                <p className="text-white/60 text-sm mt-0.5">
+                  Get latest updates, news and educational resources.
+                </p>
+              </div>
             </div>
 
-            <form className="flex w-full lg:w-auto">
+            {/* Right — input + button */}
+            <form className="flex w-full max-w-[600px] flex-col gap-3 sm:flex-row sm:gap-0 sm:rounded-sm sm:bg-white sm:p-1">
+              <label htmlFor="footer-email" className="sr-only">
+                Email Address
+              </label>
+
               <input
+                id="footer-email"
                 type="email"
-                placeholder="Enter your email"
-                className="
-                  w-full lg:w-[320px]
-                  px-4 py-3
-                  outline-none
-                  text-black
-                  bg-white
-                  rounded-l-lg
-                "
+                name="email"
+                autoComplete="email"
+                placeholder="Email Address..."
+                className="w-full rounded-sm bg-white px-5 py-4 text-base text-slate-700 placeholder:text-slate-400 outline-none sm:flex-1 sm:rounded-none sm:bg-transparent sm:px-6 sm:py-5 md:text-lg"
               />
 
               <button
-                className="
-                  bg-[#FF6B3D]
-                  px-6
-                  rounded-r-lg
-                  font-semibold
-                  hover:opacity-90
-                  transition
-                "
+                type="submit"
+                className="w-full rounded-sm bg-[#0B5A78] px-6 py-4 text-base font-semibold text-white transition-all duration-300 hover:bg-[#094960] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:w-auto sm:min-w-[180px] sm:px-8 sm:py-5 md:min-w-[210px] md:text-lg"
               >
-                Subscribe
+                Subscribe Now
               </button>
             </form>
           </div>
-        </div>
+        </Container>
       </div>
 
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* About */}
-          <div>
-            <h2 className="text-3xl font-bold mb-5">EduCato</h2>
+      {/*============== Main Footer Body =============== */}
 
-            <p className="text-white/70 leading-relaxed">
-              Empowering students through modern education, innovative learning
-              and career-focused courses.
-            </p>
+      <div className="bg-[#062d3a] relative overflow-hidden">
+        {/* decorative circle outline — matches image reference */}
+        <div className="pointer-events-none absolute -left-28 top-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full border border-white/5" />
+        <div className="pointer-events-none absolute -left-16 top-1/2 -translate-y-1/2 w-[320px] h-[320px] rounded-full border border-white/5" />
 
-            <div className="flex gap-3 mt-6">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FF6B3D] transition"
-              >
-                <FaFacebookF />
-              </a>
+        <Container size="xl">
+          <div className="py-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            {/* ------ About ----- */}
+            <div>
+              <Image
+                src="/images/logo/footerlogo.png"
+                alt="QEDUCATO Logo"
+                width={240}
+                height={62}
+                priority
+                className="h-12 w-auto"
+              />
 
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FF6B3D] transition"
-              >
-                <FaInstagram />
-              </a>
+              <p className="text-white/70 text-sm leading-relaxed pt-4">
+                Empowering students with quality education, practical skills,
+                and meaningful learning experiences that prepare them for
+                success in the real world.
+              </p>
 
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FF6B3D] transition"
-              >
-                <FaLinkedinIn />
-              </a>
+              <div className="flex gap-3 mt-6">
+                <SocialLink href="#" label="Follow us on Facebook">
+                  <FaFacebookF size={13} aria-hidden="true" />
+                </SocialLink>
 
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#FF6B3D] transition"
-              >
-                <FaYoutube />
-              </a>
+                <SocialLink href="#" label="Follow us on Instagram">
+                  <FaInstagram size={13} aria-hidden="true" />
+                </SocialLink>
+
+                <SocialLink href="#" label="Connect on LinkedIn">
+                  <FaLinkedinIn size={13} aria-hidden="true" />
+                </SocialLink>
+
+                <SocialLink href="#" label="Watch on YouTube">
+                  <FaYoutube size={13} aria-hidden="true" />
+                </SocialLink>
+              </div>
             </div>
-          </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-5">Quick Links</h3>
+            {/* ── Quick Links ── */}
+            <div>
+              <FooterHeading>Our Links</FooterHeading>
 
-            <ul className="space-y-3 text-white/70">
-              <li>
-                <Link href="/about">About Us</Link>
-              </li>
+              <ul className="space-y-3">
+                <FooterLink href="/about">About Qeducato</FooterLink>
+                <FooterLink href="/courses">Academic Programs</FooterLink>
+                <FooterLink href="/teachers">Our Faculty</FooterLink>
+                <FooterLink href="/events">Events & Programs</FooterLink>
+                <FooterLink href="/blog">Our Blog</FooterLink>
+              </ul>
+            </div>
 
-              <li>
-                <Link href="/courses">Courses</Link>
-              </li>
+            {/* ── Pages ── */}
+            <div>
+              <FooterHeading>Pages</FooterHeading>
 
-              <li>
-                <Link href="/teachers">Teachers</Link>
-              </li>
+              <ul className="space-y-3">
+                <FooterLink href="/gallery">Campus Gallery</FooterLink>
+                <FooterLink href="/pricing">Tuition & Fees</FooterLink>
+                <FooterLink href="/faq">FAQ</FooterLink>
+                <FooterLink href="/contact">Contact Us</FooterLink>
+              </ul>
+            </div>
 
-              <li>
-                <Link href="/events">Events</Link>
-              </li>
+            {/* ── Contact ── */}
+            <div>
+              <FooterHeading>Contact Us</FooterHeading>
 
-              <li>
-                <Link href="/blog">Blog</Link>
-              </li>
-            </ul>
-          </div>
+              <div className="space-y-4">
+                <ContactRow icon={<FaPhone size={13} aria-hidden="true" />}>
+                  <a
+                    href="tel:+8801234567890"
+                    className="block hover:text-white transition-colors duration-200 focus:outline-none focus:text-white"
+                  >
+                    +880 1335 567890
+                  </a>
+                </ContactRow>
 
-          {/* Pages */}
-          <div>
-            <h3 className="text-xl font-semibold mb-5">Pages</h3>
+                <ContactRow icon={<FaEnvelope size={13} aria-hidden="true" />}>
+                  <a
+                    href="mailto:info@educato.com"
+                    className="block hover:text-white transition-colors duration-200 focus:outline-none focus:text-white"
+                  >
+                    info@educato.com
+                  </a>
+                </ContactRow>
 
-            <ul className="space-y-3 text-white/70">
-              <li>
-                <Link href="/gallery">Gallery</Link>
-              </li>
-
-              <li>
-                <Link href="/pricing">Pricing</Link>
-              </li>
-
-              <li>
-                <Link href="/faq">FAQ</Link>
-              </li>
-
-              <li>
-                <Link href="/contact">Contact</Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h3 className="text-xl font-semibold mb-5">Contact Us</h3>
-
-            <div className="space-y-4 text-white/70">
-              <div className="flex gap-3">
-                <FaLocationDot className="mt-1 shrink-0" />
-                <p>Dhaka, Bangladesh</p>
-              </div>
-
-              <div className="flex gap-3">
-                <FaPhone className="mt-1 shrink-0" />
-                <p>+880 1234 567890</p>
-              </div>
-
-              <div className="flex gap-3">
-                <FaEnvelope className="mt-1 shrink-0" />
-                <p>info@educato.com</p>
+                <ContactRow
+                  icon={<FaLocationDot size={13} aria-hidden="true" />}
+                >
+                  <p>New York, Unitate States </p>
+                </ContactRow>
               </div>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
 
-      {/* Copyright */}
-      <div className="border-t border-white/10">
-        <div className="container mx-auto px-4 py-5">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-            <p className="text-white/60 text-sm">
-              © 2026 EduCato. All Rights Reserved.
+      {/* ============== Copyright Bar ================ */}
+      <div className="bg-[#051f2b] border-t border-white/5">
+        <Container size="xl">
+          <div className="py-4 flex flex-col md:flex-row items-center justify-between gap-3">
+            <p className="text-white/50 text-xs">
+              © 2026 EduCato. All rights reserved.
             </p>
 
-            <div className="flex gap-6 text-sm text-white/60">
-              <Link href="/privacy-policy">Privacy Policy</Link>
+            <div className="flex gap-6 text-xs text-white/50">
+              <Link
+                href="/privacy-policy"
+                className="hover:text-white/80 transition-colors duration-200 focus:outline-none focus:text-white"
+              >
+                Privacy Policy
+              </Link>
 
-              <Link href="/terms-conditions">Terms & Conditions</Link>
+              <Link
+                href="/terms-conditions"
+                className="hover:text-white/80 transition-colors duration-200 focus:outline-none focus:text-white"
+              >
+                Terms & Conditions
+              </Link>
             </div>
           </div>
-        </div>
+        </Container>
       </div>
     </footer>
   );
