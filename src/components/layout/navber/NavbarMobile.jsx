@@ -15,7 +15,7 @@ export default function NavbarMobile() {
   };
 
   return (
-    <nav className="bg-white shadow-sm relative z-50">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
       {/* Top */}
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/">
