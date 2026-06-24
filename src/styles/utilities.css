@@ -1,22 +1,28 @@
-.container {
-  width: 100%;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: 1rem;
+
+/*==============================*/
+/* PageHero breadcrumb pill */
+/*==============================*/
+.page-hero-breadcrumb {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #e8673a;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  white-space: nowrap;
 }
 
-.section {
-  padding-block: 120px;
+.page-hero-breadcrumb-home:hover {
+  text-decoration: underline;
 }
 
-.section-sm {
-  padding-block: 80px;
-}
-
-.section-lg {
-  padding-block: 160px;
-}
-
-.text-muted {
-  color: var(--muted);
+.page-hero-breadcrumb-sep {
+  opacity: 0.6;
 }
