@@ -6,6 +6,7 @@ import gsap from "gsap";
 
 export default function DirectionalButton({
   label,
+  bgColor = "transparent",
   leftIcon,
   rightIcon,
   type = "button",
@@ -38,7 +39,7 @@ export default function DirectionalButton({
 
   const sharedClasses = [
     "relative overflow-hidden inline-flex items-center justify-center transform-gpu will-change-transform",
-    "rounded-full cursor-pointer outline-none border bg-transparent",
+    "rounded-full cursor-pointer outline-none border",
     "border-[var(--btn-border)]",
     "[-webkit-tap-highlight-color:transparent]",
     sz,
@@ -221,7 +222,7 @@ export default function DirectionalButton({
         href={href}
         target={target}
         rel={target === "_blank" ? "noopener noreferrer" : undefined}
-        style={{ "--btn-border": borderColor }}
+        style={{ "--btn-border": borderColor, backgroundColor: bgColor }}
         className={sharedClasses}
       >
         {inner}
@@ -233,7 +234,7 @@ export default function DirectionalButton({
     <button
       ref={btnRef}
       onClick={onClick}
-      style={{ "--btn-border": borderColor }}
+      style={{ "--btn-border": borderColor, backgroundColor: bgColor }}
       className={sharedClasses}
     >
       {inner}
