@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
-import { teachersData } from "@/helper/teachers/teachersData";
+import { allTeachersData } from "@/helper/teachers/allTeachersData";
 import TeacherDetailsHero from "@/components/teachers/teacherDetails/TeacherDetailsHero";
 import TeacherDetailsContent from "@/components/teachers/teacherDetails/TeacherDetailsContent";
 
 export async function generateStaticParams() {
-  return teachersData.map((teacher) => ({ slug: teacher.slug }));
+  return allTeachersData.map((teacher) => ({ slug: teacher.slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const teacher = teachersData.find((t) => t.slug === slug);
+  const teacher = allTeachersData.find((t) => t.slug === slug);
   if (!teacher) return { title: "Teacher Not Found | Qeducato" };
   return {
     title: `${teacher.name} | Qeducato`,
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }) {
 
 export default async function TeacherDetailsPage({ params }) {
   const { slug } = await params;
-  const teacher = teachersData.find((t) => t.slug === slug);
+  const teacher = allTeachersData.find((t) => t.slug === slug);
   if (!teacher) notFound();
 
   return (

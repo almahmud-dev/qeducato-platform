@@ -1,3 +1,4 @@
+"use client";
 import Container from "@/components/ui/Container";
 import ExpertTeacherCard from "./ExpertTeacherCard";
 import { expertTeachersData } from "@/helper/teachers/expertTeachersData";
