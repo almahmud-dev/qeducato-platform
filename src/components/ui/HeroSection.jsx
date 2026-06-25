@@ -116,7 +116,7 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-[#02090f30] z-20" />
         </div>
 
-        {/* Thumbnails */}
+        {/* Thumbnail buttons */}
         <ul className="absolute bottom-[15px] right-[15px] sm:bottom-[20px] sm:right-[20px] md:bottom-[25px] md:right-[25px] lg:bottom-[30px] lg:right-[30px] xl:bottom-[35px] xl:right-[35px] z-[20] flex gap-x-2 sm:gap-x-3 md:gap-x-4 xl:gap-x-5">
           {heroBanner.map((item, index) => (
             <li
