@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import HeroSection from "../ui/HeroSection";
 
 function Hero() {
-  return (
-    <div>Hero</div>
-  )
+  return <HeroSection />;
 }
 
-export default Hero
+export default Hero;
