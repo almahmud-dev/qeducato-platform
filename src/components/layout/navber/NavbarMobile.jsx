@@ -5,6 +5,7 @@ import Link from "next/link";
 import { FiMenu, FiX, FiChevronDown } from "react-icons/fi";
 
 import { navLinks } from "./navLinks";
+import Image from "next/image";
 
 export default function NavbarMobile() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,11 +19,15 @@ export default function NavbarMobile() {
     <nav className="bg-white shadow-sm relative z-50">
       {/* Top */}
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/">
-          <h2 className="text-2xl font-bold">
-            <span className="text-[#0B5975]">QEDU</span>
-            <span className="text-[#FF7448]">CATO</span>
-          </h2>
+        <Link href="/" aria-label="QEDUCATO Home">
+          <Image
+            src="/images/logo/navlogo.png"
+            alt="QEDUCATO Logo"
+            width={240}
+            height={66}
+            priority
+            className="h-12 w-auto"
+          />
         </Link>
 
         <button

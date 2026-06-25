@@ -22,7 +22,11 @@ export default function NavbarDesktop() {
   // scroll detect kore top bar hide/show
   useEffect(() => {
     const handleScroll = () => {
-      setIsSticky(window.scrollY > 72);
+      setIsSticky((prev) => {
+        if (!prev && window.scrollY > 160) return true;
+        if (prev && window.scrollY < 100) return false;
+        return prev;
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -86,25 +90,22 @@ export default function NavbarDesktop() {
         - nav fixed + shadow beshi
         transition smooth rakha hoyeche
       */}
-      <header
-        className={`
-          w-full z-50
-          transition-all duration-300
-          ${isSticky ? "fixed top-0 left-0 shadow-lg" : "relative"}
-        `}
-      >
+      <header className="w-full z-50 fixed top-0 left-0 shadow-md">
         {/* ================= Top Bar ===================*/}
         <div
-          className={`
-            bg-[#0B5975] text-white overflow-hidden
-            transition-all duration-300
-            ${isSticky ? "h-0 opacity-0" : "h-[72px] opacity-100"}
-          `}
+          style={{
+            maxHeight: isSticky ? "0px" : "72px",
+            opacity: isSticky ? 0 : 1,
+            overflow: "hidden",
+            transition:
+              "max-height 300ms ease-in-out, opacity 200ms ease-in-out",
+          }}
+          className="bg-[#0B5975] text-white"
           aria-hidden={isSticky}
         >
           <div className="container mx-auto h-[72px] flex items-center justify-between">
             {/* Social links — contrast fix: bg darker (#d45f2e) white icon */}
-            <div className="relative bg-[#c45328] h-full px-12 flex items-center gap-5">
+            <div className="relative bg-primary h-full px-12 flex items-center gap-5">
               {/*
                 Contrast fix:
                 Aage #FF7448 background e white text/icon → ratio 2.8:1 (fail)
@@ -143,7 +144,7 @@ export default function NavbarDesktop() {
 
               {/* Diagonal cut shape */}
               <div
-                className="absolute right-[-70px] top-0 w-0 h-0 border-t-[72px] border-t-[#c45328] border-r-[70px] border-r-transparent"
+                className="absolute right-[-70px] top-0 w-0 h-0 border-t-[72px] border-t-primary border-r-[70px] border-r-transparent"
                 aria-hidden="true"
               />
             </div>
@@ -152,23 +153,20 @@ export default function NavbarDesktop() {
             <div className="flex items-center h-full">
               <div className="flex items-center gap-3 px-8 border-l border-white/20 h-full">
                 <FiPhoneCall
-                  className="text-[#FF7448] text-2xl"
+                  className="text-primary text-2xl"
                   aria-hidden="true"
                 />
                 <div>
                   <p className="text-xs">Call Now!</p>
-                  <p className="font-semibold">+91 7052 101 786</p>
+                  <p className="font-semibold">+15 8022 151 986</p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 px-8 border-l border-white/20 h-full">
-                <FiMail
-                  className="text-[#FF7448] text-2xl"
-                  aria-hidden="true"
-                />
+              <div className="flex items-center gap-3 pr-20 px-2 border-l border-white/20 h-full">
+                <FiMail className="text-primary text-2xl" aria-hidden="true" />
                 <div>
                   <p className="text-xs">Email Now</p>
-                  <p className="font-semibold">info@example.com</p>
+                  <p className="font-semibold">info@qeducato.com</p>
                 </div>
               </div>
             </div>
@@ -253,7 +251,7 @@ export default function NavbarDesktop() {
               className="
                 h-full px-10
                 flex items-center
-                bg-[#c45328] hover:bg-[#b84a24]
+                bg-primary hover:bg-[#b84a24]
                 text-white font-semibold
                 transition-colors duration-200
               "
@@ -265,7 +263,13 @@ export default function NavbarDesktop() {
       </header>
 
       {/* Sticky hoile layout shift theke bachate spacer — top bar height */}
-      {isSticky && <div className="h-[80px]" aria-hidden="true" />}
+      <div
+        style={{
+          height: isSticky ? "80px" : "152px",
+          transition: "height 300ms ease-in-out",
+        }}
+        aria-hidden="true"
+      />
     </>
   );
 }
