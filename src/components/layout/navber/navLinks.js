@@ -62,7 +62,7 @@ export const navLinks = [
       },
       {
         label: "Teacher Details",
-        href: "/teachers-details",
+        href: "/teachers/eng-tanvir-hossain-eee",
       },
       {
         label: "404 Error",
