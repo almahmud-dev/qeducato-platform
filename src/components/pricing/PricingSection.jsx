@@ -10,8 +10,11 @@ import { FiCheck, FiX, FiZap } from "react-icons/fi";
 
 import { plans, trustMetrics } from "@/helper/pricing/pricingData";
 import Container from "../ui/Container";
+import SectionHeader from "../common/SectionHeader";
 
-// ─── Billing Toggle ────────────────────────────────────────────────────────────
+//==============================
+// ─── Billing Toggle
+//==============================
 function BillingToggle({ yearly, onChange }) {
   return (
     <div className="flex items-center justify-center gap-3 mb-12">
@@ -20,8 +23,8 @@ function BillingToggle({ yearly, onChange }) {
         id="billing-monthly-label"
         className={`PeraTwo font-medium transition-colors duration-200 ${
           !yearly
-            ? "text-[var(--color-foreground)]"
-            : "text-[var(--color-muted)]"
+            ? "text-foreground"
+            : "text-muted"
         }`}
       >
         Monthly
@@ -37,7 +40,7 @@ function BillingToggle({ yearly, onChange }) {
           relative w-12 h-6 rounded-full transition-all duration-300
           focus:outline-none focus-visible:ring-2
           focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2
-          ${yearly ? "bg-[var(--color-primary)]" : "bg-[var(--color-border)]"}
+          ${yearly ? "bg-primary" : "bg-border"}
         `}
       >
         <span
@@ -55,8 +58,8 @@ function BillingToggle({ yearly, onChange }) {
         id="billing-yearly-label"
         className={`PeraTwo font-medium transition-colors duration-200 ${
           yearly
-            ? "text-[var(--color-foreground)]"
-            : "text-[var(--color-muted)]"
+            ? "text-foreground"
+            : "text-muted"
         }`}
       >
         Yearly
@@ -69,17 +72,19 @@ function BillingToggle({ yearly, onChange }) {
   );
 }
 
-// ─── Feature Row ───────────────────────────────────────────────────────────────
+//===============================
+// ─── Feature Row 
+//===============================
 function FeatureRow({ text, included }) {
   return (
     <li className="flex items-start gap-3 py-1.5">
-      {/* Icon with sr-only context — screen reader এ "Included:" বা "Not included:" পড়বে */}
+      {/* Icon with sr-only context — screen reader er "Included:" or "Not included:" porbe */}
       <span
         aria-hidden="true"
-        className={`mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${
+        className={`mt-0.5 shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${
           included
-            ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
-            : "bg-[var(--color-border)] text-[var(--color-muted)]"
+            ? "bg-primary/10 text-primary"
+            : "bg-border text-muted"
         }`}
       >
         {included ? (
@@ -92,11 +97,11 @@ function FeatureRow({ text, included }) {
       <span
         className={`PeraThree ${
           included
-            ? "text-[var(--color-foreground)]"
-            : "text-[var(--color-muted)]"
+            ? "text-foreground"
+            : "text-muted"
         }`}
       >
-        {/* Screen reader এর জন্য context */}
+        {/* Screen reader er jonno context */}
         <span className="sr-only">
           {included ? "Included:" : "Not included:"}
         </span>
@@ -106,7 +111,10 @@ function FeatureRow({ text, included }) {
   );
 }
 
-// ─── CTA Button Variants ───────────────────────────────────────────────────────
+//==================================
+// ─── CTA Button Variants
+//==================================
+
 function PlanCta({ variant, label }) {
   const base =
     "w-full py-3 px-6 rounded-xl font-semibold PeraTwo text-center transition-all duration-200 motion-reduce:transition-none focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[var(--color-primary)]";
@@ -114,7 +122,7 @@ function PlanCta({ variant, label }) {
   if (variant === "gradient") {
     return (
       <button
-        className={`${base} bg-gradient-to-r from-[var(--color-primary)] to-orange-400 text-white hover:opacity-90 hover:shadow-lg hover:shadow-orange-200 active:scale-[0.98] motion-reduce:hover:shadow-none`}
+        className={`${base} bg-gradient-to-r from-primary to-orange-400 text-white hover:opacity-90 hover:shadow-lg hover:shadow-orange-200 active:scale-[0.98] motion-reduce:hover:shadow-none`}
       >
         {label}
       </button>
@@ -124,7 +132,7 @@ function PlanCta({ variant, label }) {
   if (variant === "dark") {
     return (
       <button
-        className={`${base} bg-[var(--color-secondary)] text-white hover:bg-[var(--color-secondary)]/90 hover:shadow-lg active:scale-[0.98] motion-reduce:hover:shadow-none`}
+        className={`${base} bg-secondary text-white hover:bg-[var(--color-secondary)]/90 hover:shadow-lg active:scale-[0.98] motion-reduce:hover:shadow-none`}
       >
         {label}
       </button>
@@ -247,7 +255,7 @@ function PlanCard({ plan, yearly }) {
   );
 }
 
-// ─── Trust Bar ─────────────────────────────────────────────────────────────────
+// ─── Trust Bar
 function TrustBar() {
   return (
     <div
@@ -279,32 +287,27 @@ function TrustBar() {
     </div>
   );
 }
-
-// ─── Main Export ───────────────────────────────────────────────────────────────
+//==============================
+// ─── Main Export
+//==============================
 export default function PricingSection() {
   const [yearly, setYearly] = useState(false);
 
   return (
     <section
-      className="py-16 md:py-20 bg-[var(--color-surface)]"
+      className="py-16 md:py-20 bg-surface"
       aria-labelledby="pricing-heading"
     >
       <Container size="xl">
         {/* Section header */}
+        <SectionHeader
+          label="Our Pricing"
+          text="Simple, transparent pricing"
+          colorWord="pricing"
+        />
+
         <div className="text-center mb-4">
-          <span
-            className="label text-[var(--color-primary)]"
-            aria-hidden="true"
-          >
-            Pricing
-          </span>
-          <h2
-            id="pricing-heading"
-            className="headingTwo text-[var(--color-foreground)] mt-2 mb-4"
-          >
-            Simple, transparent pricing
-          </h2>
-          <p className="lead text-[var(--color-muted)] max-w-xl mx-auto">
+          <p className="lead text-muted max-w-xl mx-auto">
             No hidden fees. No setup costs. Pick the plan that fits your
             institution and scale whenever you're ready.
           </p>

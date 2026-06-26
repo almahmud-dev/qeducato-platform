@@ -4,7 +4,6 @@
 import PageHero, { heroDataMap } from "@/components/common/PageHero";
 import PricingSection from "@/components/pricing/PricingSection";
 import PricingComparison from "@/components/pricing/PricingComparison";
-import PricingFaq from "@/components/pricing/PricingFaq";
 import PricingCta from "@/components/pricing/PricingCta";
 import { metaDataMap } from "@/lib/metadata";
 
@@ -16,7 +15,6 @@ export default function Pricing() {
       <PageHero {...heroDataMap.pricing} />
       <PricingSection />
       <PricingComparison />
-      <PricingFaq />
       <PricingCta />
     </>
   );
