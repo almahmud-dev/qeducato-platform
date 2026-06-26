@@ -11,7 +11,7 @@ export const coursesTwoDetailsData = [
     enrolled: 28,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/teacher1.jpg",
+      avatar: "/images/coursesTeacher/teacher3.png",
       name: "Robto Jone",
       role: "Teacher",
       category: "Language",
@@ -60,7 +60,7 @@ export const coursesTwoDetailsData = [
     enrolled: 20,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/teacher2.jpg",
+      avatar: "/images/coursesTeacher/teacher2.png",
       name: "Anna Smith",
       role: "Teacher",
       category: "Arts",
@@ -109,7 +109,7 @@ export const coursesTwoDetailsData = [
     enrolled: 35,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/teacher3.jpg",
+      avatar: "/images/coursesTeacher/teacher3.png",
       name: "John Doe",
       role: "Teacher",
       category: "Mathematics",
@@ -158,7 +158,7 @@ export const coursesTwoDetailsData = [
     enrolled: 40,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/teacher4.jpg",
+     avatar: "/images/coursesTeacher/teacher3.png",
       name: "Sara Khan",
       role: "Teacher",
       category: "Design",
@@ -207,7 +207,7 @@ export const coursesTwoDetailsData = [
     enrolled: 30,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/teacher5.jpg",
+      avatar: "/images/coursesTeacher/teacher3.png",
       name: "Mike Lee",
       role: "Teacher",
       category: "Development",
@@ -256,7 +256,7 @@ export const coursesTwoDetailsData = [
     enrolled: 50,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/teacher6.jpg",
+      avatar: "/images/coursesTeacher/teacher3.png",
       name: "Lisa Ray",
       role: "Teacher",
       category: "Marketing",
