@@ -130,7 +130,7 @@ export default function TeacherDetailsInfo({ teacher }) {
                 rel="noopener noreferrer"
                 aria-label={`${name} on ${label}`}
                 role="listitem"
-                className="w-10 h-10 rounded-full bg-[#125875] flex items-center justify-center text-white hover:bg-primary hover:scale-110 hover:shadow-lg transition-all duration-700 ease-out"
+                className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white hover:bg-primary hover:scale-110 hover:shadow-lg transition-all duration-700 ease-out"
               >
                 <Icon size={14} aria-hidden="true" />
               </a>
