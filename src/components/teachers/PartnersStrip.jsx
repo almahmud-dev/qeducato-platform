@@ -4,7 +4,7 @@ import { partnersData } from "@/helper/teachers/partnersData";
 
 export default function PartnersStrip() {
   return (
-    <section className="bg-[#125875] py-10">
+    <section className="bg-secondary py-10">
       <Container size="xl">
         <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16 lg:justify-between">
           {partnersData.map((partner) => (
