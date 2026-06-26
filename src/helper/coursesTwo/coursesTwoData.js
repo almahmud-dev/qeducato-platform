@@ -8,7 +8,7 @@ export const coursesTwoData = [
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
     image: "/images/coursesTwo/language-class.jpg",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher1.png",
+      avatar: "/images/coursesTeacher/teacher1.webp",
       name: "Robto Jone",
       role: "Teacher",
     },
@@ -25,7 +25,7 @@ export const coursesTwoData = [
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
     image: "/images/coursesTwo/drawing-class.jpg",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher2.png",
+      avatar: "/images/coursesTeacher/teacher2.webp",
       name: "Robto Jone",
       role: "Teacher",
     },
@@ -42,7 +42,7 @@ export const coursesTwoData = [
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
     image: "/images/coursesTwo/mathematics-class.jpg",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher3.png",
+      avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Robto Jone",
       role: "Teacher",
     },
@@ -59,7 +59,7 @@ export const coursesTwoData = [
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
     image: "/images/coursesTwo/web-design-class.jpg",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher1.png",
+      avatar: "/images/coursesTeacher/teacher1.webp",
       name: "Robto Jone",
       role: "Teacher",
     },
@@ -76,7 +76,7 @@ export const coursesTwoData = [
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
     image: "/images/coursesTwo/html-development-class.jpg",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher2.png",
+      avatar: "/images/coursesTeacher/teacher2.webp",
       name: "Robto Jone",
       role: "Teacher",
     },
@@ -93,7 +93,7 @@ export const coursesTwoData = [
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
     image: "/images/coursesTwo/digital-marketing-class.jpg",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher3.png",
+      avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Robto Jone",
       role: "Teacher",
     },

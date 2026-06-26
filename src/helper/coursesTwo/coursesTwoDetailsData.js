@@ -2,7 +2,7 @@ export const coursesTwoDetailsData = [
   {
     slug: "language-class",
     title: "The Language Class Course",
-    image: "/images/coursesTwo/language-class.jpg",
+    image: "/images/coursesTwo/language-class.webp",
     price: 59,
     originalPrice: 139,
     instructor: "Robto Jone",
@@ -11,7 +11,7 @@ export const coursesTwoDetailsData = [
     enrolled: 28,
     language: "English",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher3.png",
+      avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Robto Jone",
       role: "Teacher",
       category: "Language",
@@ -60,7 +60,7 @@ export const coursesTwoDetailsData = [
     enrolled: 20,
     language: "English",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher2.png",
+      avatar: "/images/coursesTeacher/teacher2.webp",
       name: "Anna Smith",
       role: "Teacher",
       category: "Arts",
@@ -100,7 +100,7 @@ export const coursesTwoDetailsData = [
   {
     slug: "mathematics-class",
     title: "The Mathematics Class Course",
-    image: "/images/coursesTwo/mathematics-class.jpg",
+    image: "/images/coursesTwo/mathematics-class.webp",
     price: 69,
     originalPrice: 149,
     instructor: "John Doe",
@@ -109,7 +109,7 @@ export const coursesTwoDetailsData = [
     enrolled: 35,
     language: "English",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher3.png",
+      avatar: "/images/coursesTeacher/teacher3.webp",
       name: "John Doe",
       role: "Teacher",
       category: "Mathematics",
@@ -149,7 +149,7 @@ export const coursesTwoDetailsData = [
   {
     slug: "web-design-class",
     title: "The Web Design Class Course",
-    image: "/images/coursesTwo/web-design-class.jpg",
+    image: "/images/coursesTwo/web-design-class.webp",
     price: 79,
     originalPrice: 159,
     instructor: "Sara Khan",
@@ -158,7 +158,7 @@ export const coursesTwoDetailsData = [
     enrolled: 40,
     language: "English",
     teacher: {
-     avatar: "/images/coursesTeacher/teacher3.png",
+     avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Sara Khan",
       role: "Teacher",
       category: "Design",
@@ -198,7 +198,7 @@ export const coursesTwoDetailsData = [
   {
     slug: "html-development-class",
     title: "The HTML Development Class Course",
-    image: "/images/coursesTwo/html-development-class.jpg",
+    image: "/images/coursesTwo/html-development-class.webp",
     price: 59,
     originalPrice: 119,
     instructor: "Mike Lee",
@@ -207,7 +207,7 @@ export const coursesTwoDetailsData = [
     enrolled: 30,
     language: "English",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher3.png",
+      avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Mike Lee",
       role: "Teacher",
       category: "Development",
@@ -247,7 +247,7 @@ export const coursesTwoDetailsData = [
   {
     slug: "digital-marketing-class",
     title: "The Digital Marketing Class Course",
-    image: "/images/coursesTwo/digital-marketing-class.jpg",
+    image: "/images/coursesTwo/digital-marketing-class.webp",
     price: 89,
     originalPrice: 179,
     instructor: "Lisa Ray",
@@ -256,7 +256,7 @@ export const coursesTwoDetailsData = [
     enrolled: 50,
     language: "English",
     teacher: {
-      avatar: "/images/coursesTeacher/teacher3.png",
+      avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Lisa Ray",
       role: "Teacher",
       category: "Marketing",
