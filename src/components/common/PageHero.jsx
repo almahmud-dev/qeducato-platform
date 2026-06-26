@@ -106,7 +106,7 @@ export const heroDataMap = {
   },
 };
 
-// ── Gradient span — same pattern as SectionHeader ────────────────────────────
+// ── Gradient span — same pattern as SectionHeader
 function GradientWord({ word }) {
   return (
     <span
