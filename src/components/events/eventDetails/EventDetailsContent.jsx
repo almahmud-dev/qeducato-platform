@@ -8,22 +8,17 @@ import { useEffect, useState } from "react";
 
 // --- Countdown Timer ---
 function CountdownTimer({ eventDate }) {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [timeLeft, setTimeLeft] = useState(null);
+  const [ended, setEnded] = useState(false);
 
   useEffect(() => {
-    // eventDate string theke target banano — e.g. "20 March, 2023"
     const target = new Date(eventDate).getTime();
 
     const tick = () => {
-      const now = Date.now();
-      const diff = target - now;
+      const diff = target - Date.now();
 
       if (diff <= 0) {
+        setEnded(true);
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         return;
       }
@@ -41,6 +36,9 @@ function CountdownTimer({ eventDate }) {
     return () => clearInterval(id);
   }, [eventDate]);
 
+  // Hydration er age null thake — flicker avoid
+  if (timeLeft === null) return null;
+
   const units = [
     { label: "Days", value: timeLeft.days },
     { label: "Hours", value: timeLeft.hours },
@@ -49,43 +47,56 @@ function CountdownTimer({ eventDate }) {
   ];
 
   return (
-    <div className="bg-[var(--secondary)] rounded-[var(--radius-md)] px-6 py-8 grid grid-cols-4 gap-4 text-center my-8">
-      {units.map(({ label, value }) => (
-        <div key={label}>
-          <p className="headingThree text-white font-bold leading-none">
-            {String(value).padStart(2, "0")}
-          </p>
-          <p className="caption text-white/60 uppercase tracking-widest mt-1">{label}</p>
+    <div
+      role="timer"
+      aria-label={ended ? "Event has ended" : "Time remaining until event"}
+      className="bg-[var(--secondary)] rounded-[var(--radius-md)] px-6 py-8 my-8"
+    >
+      {ended ? (
+        <p className="headingFive text-white text-center">This event has ended.</p>
+      ) : (
+        <div className="grid grid-cols-4 gap-4 text-center">
+          {units.map(({ label, value }) => (
+            <div key={label}>
+              <p aria-live="polite" className="headingThree text-white font-bold leading-none">
+                {String(value).padStart(2, "0")}
+              </p>
+              <p className="caption text-white/60 uppercase tracking-widest mt-1" aria-hidden="true">
+                {label}
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }
 
 // --- Sidebar meta row ---
-function SidebarRow({ icon, value }) {
+function SidebarRow({ icon, value, href }) {
   return (
     <div className="flex items-center gap-3 py-3 border-b border-[var(--border)] last:border-0">
-      <span className="text-[var(--primary)] shrink-0">{icon}</span>
-      <span className="PeraThree text-[var(--foreground)]">{value}</span>
+      <span className="text-[var(--primary)] shrink-0" aria-hidden="true">
+        {icon}
+      </span>
+      {href ? (
+        <a
+          href={href}
+          className="PeraThree text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200 break-all"
+        >
+          {value}
+        </a>
+      ) : (
+        <span className="PeraThree text-[var(--foreground)]">{value}</span>
+      )}
     </div>
   );
 }
 
 // --- Main component ---
 export default function EventDetailsContent({ event }) {
-  const {
-    title,
-    date,
-    time,
-    location,
-    image,
-    email,
-    phone,
-    description,
-  } = event;
+  const { title, date, time, location, image, email, phone, description } = event;
 
-  // Social links — static for now, data e add korte parbe later
   const socials = [
     {
       href: "#",
@@ -118,6 +129,8 @@ export default function EventDetailsContent({ event }) {
                 src={image || "/images/events/placeholder.jpg"}
                 alt={title}
                 fill
+                sizes="(max-width: 1024px) 100vw, 66vw"
+                priority
                 className="object-cover"
               />
             </div>
@@ -135,19 +148,19 @@ export default function EventDetailsContent({ event }) {
                 .split("\n")
                 .filter((p) => p.trim())
                 .map((para, i) => (
-                  <p key={i} className="PeraOne text-[var(--muted)]">
+                  <p key={`para-${i}`} className="PeraOne text-[var(--muted)]">
                     {para.trim()}
                   </p>
                 ))}
             </div>
 
             {/* Social icons */}
-            <div className="flex items-center gap-3 mt-8">
+            <div className="flex items-center gap-3 mt-8" aria-label="Share on social media">
               {socials.map(({ href, label, path }) => (
                 <a
                   key={label}
                   href={href}
-                  aria-label={label}
+                  aria-label={`Share on ${label}`}
                   className="w-9 h-9 rounded-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] flex items-center justify-center transition-colors duration-200"
                 >
                   <svg
@@ -156,6 +169,7 @@ export default function EventDetailsContent({ event }) {
                     stroke="currentColor"
                     strokeWidth="2"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d={path} />
                   </svg>
@@ -177,55 +191,38 @@ export default function EventDetailsContent({ event }) {
               <div className="bg-[var(--background)] px-6 py-2">
                 <SidebarRow
                   value={time}
-                  icon={
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="10" />
-                      <path strokeLinecap="round" d="M12 6v6l4 2" />
-                    </svg>
-                  }
+                  icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M12 6v6l4 2" /></svg>}
                 />
                 <SidebarRow
                   value={date}
-                  icon={
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  }
+                  icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
                 />
                 <SidebarRow
                   value={location}
-                  icon={
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.314-2.686-6-6-6z" />
-                      <circle cx="12" cy="8" r="2" />
-                    </svg>
-                  }
+                  icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.314-2.686-6-6-6z" /><circle cx="12" cy="8" r="2" /></svg>}
                 />
                 {email && (
                   <SidebarRow
                     value={email}
-                    icon={
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    }
+                    href={`mailto:${email}`}
+                    icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
                   />
                 )}
                 {phone && (
                   <SidebarRow
                     value={phone}
-                    icon={
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    }
+                    href={`tel:${phone}`}
+                    icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>}
                   />
                 )}
               </div>
 
               {/* Register button */}
               <div className="px-6 py-5">
-                <button className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white py-3 px-6 rounded-[var(--radius-sm)] PeraTwo font-semibold transition-colors duration-200">
+                <button
+                  type="button"
+                  className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white py-3 px-6 rounded-[var(--radius-sm)] PeraTwo font-semibold transition-colors duration-200"
+                >
                   Book a Seat
                 </button>
               </div>
