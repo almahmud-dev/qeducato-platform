@@ -2,21 +2,20 @@
 // Ekta event er poripurno info thakbe ekhane
 
 export const allEventDetailsData = [
+  //===========================
+  // Page 1 events
+  //===========================
   {
     slug: "basic-ui-ux-design-new-development",
     title: "Basic UI & UX Design for new development",
-    date: "20 March, 2023",
+    date: "20 June, 2026",
     time: "3:30 pm - 4:30 pm",
     location: "United Kingdom",
     image: "/images/events/uiux.webp",
     category: "Design",
     organizer: "Qeducato Institute",
     seats: 50,
-    description: `
-      Seamlessly visualize quality ellectual capital without superior collaboration and idea tically. 
-      Professionally negotiate compelling architectures for exceptional interfaces. 
-      Dramatically initiate end-to-end total linkage through cross-platform strategic theme areas.
-    `,
+    description: ` This introductory workshop is designed for students, beginners, and aspiring designers who want to build a strong foundation in UI and UX design. Participants will learn the core principles of user-centered design, wireframing, prototyping, typography, color theory, and usability through practical demonstrations and interactive exercises. Industry professionals will share real-world design processes, common challenges, and career advice to help attendees understand how great digital experiences are created. Whether you're starting a design career or improving your existing skills, this session provides valuable knowledge and hands-on experience in a collaborative learning environment. `,
     highlights: [
       "Introduction to UI and UX principles",
       "Hands-on design workshop sessions",
@@ -29,26 +28,22 @@ export const allEventDetailsData = [
       name: "James Anderson",
       role: "Senior UX Designer",
       bio: "10+ years in product design with global tech companies.",
-      image: "/images/speakers/speaker-1.jpg",
+      image: "/images/events/speakers/speaker1.webp",
     },
   },
   {
-    slug: "digital-education-market-briefing-minnesota-2023",
-    title: "Digital Education Market Briefing: Minnesota 2023",
-    date: "20 March, 2023",
+    slug: "digital-education-market-briefing-minnesota-2026",
+    title: "Digital Education Market Briefing: Minnesota 2026",
+    date: "24 May, 2026",
     time: "3:30 pm - 4:30 pm",
     location: "United Kingdom",
     image: "/images/events/digital-education.webp",
     category: "Education",
     organizer: "Qeducato Institute",
     seats: 80,
-    description: `
-      Professionally negotiate compelling architectures for exceptional interfaces. 
-      Dramatically initiate end-to-end total linkage through cross-platform strategic theme areas. 
-      Seamlessly visualize quality ellectual capital without superior collaboration and idea tically.
-    `,
+    description: ` The Digital Education Market Briefing 2026 offers an in-depth overview of the latest developments shaping the future of digital learning. Education leaders, policymakers, and technology experts will discuss emerging trends, innovative teaching solutions, and the growing impact of educational technology across schools and universities. Participants will gain valuable insights into digital transformation, market opportunities, policy updates, and successful implementation strategies while connecting with professionals who are driving innovation in modern education. `,
     highlights: [
-      "Market trends in digital education 2023",
+      "Market trends in digital education 2026",
       "Policy updates for Minnesota educators",
       "Networking with ed-tech professionals",
       "Live panel discussion with industry experts",
@@ -59,24 +54,20 @@ export const allEventDetailsData = [
       name: "Sarah Mitchell",
       role: "Education Policy Consultant",
       bio: "Specializes in digital transformation in K-12 and higher education.",
-      image: "/images/speakers/speaker-2.jpg",
+      image: "/images/events/speakers/speaker2.webp",
     },
   },
   {
     slug: "learning-network-webinars-music-teachers",
     title: "Learning Network Webinars for Music Teachers",
-    date: "20 March, 2023",
+    date: "27 January, 2026",
     time: "3:30 pm - 4:30 pm",
     location: "United Kingdom",
     image: "/images/events/music-classroom.webp",
     category: "Music",
     organizer: "Qeducato Institute",
     seats: 40,
-    description: `
-      Dramatically initiate end-to-end total linkage through cross-platform strategic theme areas. 
-      Seamlessly visualize quality ellectual capital without superior collaboration and idea tically. 
-      Professionally negotiate compelling architectures for exceptional interfaces.
-    `,
+    description: ` The Learning Network Webinar for Music Teachers is designed to help educators enhance their teaching methods in both traditional and online learning environments. The session explores creative classroom activities, digital music tools, student engagement techniques, and effective lesson planning for learners of all ages. Experienced music educators will share practical strategies, classroom experiences, and valuable resources that participants can immediately apply in their own teaching. The webinar also provides an opportunity to exchange ideas and connect with fellow music professionals from different educational backgrounds. `,
     highlights: [
       "Online teaching strategies for music educators",
       "Digital tools for remote music lessons",
@@ -89,24 +80,20 @@ export const allEventDetailsData = [
       name: "Emily Clarke",
       role: "Music Education Specialist",
       bio: "15 years of experience teaching music online and offline globally.",
-      image: "/images/speakers/speaker-3.jpg",
+      image: "/images/events/speakers/speaker3.webp",
     },
   },
   {
     slug: "next-gen-higher-education-students-arrived",
     title: "Next-Gen Higher Education Students Have Arrived?",
-    date: "20 March, 2023",
+    date: "09 April, 2025",
     time: "3:30 pm - 4:30 pm",
     location: "United Kingdom",
     image: "/images/events/university-seminar.webp",
     category: "Higher Education",
     organizer: "Qeducato Institute",
     seats: 100,
-    description: `
-      Seamlessly visualize quality ellectual capital without superior collaboration and idea tically. 
-      Professionally negotiate compelling architectures for exceptional interfaces. 
-      Dramatically initiate end-to-end total linkage through cross-platform strategic theme areas.
-    `,
+    description: ` Today's university students have different expectations, learning styles, and career goals than previous generations. This seminar explores how higher education institutions can adapt to these changing needs by embracing flexible learning, digital innovation, student well-being, and personalized educational experiences. Academic researchers and university leaders will discuss emerging trends, successful case studies, and practical strategies that help institutions create engaging learning environments while preparing students for an increasingly competitive global workforce. `,
     highlights: [
       "Understanding Gen-Z student behavior",
       "Adapting curriculum for modern learners",
@@ -119,24 +106,20 @@ export const allEventDetailsData = [
       name: "Dr. Robert Hughes",
       role: "Higher Education Researcher",
       bio: "Published researcher on generational learning shifts in universities.",
-      image: "/images/speakers/speaker-4.jpg",
+      image: "/images/events/speakers/speaker4.webp",
     },
   },
   {
     slug: "digital-art-3d-model-future-film-company",
     title: "Digital Art & 3D Model — a future for film company",
-    date: "20 March, 2023",
+    date: "15 April, 2026",
     time: "3:30 pm - 4:30 pm",
     location: "United Kingdom",
     image: "/images/events/3d-art.webp",
     category: "Arts & Film",
     organizer: "Qeducato Institute",
     seats: 60,
-    description: `
-      Professionally negotiate compelling architectures for exceptional interfaces. 
-      Seamlessly visualize quality ellectual capital without superior collaboration and idea tically. 
-      Dramatically initiate end-to-end total linkage through cross-platform strategic theme areas.
-    `,
+    description: ` This event explores the growing role of digital art and 3D modeling in modern film production, animation, gaming, and visual effects. Participants will discover how creative concepts evolve into professional digital assets through industry-standard software, artistic workflows, and production pipelines. Experienced artists will demonstrate practical techniques, share behind-the-scenes experiences from real projects, and discuss career opportunities within the creative industry. Whether you're an aspiring artist or a technology enthusiast, this session offers valuable inspiration and practical knowledge for future creative professionals. `,
     highlights: [
       "Intro to 3D modelling for film production",
       "Industry workflow and pipeline overview",
@@ -149,24 +132,20 @@ export const allEventDetailsData = [
       name: "Lucas Rivera",
       role: "3D Artist & VFX Supervisor",
       bio: "Worked on international film productions with leading VFX studios.",
-      image: "/images/speakers/speaker-5.jpg",
+      image: "/images/events/speakers/speaker5.webp",
     },
   },
   {
     slug: "conscious-discipline-summer-institute",
     title: "Conscious Discipline Summer Institute",
-    date: "20 March, 2023",
+    date: "20 April, 2025",
     time: "3:30 pm - 4:30 pm",
     location: "United Kingdom",
     image: "/images/events/research-students.webp",
     category: "Discipline & Wellness",
     organizer: "Qeducato Institute",
     seats: 70,
-    description: `
-      Dramatically initiate end-to-end total linkage through cross-platform strategic theme areas. 
-      Seamlessly visualize quality ellectual capital without superior collaboration and idea tically. 
-      Professionally negotiate compelling architectures for exceptional interfaces.
-    `,
+    description: ` The Conscious Discipline Summer Institute focuses on creating positive, supportive, and emotionally healthy learning environments for students and educators. Through interactive workshops and expert-led discussions, participants will explore evidence-based approaches to classroom management, emotional intelligence, conflict resolution, and student well-being. The program encourages educators to build stronger relationships, improve communication, and develop practical strategies that promote both academic success and emotional growth. It is an ideal professional development opportunity for teachers, school leaders, and education professionals committed to nurturing resilient learning communities. `,
     highlights: [
       "Conscious discipline framework overview",
       "Classroom management through emotional intelligence",
@@ -179,7 +158,178 @@ export const allEventDetailsData = [
       name: "Dr. Patricia Nolan",
       role: "Child Development Expert",
       bio: "Creator of evidence-based classroom discipline programs for K-8.",
-      image: "/images/speakers/speaker-6.jpg",
+      image: "/images/events/speakers/speaker6.webp",
+    },
+  },
+//=====================================
+  // ── Page 2 events
+  //===================================
+  {
+    slug: "stem-innovation-workshop-2026",
+    title: "STEM Innovation Workshop 2026",
+    date: "10 July, 2026",
+    time: "9:00 am - 1:00 pm",
+    location: "United States",
+    image: "/images/events/workshop.webp",
+    category: "Science & Technology",
+    organizer: "Qeducato Institute",
+    seats: 90,
+    description: `
+    The STEM Innovation Workshop 2026 is an exciting learning experience designed for students who are passionate about science, technology, engineering, and mathematics. Throughout the workshop, participants will engage in hands-on experiments, robotics demonstrations, coding activities, and collaborative engineering challenges guided by experienced educators and industry professionals. This event encourages curiosity, innovation, and critical thinking while helping students develop practical skills that can be applied to real-world scientific and technological problems. Whether you're just beginning your STEM journey or looking to expand your knowledge, this workshop offers valuable insights, interactive learning opportunities, and meaningful networking with like-minded learners and experts.
+    `,
+    highlights: [
+      "Hands-on STEM experiments for all levels",
+      "Guest lectures from industry innovators",
+      "Collaborative project-building sessions",
+      "Certificate of participation awarded",
+    ],
+    email: "info@qeducato.com",
+    phone: "+91 700 200 786",
+    speaker: {
+      name: "Dr. Alan Foster",
+      role: "STEM Education Director",
+      bio: "Leading researcher in applied sciences and innovation-based learning.",
+      image: "/images/events/speakers/speaker7.webp",
+    },
+  },
+  {
+    slug: "global-educators-summit-2026",
+    title: "Global Educators Summit 2026",
+    date: "18 July, 2026",
+    time: "10:00 am - 5:00 pm",
+    location: "Canada",
+    image: "/images/events/education-summit.webp",
+    category: "Education",
+    organizer: "Qeducato Institute",
+    seats: 120,
+    description: `
+    The Global Educators Summit 2026 brings together teachers, academic leaders, researchers, and education innovators from around the world to exchange ideas and explore the future of education. Through inspiring keynote sessions, collaborative workshops, expert panel discussions, and networking opportunities, participants will discover modern teaching strategies, emerging educational technologies, and innovative approaches to student engagement. The summit provides a unique platform for educators to build international connections, share best practices, and gain fresh perspectives that can positively impact classrooms and learning communities across the globe.
+    `,
+    highlights: [
+      "Keynote from global education leaders",
+      "Cross-cultural teaching strategy sessions",
+      "Policy roundtables and open forums",
+      "International networking opportunities",
+    ],
+    email: "info@qeducato.com",
+    phone: "+91 700 200 786",
+    speaker: {
+      name: "Prof. Linda Chen",
+      role: "Global Education Strategist",
+      bio: "Advisor to UNESCO and multiple international education bodies.",
+      image: "/images/events/speakers/speaker8.webp",
+    },
+  },
+  {
+    slug: "creative-writing-masterclass",
+    title: "Creative Writing Masterclass",
+    date: "25 July, 2026",
+    time: "2:00 pm - 5:00 pm",
+    location: "Australia",
+    image: "/images/events/creative-writin.webp",
+    category: "Arts & Literature",
+    organizer: "Qeducato Institute",
+    seats: 35,
+    description: `
+    The Creative Writing Masterclass is designed for aspiring writers, students, and storytelling enthusiasts who want to strengthen their writing skills and express their ideas with confidence. Led by experienced authors and professional writing mentors, this interactive session explores character development, storytelling techniques, dialogue writing, narrative structure, and creative expression. Participants will receive practical guidance, personalized feedback, and valuable insights into the writing and publishing industry while developing their own unique voice through engaging writing exercises and collaborative discussions.
+    `,
+    highlights: [
+      "Fiction and non-fiction writing techniques",
+      "Live editing and feedback sessions",
+      "Publishing industry insights",
+      "One-on-one mentoring with the author",
+    ],
+    email: "info@qeducato.com",
+    phone: "+91 700 200 786",
+    speaker: {
+      name: "Margaret O'Brien",
+      role: "Award-Winning Author",
+      bio: "Published 12 novels and teaches creative writing at Sydney University.",
+      image: "/images/events/speakers/speaker1.webp",
+    },
+  },
+  {
+    slug: "development-conference-2026",
+    title: "Development Conference 2026",
+    date: "05 August, 2026",
+    time: "9:30 am - 4:00 pm",
+    location: "United Kingdom",
+    image: "/images/events/development-conference.webp",
+    category: "Child Development",
+    organizer: "Qeducato Institute",
+    seats: 85,
+    description: `
+    The Childhood Development Conference 2026 focuses on the latest research, educational practices, and psychological insights that support healthy child development. Educators, child psychologists, researchers, parents, and early childhood professionals will explore topics including cognitive growth, emotional well-being, inclusive education, classroom behavior, and play-based learning strategies. Through expert presentations, research discussions, and practical workshops, participants will gain valuable knowledge and evidence-based techniques that help create positive, supportive, and engaging learning environments for young children.
+    `,
+    highlights: [
+      "Early childhood cognitive development research",
+      "Behavior management in young learners",
+      "Parent and teacher collaboration strategies",
+      "Workshop: play-based learning methods",
+    ],
+    email: "info@qeducato.com",
+    phone: "+91 700 200 786",
+    speaker: {
+      name: "Dr. Sophie Warren",
+      role: "Child Psychologist",
+      bio: "Specialist in early childhood development with 20 years of clinical research.",
+      image: "/images/events/speakers/speaker3.webp",
+    },
+  },
+  {
+    slug: "ai-in-education-symposium",
+    title: "AI in Education Symposium",
+    date: "14 August, 2026",
+    time: "11:00 am - 3:00 pm",
+    location: "Germany",
+    image: "/images/events/ai-technology.webp",
+    category: "Technology",
+    organizer: "Qeducato Institute",
+    seats: 75,
+    description: `
+    The AI in Education Symposium explores how artificial intelligence is transforming teaching, learning, and academic administration across schools and universities. Industry experts, researchers, and education professionals will demonstrate innovative AI-powered tools, personalized learning systems, intelligent tutoring platforms, and data-driven educational solutions. Participants will also discuss important topics such as ethical AI, academic integrity, digital literacy, and the future role of technology in education. This symposium offers valuable insights for educators and institutions looking to embrace innovation while enhancing student success.
+    `,
+    highlights: [
+      "AI tools currently used in education",
+      "Personalized learning through machine learning",
+      "Ethical considerations of AI in classrooms",
+      "Live demo of AI-powered tutoring systems",
+    ],
+    email: "info@qeducato.com",
+    phone: "+91 700 200 786",
+    speaker: {
+      name: "Dr. Klaus Hoffmann",
+      role: "AI & EdTech Researcher",
+      bio: "Pioneer in adaptive learning systems and AI-driven educational tools.",
+      image: "/images/events/speakers/speaker5.webp",
+    },
+  },
+  {
+    slug: "youth-leadership-bootcamp-2026",
+    title: "Youth Leadership Bootcamp 2026",
+    date: "22 August, 2026",
+    time: "8:00 am - 6:00 pm",
+    location: "Singapore",
+    image: "/images/events/students-teamwork.webp",
+    category: "Leadership",
+    organizer: "Qeducato Institute",
+    seats: 55,
+    description: `
+    The Youth Leadership Bootcamp 2026 is an immersive leadership development program created to help students build confidence, strengthen communication skills, and become effective future leaders. Through interactive workshops, team-building challenges, public speaking sessions, mentorship opportunities, and real-world leadership activities, participants will learn how to collaborate, solve problems, make informed decisions, and inspire others. This intensive program encourages personal growth, resilience, and responsible leadership while preparing young individuals to succeed in academic, professional, and community environments.
+    `,
+    highlights: [
+      "Leadership theory and practical application",
+      "Team-building and conflict resolution",
+      "Public speaking and presentation skills",
+      "Mentorship from industry professionals",
+    ],
+    email: "info@qeducato.com",
+    phone: "+91 700 200 786",
+    speaker: {
+      name: "Rachel Tan",
+      role: "Youth Development Coach",
+      bio: "Trained over 5,000 young leaders across Southeast Asia.",
+      image: "/images/events/speakers/speaker7.webp",
     },
   },
 ];

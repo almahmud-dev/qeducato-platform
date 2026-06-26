@@ -3,8 +3,10 @@
 
 "use client";
 
+import DirectionalButton from "@/components/common/DirectionalButton";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
 
 // --- Countdown Timer ---
 function CountdownTimer({ eventDate }) {
@@ -53,15 +55,23 @@ function CountdownTimer({ eventDate }) {
       className="bg-[var(--secondary)] rounded-[var(--radius-md)] px-6 py-8 my-8"
     >
       {ended ? (
-        <p className="headingFive text-white text-center">This event has ended.</p>
+        <p className="headingFive text-white text-center">
+          This event has ended.
+        </p>
       ) : (
         <div className="grid grid-cols-4 gap-4 text-center">
           {units.map(({ label, value }) => (
             <div key={label}>
-              <p aria-live="polite" className="headingThree text-white font-bold leading-none">
+              <p
+                aria-live="polite"
+                className="headingThree text-white font-bold leading-none"
+              >
                 {String(value).padStart(2, "0")}
               </p>
-              <p className="caption text-white/60 uppercase tracking-widest mt-1" aria-hidden="true">
+              <p
+                className="caption text-white/60 uppercase tracking-widest mt-1"
+                aria-hidden="true"
+              >
                 {label}
               </p>
             </div>
@@ -95,7 +105,17 @@ function SidebarRow({ icon, value, href }) {
 
 // --- Main component ---
 export default function EventDetailsContent({ event }) {
-  const { title, date, time, location, image, email, phone, description } = event;
+  const {
+    title,
+    date,
+    time,
+    location,
+    image,
+    email,
+    phone,
+    description,
+    speaker,
+  } = event;
 
   const socials = [
     {
@@ -116,15 +136,13 @@ export default function EventDetailsContent({ event }) {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-[var(--background)]">
+    <section className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-
           {/* ── Left: main content ── */}
           <div className="lg:col-span-2">
-
             {/* Hero image */}
-            <div className="relative w-full aspect-video rounded-[var(--radius-md)] overflow-hidden">
+            <div className="relative w-full aspect-video rounded-md overflow-hidden">
               <Image
                 src={image || "/images/events/placeholder.jpg"}
                 alt={title}
@@ -139,10 +157,12 @@ export default function EventDetailsContent({ event }) {
             <CountdownTimer eventDate={date} />
 
             {/* Title */}
-            <h2 className="headingThree text-[var(--foreground)] mb-5">{title}</h2>
+            <h2 className="headingThree text-[var(--foreground)] mb-5">
+              {title}
+            </h2>
 
             {/* Description */}
-            <div className="space-y-4">
+            <div>
               {description
                 .trim()
                 .split("\n")
@@ -153,15 +173,40 @@ export default function EventDetailsContent({ event }) {
                   </p>
                 ))}
             </div>
-
+            {/* Speaker card */}
+            {speaker && (
+              <div className="flex items-center gap-5 mt-8 p-5 rounded-md border border-[var(--border)] bg-[var(--surface)]">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0">
+                  <Image
+                    src={speaker.image}
+                    alt={speaker.name}
+                    fill
+                    sizes="64px"
+                    className="object-cover"
+                  />
+                </div>
+                <div>
+                  <p className="PeraTwo font-semibold text-[var(--foreground)]">
+                    {speaker.name}
+                  </p>
+                  <p className="PeraThree text-[var(--primary)] mb-1">
+                    {speaker.role}
+                  </p>
+                  <p className="PeraThree text-[var(--muted)]">{speaker.bio}</p>
+                </div>
+              </div>
+            )}
             {/* Social icons */}
-            <div className="flex items-center gap-3 mt-8" aria-label="Share on social media">
+            <div
+              className="flex items-center gap-3 mt-8"
+              aria-label="Share on social media"
+            >
               {socials.map(({ href, label, path }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={`Share on ${label}`}
-                  className="w-9 h-9 rounded-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] flex items-center justify-center transition-colors duration-200"
+                  className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white hover:bg-secondary hover:scale-110 hover:shadow-lg transition-all duration-700 ease-out"
                 >
                   <svg
                     className="w-4 h-4 text-white"
@@ -171,7 +216,11 @@ export default function EventDetailsContent({ event }) {
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d={path} />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d={path}
+                    />
                   </svg>
                 </a>
               ))}
@@ -180,56 +229,128 @@ export default function EventDetailsContent({ event }) {
 
           {/* ── Right: sidebar ── */}
           <div className="lg:col-span-1">
-            <div className="sticky top-28 rounded-[var(--radius-md)] border border-[var(--border)] overflow-hidden shadow-sm">
-
+            <div className="sticky top-28 rounded-md border border-border overflow-hidden shadow-sm">
               {/* Sidebar header */}
-              <div className="bg-[var(--secondary)] px-6 py-4">
+              <div className="bg-secondary px-6 py-4">
                 <h4 className="headingFive text-white">Event Details</h4>
               </div>
 
               {/* Meta rows */}
-              <div className="bg-[var(--background)] px-6 py-2">
+              <div className="bg-background px-6 py-2">
                 <SidebarRow
                   value={time}
-                  icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" d="M12 6v6l4 2" /></svg>}
+                  icon={
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path strokeLinecap="round" d="M12 6v6l4 2" />
+                    </svg>
+                  }
                 />
                 <SidebarRow
                   value={date}
-                  icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>}
+                  icon={
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      />
+                    </svg>
+                  }
                 />
                 <SidebarRow
                   value={location}
-                  icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.314-2.686-6-6-6z" /><circle cx="12" cy="8" r="2" /></svg>}
+                  icon={
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.314-2.686-6-6-6z"
+                      />
+                      <circle cx="12" cy="8" r="2" />
+                    </svg>
+                  }
                 />
                 {email && (
                   <SidebarRow
                     value={email}
                     href={`mailto:${email}`}
-                    icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>}
+                    icon={
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                        />
+                      </svg>
+                    }
                   />
                 )}
                 {phone && (
                   <SidebarRow
                     value={phone}
                     href={`tel:${phone}`}
-                    icon={<svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>}
+                    icon={
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                        />
+                      </svg>
+                    }
                   />
                 )}
               </div>
 
               {/* Register button */}
               <div className="px-6 py-5">
-                <button
-                  type="button"
-                  className="w-full bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white py-3 px-6 rounded-[var(--radius-sm)] PeraTwo font-semibold transition-colors duration-200"
-                >
-                  Book a Seat
-                </button>
+                <DirectionalButton
+                  href="/teachers"
+                  label="Read More"
+                  rightIcon={<BsArrowRight size={16} />}
+                  bgColor="#FF5101"
+                  flairColor="#125875"
+                  borderColor="#FF5101"
+                  textColor="#ffffff"
+                  textHoverColor="#ffffff"
+                  shadowHover=""
+                  size="md"
+                  className="font-semibold rounded-sm px-15 py-5.5"
+                />
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
     </section>
