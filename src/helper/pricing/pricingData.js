@@ -274,48 +274,7 @@ export const comparisonCategories = [
   },
 ];
 
-// ─── FAQs ─────────────────────────────────────────────────────────────────────
-export const faqs = [
-  {
-    id: "upgrade",
-    question: "Can I upgrade or downgrade my plan later?",
-    answer:
-      "Yes, anytime. Upgrades take effect immediately and you'll be charged a prorated amount for the remainder of the billing cycle. Downgrades apply at the next renewal date so you keep full access until then.",
-  },
-  {
-    id: "migration",
-    question: "Do you help with data migration from our current system?",
-    answer:
-      "Absolutely. Growth and Enterprise plans include assisted data migration. Our team will help you import existing student records, attendance history, and exam data — no spreadsheet left behind.",
-  },
-  {
-    id: "discounts",
-    question:
-      "Do you offer discounts for non-profits or government institutions?",
-    answer:
-      "Yes. Registered non-profit madrashas and government-affiliated institutions can apply for a 30% discount. Contact our sales team with your registration documents and we'll get you set up.",
-  },
-  {
-    id: "billing",
-    question: "How does billing work? Can I pay monthly?",
-    answer:
-      "You can pay monthly or yearly. Yearly billing saves you 20% and is charged upfront. Monthly billing is charged on the same date each month. We accept bKash, Nagad, bank transfer, and major credit cards.",
-  },
-  {
-    id: "universities",
-    question: "Does EduFilos work for universities or only madrashas?",
-    answer:
-      "EduFilos is purpose-built for Islamic educational institutions — madrashas, hifz programs, and darul ulooms. For universities, our Enterprise plan supports custom workflows. Reach out and we'll assess your needs.",
-  },
-  {
-    id: "trial",
-    question: "Is there a free trial?",
-    answer:
-      "Yes. The Growth plan comes with a 14-day free trial, no credit card required. You get full access to all Growth features so you can evaluate the platform with your real data before committing.",
-  },
-];
-
-// ─── Trust Metrics ─────────────────────────────────────────────────────────────
+// ─── Trust Metrics 
 export const trustMetrics = [
   { value: "500+", label: "Institutions", sublabel: "across Bangladesh" },
   { value: "50K+", label: "Students", sublabel: "actively managed" },
