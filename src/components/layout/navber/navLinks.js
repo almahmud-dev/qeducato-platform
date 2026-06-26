@@ -42,7 +42,7 @@ export const navLinks = [
       },
       {
         label: "Event Details",
-        href: "/event-details",
+        href: "/events/conscious-discipline-summer-institute",
       },
       {
         label: "Gallery",

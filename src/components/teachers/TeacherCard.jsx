@@ -11,7 +11,7 @@ export default function TeacherCard({ teacher }) {
         <div className="absolute top-0 left-0 h-1 w-full bg-gradient-to-r from-transparent via-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* Avatar */}
-        <div className="relative w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-primary/10 shadow-md group-hover:border-primary/30 transition-all duration-300 mb-4">
+        <div className="relative w-30 h-30 rounded-full overflow-hidden border-4 border-primary/10 shadow-md group-hover:border-primary/30 transition-all duration-300 mb-4">
           <Image
             src={avatar}
             alt={name}

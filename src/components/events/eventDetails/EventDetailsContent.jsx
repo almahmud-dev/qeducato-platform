@@ -7,6 +7,7 @@ import DirectionalButton from "@/components/common/DirectionalButton";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
+import { FiClock, FiCalendar, FiMapPin, FiMail, FiPhone } from "react-icons/fi";
 
 // --- Countdown Timer ---
 function CountdownTimer({ eventDate }) {
@@ -52,7 +53,7 @@ function CountdownTimer({ eventDate }) {
     <div
       role="timer"
       aria-label={ended ? "Event has ended" : "Time remaining until event"}
-      className="bg-[var(--secondary)] rounded-[var(--radius-md)] px-6 py-8 my-8"
+      className="bg-secondary rounded-md px-6 py-8 my-8"
     >
       {ended ? (
         <p className="headingFive text-white text-center">
@@ -85,25 +86,26 @@ function CountdownTimer({ eventDate }) {
 // --- Sidebar meta row ---
 function SidebarRow({ icon, value, href }) {
   return (
-    <div className="flex items-center gap-3 py-3 border-b border-[var(--border)] last:border-0">
-      <span className="text-[var(--primary)] shrink-0" aria-hidden="true">
+    <div className="flex items-center gap-3 py-3 border-b border-border last:border-0">
+      <span className="text-primary shrink-0" aria-hidden="true">
         {icon}
       </span>
       {href ? (
         <a
           href={href}
-          className="PeraThree text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-200 break-all"
+          className="PeraThree text-foreground hover:text-primary transition-colors duration-200 break-all"
         >
           {value}
         </a>
       ) : (
-        <span className="PeraThree text-[var(--foreground)]">{value}</span>
+        <span className="PeraThree text-foreground">{value}</span>
       )}
     </div>
   );
 }
-
+//===============================
 // --- Main component ---
+//===============================
 export default function EventDetailsContent({ event }) {
   const {
     title,
@@ -135,6 +137,30 @@ export default function EventDetailsContent({ event }) {
     },
   ];
 
+const sidebarItems = [
+  {
+    value: time,
+    icon: FiClock,
+  },
+  {
+    value: date,
+    icon: FiCalendar,
+  },
+  {
+    value: location,
+    icon: FiMapPin,
+  },
+  {
+    value: email,
+    href: email && `mailto:${email}`,
+    icon: FiMail,
+  },
+  {
+    value: phone,
+    href: phone && `tel:${phone}`,
+    icon: FiPhone,
+  },
+];
   return (
     <section className="py-16 md:py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -157,9 +183,7 @@ export default function EventDetailsContent({ event }) {
             <CountdownTimer eventDate={date} />
 
             {/* Title */}
-            <h2 className="headingThree text-[var(--foreground)] mb-5">
-              {title}
-            </h2>
+            <h2 className="headingThree text-foreground mb-5">{title}</h2>
 
             {/* Description */}
             <div>
@@ -168,14 +192,14 @@ export default function EventDetailsContent({ event }) {
                 .split("\n")
                 .filter((p) => p.trim())
                 .map((para, i) => (
-                  <p key={`para-${i}`} className="PeraOne text-[var(--muted)]">
+                  <p key={`para-${i}`} className="PeraOne text-muted">
                     {para.trim()}
                   </p>
                 ))}
             </div>
             {/* Speaker card */}
             {speaker && (
-              <div className="flex items-center gap-5 mt-8 p-5 rounded-md border border-[var(--border)] bg-[var(--surface)]">
+              <div className="flex items-center gap-5 mt-8 p-5 rounded-md border border-border bg-surface">
                 <div className="relative w-16 h-16 rounded-full overflow-hidden shrink-0">
                   <Image
                     src={speaker.image}
@@ -186,13 +210,11 @@ export default function EventDetailsContent({ event }) {
                   />
                 </div>
                 <div>
-                  <p className="PeraTwo font-semibold text-[var(--foreground)]">
+                  <p className="PeraTwo font-semibold text-foreground">
                     {speaker.name}
                   </p>
-                  <p className="PeraThree text-[var(--primary)] mb-1">
-                    {speaker.role}
-                  </p>
-                  <p className="PeraThree text-[var(--muted)]">{speaker.bio}</p>
+                  <p className="PeraThree text-primary mb-1">{speaker.role}</p>
+                  <p className="PeraThree text-muted">{speaker.bio}</p>
                 </div>
               </div>
             )}
@@ -239,96 +261,32 @@ export default function EventDetailsContent({ event }) {
               <div className="bg-background px-6 py-2">
                 <SidebarRow
                   value={time}
-                  icon={
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle cx="12" cy="12" r="10" />
-                      <path strokeLinecap="round" d="M12 6v6l4 2" />
-                    </svg>
-                  }
+                  icon={<FiClock className="w-5 h-5" />}
                 />
+
                 <SidebarRow
                   value={date}
-                  icon={
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                  }
+                  icon={<FiCalendar className="w-5 h-5" />}
                 />
+
                 <SidebarRow
                   value={location}
-                  icon={
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 2C8.686 2 6 4.686 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.314-2.686-6-6-6z"
-                      />
-                      <circle cx="12" cy="8" r="2" />
-                    </svg>
-                  }
+                  icon={<FiMapPin className="w-5 h-5" />}
                 />
+
                 {email && (
                   <SidebarRow
                     value={email}
                     href={`mailto:${email}`}
-                    icon={
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                        />
-                      </svg>
-                    }
+                    icon={<FiMail className="w-5 h-5" />}
                   />
                 )}
+
                 {phone && (
                   <SidebarRow
                     value={phone}
                     href={`tel:${phone}`}
-                    icon={
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                        />
-                      </svg>
-                    }
+                    icon={<FiPhone className="w-5 h-5" />}
                   />
                 )}
               </div>
