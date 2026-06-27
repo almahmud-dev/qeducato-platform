@@ -6,7 +6,7 @@ export const coursesTwoData = [
     slug: "language-class",
     title: "Language Class",
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
-    image: "/images/coursesTwo/language-class.jpg",
+    image: "/images/coursesTwo/language-class.webp",
     teacher: {
       avatar: "/images/coursesTeacher/teacher1.webp",
       name: "Robto Jone",
@@ -23,7 +23,7 @@ export const coursesTwoData = [
     slug: "drawing-class",
     title: "Drawing Class",
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
-    image: "/images/coursesTwo/drawing-class.jpg",
+    image: "/images/coursesTwo/drawing-class.webp",
     teacher: {
       avatar: "/images/coursesTeacher/teacher2.webp",
       name: "Robto Jone",
@@ -40,7 +40,7 @@ export const coursesTwoData = [
     slug: "mathematics-class",
     title: "Mathematics Class",
     description: "Seamlessly visualize quality ellectual capital without superior collaboration and idea.",
-    image: "/images/coursesTwo/mathematics-class.jpg",
+    image: "/images/coursesTwo/mathematics-class.webp",
     teacher: {
       avatar: "/images/coursesTeacher/teacher3.webp",
       name: "Robto Jone",

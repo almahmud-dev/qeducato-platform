@@ -2,7 +2,7 @@ export const coursesDetailsData = [
   {
     slug: "biochemistry",
     title: "The Biochemistry Course",
-    image: "/images/courses/biochemistry.jpg",
+    image: "/images/courses/biochemistry.webp",
     price: 59,
     originalPrice: 139,
     instructor: "Eleanor Fant",
@@ -11,7 +11,7 @@ export const coursesDetailsData = [
     enrolled: 20,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/eleanor.jpg",
+      avatar: "/images/teachers/eleanor.webp",
       name: "Eleanor Fant",
       role: "Teacher",
       category: "Sciences",
@@ -54,7 +54,7 @@ export const coursesDetailsData = [
   {
     slug: "major-in-economics",
     title: "The Major in Economics Course",
-    image: "/images/courses/economics.jpg",
+    image: "/images/courses/economics.webp",
     price: 69,
     originalPrice: 149,
     instructor: "Sarah Wilson",
@@ -63,7 +63,7 @@ export const coursesDetailsData = [
     enrolled: 35,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/sarah.jpg",
+      avatar: "/images/teachers/sarah.webp",
       name: "Sarah Wilson",
       role: "Teacher",
       category: "Economics",
@@ -106,7 +106,7 @@ export const coursesDetailsData = [
   {
     slug: "business-media",
     title: "The Business Media Course",
-    image: "/images/courses/business-media.jpg",
+    image: "/images/courses/business-media.webp",
     price: 79,
     originalPrice: 169,
     instructor: "David Brown",
@@ -115,7 +115,7 @@ export const coursesDetailsData = [
     enrolled: 42,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/david.jpg",
+      avatar: "/images/teachers/david.webp",
       name: "David Brown",
       role: "Teacher",
       category: "Media",
@@ -158,7 +158,7 @@ export const coursesDetailsData = [
   {
     slug: "public-administration",
     title: "The Public Administration Course",
-    image: "/images/courses/public-administration.jpg",
+    image: "/images/courses/public-administration.webp",
     price: 65,
     originalPrice: 145,
     instructor: "Emily Clark",
@@ -167,7 +167,7 @@ export const coursesDetailsData = [
     enrolled: 28,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/emily.jpg",
+      avatar: "/images/teachers/emily.webp",
       name: "Emily Clark",
       role: "Teacher",
       category: "Public",
@@ -210,7 +210,7 @@ export const coursesDetailsData = [
   {
     slug: "biotechnology",
     title: "The Biotechnology Course",
-    image: "/images/courses/biotechnology.jpg",
+    image: "/images/courses/biotechnology.webp",
     price: 89,
     originalPrice: 179,
     instructor: "Michael Scott",
@@ -219,7 +219,7 @@ export const coursesDetailsData = [
     enrolled: 55,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/michael.jpg",
+      avatar: "/images/teachers/michael.webp",
       name: "Michael Scott",
       role: "Teacher",
       category: "Sciences",
@@ -262,7 +262,7 @@ export const coursesDetailsData = [
   {
     slug: "corporate-finance",
     title: "The Corporate Finance Course",
-    image: "/images/courses/corporate-finance.jpg",
+    image: "/images/courses/corporate-finance.webp",
     price: 99,
     originalPrice: 199,
     instructor: "James Anderson",
@@ -271,7 +271,7 @@ export const coursesDetailsData = [
     enrolled: 60,
     language: "English",
     teacher: {
-      avatar: "/images/teachers/james.jpg",
+      avatar: "/images/teachers/james.webp",
       name: "James Anderson",
       role: "Teacher",
       category: "Finance",

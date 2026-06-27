@@ -51,7 +51,7 @@ export const coursesTwoDetailsData = [
   {
     slug: "drawing-class",
     title: "The Drawing Class Course",
-    image: "/images/coursesTwo/drawing-class.jpg",
+    image: "/images/coursesTwo/drawing-class.webp",
     price: 49,
     originalPrice: 99,
     instructor: "Anna Smith",
