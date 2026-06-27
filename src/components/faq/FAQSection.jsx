@@ -6,6 +6,7 @@ import FAQAccordion from "./FAQAccordion";
 import FAQContactCard from "./FAQContactCard";
 import Container from "../ui/Container";
 import { faqCategories, faqItems } from "@/helper/faq/faqData";
+import SectionHeader from "../common/SectionHeader";
 
 export default function FAQSection() {
   const [activeCategory, setActiveCategory] = useState("general");
@@ -29,22 +30,13 @@ export default function FAQSection() {
       aria-labelledby="faq-section-heading"
       className="pt-16 md:pt-20 lg:pt-24"
     >
-      <Container>
+      <Container size="xl">
         {/* Section heading */}
-        <div className="mb-10 md:mb-14">
-          <p className="label text-[var(--primary)] mb-2">Support</p>
-          <h1
-            id="faq-section-heading"
-            className="headingThree text-[var(--foreground)]"
-          >
-            FAQ Categories
-          </h1>
-          {/* Primary underline — design e acha */}
-          <div
-            className="mt-3 w-12 h-1 bg-[var(--primary)] rounded-full"
-            aria-hidden="true"
+          <SectionHeader
+            label="Our Support"
+            text="FAQ Categories"
+            colorWord="Categories"
           />
-        </div>
 
         {/* Layout: sidebar + accordion */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14">
