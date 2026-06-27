@@ -23,6 +23,7 @@ export default function DirectionalButton({
   target,
   className = "",
   textTypo,
+  ariaLabel,
 }) {
   const btnRef = useRef(null);
   const flairRef = useRef(null);
@@ -222,6 +223,7 @@ export default function DirectionalButton({
         href={href}
         target={target}
         rel={target === "_blank" ? "noopener noreferrer" : undefined}
+        aria-label={ariaLabel || label}
         style={{ "--btn-border": borderColor, backgroundColor: bgColor }}
         className={sharedClasses}
       >
@@ -234,6 +236,7 @@ export default function DirectionalButton({
     <button
       ref={btnRef}
       onClick={onClick}
+      aria-label={ariaLabel || label}
       style={{ "--btn-border": borderColor, backgroundColor: bgColor }}
       className={sharedClasses}
     >
