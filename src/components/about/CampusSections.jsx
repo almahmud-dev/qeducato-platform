@@ -11,30 +11,58 @@ export default function CampusSections() {
   return (
     <div>
       {campusSectionsData.map((section) => (
-        <div key={section.id} className="flex flex-col lg:flex-row" style={{ minHeight: "420px" }}>
+        <div
+          key={section.id}
+          className="flex flex-col lg:flex-row"
+          style={{ minHeight: "480px" }}
+        >
           {section.imagePosition === "right" ? (
             <>
-              <div className="flex-1 flex items-center px-20 py-16" style={{ backgroundColor: "#0d2e3e" }}>
-                <div className="max-w-lg">
+              {/* Left: Content */}
+              <div
+                className="w-full lg:w-1/2 flex items-center px-20 py-16"
+                style={{ backgroundColor: "#0d2e3e" }}
+              >
+                <div>
                   <div className="mb-6">{iconMap[section.icon]}</div>
                   <h2 className="text-5xl font-bold text-white mb-5">{section.title}</h2>
-                  <p className="text-sm text-white/80 leading-relaxed">{section.description}</p>
+                  <p className="text-sm text-white leading-relaxed">{section.description}</p>
                 </div>
               </div>
-              <div className="relative flex-1 min-h-80">
-                <Image src={section.image} alt={section.title} fill className="object-cover" />
+
+              {/* Right: Image */}
+              <div className="w-full lg:w-1/2 relative" style={{ minHeight: "480px" }}>
+                <Image
+                  src={section.image}
+                  alt={section.title}
+                  fill
+                  className="object-cover"
+                  sizes="50vw"
+                />
               </div>
             </>
           ) : (
             <>
-              <div className="relative flex-1 min-h-80">
-                <Image src={section.image} alt={section.title} fill className="object-cover" />
+              {/* Left: Image */}
+              <div className="w-full lg:w-1/2 relative" style={{ minHeight: "480px" }}>
+                <Image
+                  src={section.image}
+                  alt={section.title}
+                  fill
+                  className="object-cover"
+                  sizes="50vw"
+                />
               </div>
-              <div className="flex-1 flex items-center px-20 py-16" style={{ backgroundColor: "#0d2e3e" }}>
-                <div className="max-w-lg">
+
+              {/* Right: Content */}
+              <div
+                className="w-full lg:w-1/2 flex items-center px-20 py-16"
+                style={{ backgroundColor: "#0d2e3e" }}
+              >
+                <div>
                   <div className="mb-6">{iconMap[section.icon]}</div>
                   <h2 className="text-5xl font-bold text-white mb-5">{section.title}</h2>
-                  <p className="text-sm text-white/80 leading-relaxed">{section.description}</p>
+                  <p className="text-sm text-white leading-relaxed">{section.description}</p>
                 </div>
               </div>
             </>
