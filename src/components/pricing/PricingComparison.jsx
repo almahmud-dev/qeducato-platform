@@ -10,6 +10,7 @@ import { FiCheck, FiX } from "react-icons/fi";
 
 import { comparisonCategories } from "@/helper/pricing/pricingData";
 import Container from "../ui/Container";
+import SectionHeader from "../common/SectionHeader";
 
 // ─── Cell Value Renderer ───────────────────────────────────────────────────────
 function CellValue({ value, highlight = false, featureLabel, planLabel }) {
@@ -263,7 +264,7 @@ function MobileComparison() {
                       className="px-5 py-3 flex items-center justify-between gap-4"
                       role="listitem"
                     >
-                      <span className="PeraThree text-[var(--color-foreground)] flex-1">
+                      <span className="PeraThree text-foreground flex-1">
                         {feat.label}
                       </span>
                       <CellValue
@@ -284,7 +285,9 @@ function MobileComparison() {
   );
 }
 
-// ─── Main Export ───────────────────────────────────────────────────────────────
+//=========================================
+// ─── Main Export
+//=========================================
 export default function PricingComparison() {
   return (
     <section
@@ -293,20 +296,14 @@ export default function PricingComparison() {
     >
       <Container size="xl">
         {/* Section header */}
+
+        <SectionHeader
+          label="Compare Plans"
+          text="Everything side by side"
+          colorWord="side by side"
+        />
         <div className="text-center mb-10">
-          <span
-            className="label text-[var(--color-primary)]"
-            aria-hidden="true"
-          >
-            Compare Plans
-          </span>
-          <h2
-            id="comparison-heading"
-            className="headingThree text-[var(--color-foreground)] mt-2 mb-3"
-          >
-            Everything side by side
-          </h2>
-          <p className="PeraTwo text-[var(--color-muted)] max-w-lg mx-auto">
+          <p className="PeraTwo text-muted max-w-lg mx-auto">
             See exactly what's included in each plan so you can make the right
             call for your institution.
           </p>
