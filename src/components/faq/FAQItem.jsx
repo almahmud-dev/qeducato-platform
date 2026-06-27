@@ -7,7 +7,7 @@ export default function FAQItem({ item, index, isOpen, onToggle }) {
   const panelId = `faq-panel-${item.id}`;
 
   return (
-    <div className="border border-[var(--border)] rounded-[10px] overflow-hidden">
+    <div className="border border-border rounded-[10px] overflow-hidden">
       <h3>
         <button
           id={headingId}
@@ -17,8 +17,8 @@ export default function FAQItem({ item, index, isOpen, onToggle }) {
           className={`
             w-full flex items-center gap-4 px-5 py-4 text-left
             transition-colors duration-200 cursor-pointer
-            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]
-            ${isOpen ? "bg-[var(--surface)]" : "bg-white hover:bg-[var(--surface)]"}
+            focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
+            ${isOpen ? "bg-surface" : "bg-white hover:bg-surface"}
           `}
         >
           {/* Number badge */}
@@ -26,7 +26,7 @@ export default function FAQItem({ item, index, isOpen, onToggle }) {
             className={`
               shrink-0 w-8 h-8 rounded-full flex items-center justify-center
               caption font-bold transition-colors duration-200
-              ${isOpen ? "bg-[var(--primary)] text-white" : "bg-[var(--surface)] text-[var(--secondary)]"}
+              ${isOpen ? "bg-primary text-white" : "bg-surface text-secondary"}
             `}
             aria-hidden="true"
           >
@@ -34,7 +34,7 @@ export default function FAQItem({ item, index, isOpen, onToggle }) {
           </span>
 
           {/* Question */}
-          <span className="flex-1 headingSix text-[var(--foreground)]">
+          <span className="flex-1 headingSix text-foreground">
             {item.question}
           </span>
 
@@ -45,8 +45,8 @@ export default function FAQItem({ item, index, isOpen, onToggle }) {
               transition-all duration-200
               ${
                 isOpen
-                  ? "bg-[var(--primary)] border-[var(--primary)] text-white"
-                  : "border-[var(--border)] text-[var(--muted)]"
+                  ? "bg-primary border-primary text-white"
+                  : "border-border text-muted"
               }
             `}
             aria-hidden="true"
@@ -67,11 +67,11 @@ export default function FAQItem({ item, index, isOpen, onToggle }) {
         aria-labelledby={headingId}
         className={`
           overflow-hidden transition-all duration-300 ease-in-out
-          ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}
+          ${isOpen ? "max-h-125 opacity-100" : "max-h-0 opacity-0"}
         `}
       >
-        <div className="px-5 pb-5 pt-1 pl-[4.25rem]">
-          <p className="PeraTwo text-[var(--muted)] leading-relaxed">
+        <div className="px-5 pb-5 pt-1 pl-17">
+          <p className="PeraTwo text-muted leading-relaxed">
             {item.answer}
           </p>
         </div>

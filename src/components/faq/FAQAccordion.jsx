@@ -6,7 +6,7 @@ export default function FAQAccordion({ items, openId, onToggle }) {
   if (!items || items.length === 0) {
     return (
       <div className="flex items-center justify-center py-16">
-        <p className="PeraTwo text-[var(--muted)]">No questions found.</p>
+        <p className="PeraTwo text-muted">No questions found.</p>
       </div>
     );
   }

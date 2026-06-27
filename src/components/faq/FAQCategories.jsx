@@ -39,17 +39,17 @@ export default function FAQCategories({
                 className={`
                   w-full flex items-center gap-3 px-4 py-3 rounded-[10px]
                   text-left transition-all duration-200 cursor-pointer
-                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]
+                  focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
                   ${
                     isActive
-                      ? "bg-[var(--primary)] text-white"
-                      : "text-[var(--muted)] hover:bg-[var(--surface)] hover:text-[var(--foreground)]"
+                      ? "bg-primary text-white"
+                      : "text-muted hover:bg-surface hover:text-foreground"
                   }
                 `}
               >
                 {Icon && (
                   <Icon
-                    className={`w-5 h-5 shrink-0 ${isActive ? "text-white" : "text-[var(--muted)]"}`}
+                    className={`w-5 h-5 shrink-0 ${isActive ? "text-white" : "text-muted"}`}
                     aria-hidden="true"
                   />
                 )}
