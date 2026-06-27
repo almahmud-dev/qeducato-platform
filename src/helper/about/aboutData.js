@@ -12,9 +12,10 @@ export const aboutIntroData = {
     { id: 2, number: "02", title: "Global Students", description: "Seamlessly visualize quality ellectual calls to nasumed tem most skunt." },
   ],
   images: {
-    top: "/images/about/about-1.webp",
-    bottom: "/images/about/about-2.webp",
-  },
+  left: "/images/about/about-1.webp",    
+  topRight: "/images/about/about-2.webp", 
+  bottomRight: "/images/about/about-3.webp",
+},
 };
 
 export const scholarshipData = {
