@@ -39,7 +39,7 @@ function BillingToggle({ yearly, onChange }) {
         className={`
           relative w-12 h-6 rounded-full transition-all duration-300
           focus:outline-none focus-visible:ring-2
-          focus-visible:ring-[var(--color-primary)] focus-visible:ring-offset-2
+          focus-visible:ring-primary focus-visible:ring-offset-2
           ${yearly ? "bg-primary" : "bg-border"}
         `}
       >
@@ -132,7 +132,7 @@ function PlanCta({ variant, label }) {
   if (variant === "dark") {
     return (
       <button
-        className={`${base} bg-secondary text-white hover:bg-[var(--color-secondary)]/90 hover:shadow-lg active:scale-[0.98] motion-reduce:hover:shadow-none`}
+        className={`${base} bg-secondary text-white hover:bg-secondary/90 hover:shadow-lg active:scale-[0.98] motion-reduce:hover:shadow-none`}
       >
         {label}
       </button>
@@ -142,14 +142,17 @@ function PlanCta({ variant, label }) {
   // outline
   return (
     <button
-      className={`${base} border-2 border-[var(--color-border)] text-[var(--color-foreground)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] active:scale-[0.98]`}
+      className={`${base} border-2 border-border text-foreground hover:border-primary hover:text-primary active:scale-[0.98]`}
     >
       {label}
     </button>
   );
 }
 
-// ─── Plan Card ─────────────────────────────────────────────────────────────────
+//==================================
+// ─── Plan Card 
+//==================================
+
 function PlanCard({ plan, yearly }) {
   const price = yearly ? plan.yearlyPrice : plan.monthlyPrice;
   const billingNote = yearly ? plan.billingNoteYearly : plan.billingNote;
@@ -164,8 +167,8 @@ function PlanCard({ plan, yearly }) {
         hover:-translate-y-1 hover:shadow-2xl motion-reduce:hover:translate-y-0 motion-reduce:hover:shadow-sm
         ${
           plan.popular
-            ? "bg-white border-2 border-[var(--color-primary)] shadow-xl shadow-orange-100/60"
-            : "bg-white border border-[var(--color-border)] shadow-sm hover:border-[var(--color-primary)]/30"
+            ? "bg-white border-2 border-primary shadow-xl shadow-orange-100/60"
+            : "bg-white border border-border shadow-sm hover:border-primary/30"
         }
       `}
     >
@@ -175,7 +178,7 @@ function PlanCard({ plan, yearly }) {
           className="absolute -top-3.5 left-1/2 -translate-x-1/2"
           aria-hidden="true"
         >
-          <span className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-orange-400 text-white caption font-semibold shadow-md shadow-orange-200 whitespace-nowrap">
+          <span className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-primary to-orange-400 text-white caption font-semibold shadow-md shadow-orange-200 whitespace-nowrap">
             <FiZap size={10} aria-hidden="true" />
             Most Popular
           </span>
@@ -184,24 +187,24 @@ function PlanCard({ plan, yearly }) {
 
       {/* Plan header */}
       <div className="mb-6">
-        <h3 className="headingFive text-[var(--color-foreground)] mb-1">
+        <h3 className="headingFive text-foreground mb-1">
           {plan.name}
-          {/* sr-only তে badge text — visual badge aria-hidden তাই এখানে announce হবে */}
+          {/* sr-only te badge text — visual badge aria-hidden tai aikahne announce hobe */}
           {plan.popular && <span className="sr-only">(Most Popular)</span>}
         </h3>
-        <p className="PeraThree text-[var(--color-muted)] leading-snug">
+        <p className="PeraThree text-muted leading-snug">
           {plan.tagline}
         </p>
       </div>
 
       {/* Price block */}
-      <div className="mb-6 pb-6 border-b border-[var(--color-border)]">
+      <div className="mb-6 pb-6 border-b border-border">
         {isCustom ? (
           <div>
-            <p className="headingThree text-[var(--color-foreground)] font-bold">
+            <p className="headingThree text-foreground font-bold">
               Custom
             </p>
-            <p className="caption text-[var(--color-muted)] mt-1">
+            <p className="caption text-muted mt-1">
               Tailored to your institution
             </p>
           </div>
@@ -212,19 +215,19 @@ function PlanCard({ plan, yearly }) {
               aria-label={`Price: ${plan.currency}${price} ${yearly ? "per year" : "per month"}`}
             >
               <span
-                className="headingFive text-[var(--color-muted)] font-medium self-start mt-2"
+                className="headingFive text-muted font-medium self-start mt-2"
                 aria-hidden="true"
               >
                 {plan.currency}
               </span>
               <span
-                className="headingTwo text-[var(--color-foreground)] font-bold leading-none"
+                className="headingTwo text-foreground font-bold leading-none"
                 aria-hidden="true"
               >
                 {price}
               </span>
             </div>
-            <p className="caption text-[var(--color-muted)] mt-1.5">
+            <p className="caption text-muted mt-1.5">
               {billingNote}
             </p>
             {yearly && plan.savingsPercent && (
@@ -255,30 +258,32 @@ function PlanCard({ plan, yearly }) {
   );
 }
 
+//====================================
 // ─── Trust Bar
+//====================================
 function TrustBar() {
   return (
     <div
-      className="mt-16 pt-10 border-t border-[var(--color-border)]"
+      className="mt-16 pt-10 border-t border-border"
       aria-label="Trust metrics"
     >
-      <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-[var(--color-border)]">
+      <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x divide-border">
         {trustMetrics.map((metric) => (
           <div
             key={metric.label}
             className="flex flex-col items-center text-center px-4 py-2"
           >
             <dt className="sr-only">{metric.label}</dt>
-            <dd className="headingFour font-bold text-[var(--color-foreground)]">
+            <dd className="text-[25px] lg:text-[50px] font-bold text-foreground">
               {metric.value}
             </dd>
             <span
-              className="PeraTwo font-semibold text-[var(--color-foreground)] mt-0.5"
+              className="PeraTwo font-semibold text-foreground mt-0.5"
               aria-hidden="true"
             >
               {metric.label}
             </span>
-            <span className="caption text-[var(--color-muted)] mt-0.5">
+            <span className="caption text-muted mt-0.5">
               {metric.sublabel}
             </span>
           </div>
@@ -287,9 +292,9 @@ function TrustBar() {
     </div>
   );
 }
-//==============================
+//=====================================
 // ─── Main Export
-//==============================
+//=====================================
 export default function PricingSection() {
   const [yearly, setYearly] = useState(false);
 
