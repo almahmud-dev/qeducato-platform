@@ -28,10 +28,9 @@ export default function AboutIntro() {
       <Container>
         <div className="flex flex-col lg:flex-row gap-14 items-center">
 
-          {/* Left: Images */}
           <div className="relative w-full lg:w-[48%] shrink-0 flex gap-4 items-start">
 
-            {/* বাম বড় image */}
+            {/* Left tall image */}
             <div
               className="relative rounded-2xl overflow-hidden shrink-0"
               style={{ width: "45%", height: "520px" }}
@@ -45,46 +44,44 @@ export default function AboutIntro() {
               />
             </div>
 
-            {/* ডান দুইটা image */}
+            {/* Right column: top image, badge, bottom image */}
             <div className="flex flex-col gap-4 flex-1 pt-10">
               <div
                 className="relative w-full rounded-2xl overflow-hidden"
-                style={{ height: "245px" }}
+                style={{ height: "220px" }}
               >
                 <Image
                   src={images.topRight}
-                  alt="About 2"
+                  alt="About top"
                   fill
                   className="object-cover"
                   sizes="20vw"
                 />
               </div>
+
+              {/* Badge between images */}
+              <div className="bg-orange-500 text-white px-6 py-4 text-center">
+                <p className="text-3xl font-bold leading-tight">{badge}</p>
+                <p className="text-sm font-medium">{badgeLabel}</p>
+              </div>
+
               <div
                 className="relative w-full rounded-2xl overflow-hidden"
-                style={{ height: "245px" }}
+                style={{ height: "220px" }}
               >
                 <Image
                   src={images.bottomRight}
-                  alt="About 3"
+                  alt="About bottom"
                   fill
                   className="object-cover"
                   sizes="20vw"
                 />
               </div>
-            </div>
-
-            {/* Badge */}
-            <div
-              className="absolute bottom-0 left-0 bg-orange-500 text-white px-8 py-5 text-center"
-              style={{ borderRadius: "0 12px 0 12px" }}
-            >
-              <p className="text-4xl font-bold leading-tight">{badge}</p>
-              <p className="text-sm font-medium">{badgeLabel}</p>
             </div>
 
           </div>
 
-          {/* Right: Content */}
+          {/* Right content */}
           <div className="flex-1">
             <p className="text-orange-500 text-sm font-medium mb-3 flex items-center gap-2">
               <GraduationIcon /> {label}
