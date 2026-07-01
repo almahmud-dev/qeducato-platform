@@ -9,9 +9,15 @@ export const galleryCategories = [
   { id: "graduation", label: "Graduation" },
 ];
 
+/**
+ * Each album's photos live in: public/images/gallery/<slug>/1.jpg, 2.jpg, ...
+ * `image`  -> cover thumbnail shown on the gallery card
+ * `images` -> ALL related photos for that album, shown inside the modal viewer
+ */
 export const galleryData = [
   {
     id: 1,
+    slug: "beautiful-campus",
     title: "Beautiful Campus",
     description:
       "Discover our green and modern campus from above. Spanning 120 acres of landscaped grounds, our campus blends contemporary architecture with natural beauty.",
@@ -19,17 +25,19 @@ export const galleryData = [
     photoCount: 45,
     date: "March 2024",
     location: "Main Campus, Qeducato University",
-    image: "/images/gallery/campus-aerial.jpg",
+    image: "/images/gallery/1.jpg",
     featured: true,
-    size: "large",
     images: [
-      "/images/gallery/campus-aerial.jpg",
-      "/images/gallery/campus-2.jpg",
-      "/images/gallery/campus-3.jpg",
+      "/images/gallery/1.jpg",
+      "/images/gallery/2.jpg",
+      "/images/gallery/beautiful-campus/3.jpg",
+      "/images/gallery/beautiful-campus/4.jpg",
+      "/images/gallery/beautiful-campus/5.jpg",
     ],
   },
   {
     id: 2,
+    slug: "convocation-2024",
     title: "Convocation 2024",
     description:
       "A landmark day for Class of 2024. Over 1,200 graduates received their degrees in a ceremony full of pride, joy, and tradition.",
@@ -37,16 +45,18 @@ export const galleryData = [
     photoCount: 38,
     date: "May 2024",
     location: "Grand Auditorium, Qeducato University",
-    image: "/images/gallery/convocation.jpg",
+    image: "/images/gallery/convocation-2024/1.jpg",
     featured: true,
-    size: "medium",
     images: [
-      "/images/gallery/convocation.jpg",
-      "/images/gallery/convocation-2.jpg",
+      "/images/gallery/convocation-2024/1.jpg",
+      "/images/gallery/convocation-2024/2.jpg",
+      "/images/gallery/convocation-2024/3.jpg",
+      "/images/gallery/convocation-2024/4.jpg",
     ],
   },
   {
     id: 3,
+    slug: "library-moments",
     title: "Library Moments",
     description:
       "Quiet corners and curious minds. Our library hosts over 500,000 volumes and remains the heart of intellectual life on campus.",
@@ -54,13 +64,17 @@ export const galleryData = [
     photoCount: 21,
     date: "February 2024",
     location: "Central Library, Block C",
-    image: "/images/gallery/library.jpg",
+    image: "/images/gallery/library-moments/1.jpg",
     featured: true,
-    size: "medium",
-    images: ["/images/gallery/library.jpg", "/images/gallery/library-2.jpg"],
+    images: [
+      "/images/gallery/library-moments/1.jpg",
+      "/images/gallery/library-moments/2.jpg",
+      "/images/gallery/library-moments/3.jpg",
+    ],
   },
   {
     id: 4,
+    slug: "student-life",
     title: "Student Life",
     description:
       "Friendships forged on the lawns. Campus social life brings together students from 40+ countries in shared moments of learning and laughter.",
@@ -68,16 +82,17 @@ export const galleryData = [
     photoCount: 32,
     date: "April 2024",
     location: "Central Lawn, Qeducato University",
-    image: "/images/gallery/student-life.jpg",
+    image: "/images/gallery/student-life/1.jpg",
     featured: true,
-    size: "medium",
     images: [
-      "/images/gallery/student-life.jpg",
-      "/images/gallery/student-life-2.jpg",
+      "/images/gallery/student-life/1.jpg",
+      "/images/gallery/student-life/2.jpg",
+      "/images/gallery/student-life/3.jpg",
     ],
   },
   {
     id: 5,
+    slug: "research-labs",
     title: "Research & Labs",
     description:
       "Pushing the boundaries of what's known. Our labs are equipped with state-of-the-art instruments for biology, chemistry, and materials science.",
@@ -85,13 +100,16 @@ export const galleryData = [
     photoCount: 27,
     date: "January 2024",
     location: "Science & Research Wing",
-    image: "/images/gallery/research.jpg",
+    image: "/images/gallery/research-labs/1.jpg",
     featured: true,
-    size: "medium",
-    images: ["/images/gallery/research.jpg"],
+    images: [
+      "/images/gallery/research-labs/1.jpg",
+      "/images/gallery/research-labs/2.jpg",
+    ],
   },
   {
     id: 6,
+    slug: "sports-events",
     title: "Sports Events",
     description:
       "Where champions are made. Our inter-university sports meet drew athletes from 18 universities across the region.",
@@ -99,13 +117,16 @@ export const galleryData = [
     photoCount: 19,
     date: "March 2024",
     location: "Qeducato Sports Complex",
-    image: "/images/gallery/sports.jpg",
+    image: "/images/gallery/sports-events/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/sports.jpg"],
+    images: [
+      "/images/gallery/sports-events/1.jpg",
+      "/images/gallery/sports-events/2.jpg",
+    ],
   },
   {
     id: 7,
+    slug: "annual-fest",
     title: "Annual Fest",
     description:
       "Three nights of music, art, and culture. Annual Fest 2024 broke attendance records with over 8,000 attendees.",
@@ -113,13 +134,16 @@ export const galleryData = [
     photoCount: 29,
     date: "November 2024",
     location: "Outdoor Amphitheatre",
-    image: "/images/gallery/annual-fest.jpg",
+    image: "/images/gallery/annual-fest/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/annual-fest.jpg"],
+    images: [
+      "/images/gallery/annual-fest/1.jpg",
+      "/images/gallery/annual-fest/2.jpg",
+    ],
   },
   {
     id: 8,
+    slug: "cultural-programs",
     title: "Cultural Programs",
     description:
       "Heritage alive on stage. Our cultural diversity week celebrates traditions from over 30 countries represented in our student body.",
@@ -127,13 +151,13 @@ export const galleryData = [
     photoCount: 16,
     date: "October 2024",
     location: "Main Stage, Cultural Center",
-    image: "/images/gallery/cultural.jpg",
+    image: "/images/gallery/cultural-programs/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/cultural.jpg"],
+    images: ["/images/gallery/cultural-programs/1.jpg"],
   },
   {
     id: 9,
+    slug: "clubs-activities",
     title: "Clubs & Activities",
     description:
       "Over 60 student-run clubs. From robotics to poetry — find your people, build something meaningful.",
@@ -141,13 +165,13 @@ export const galleryData = [
     photoCount: 14,
     date: "September 2024",
     location: "Student Activity Hub",
-    image: "/images/gallery/clubs.jpg",
+    image: "/images/gallery/clubs-activities/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/clubs.jpg"],
+    images: ["/images/gallery/clubs-activities/1.jpg"],
   },
   {
     id: 10,
+    slug: "orientation-week",
     title: "Orientation Week",
     description:
       "The beginning of everything. Welcome Week 2024 welcomed 1,800 new students to Qeducato's community.",
@@ -155,13 +179,13 @@ export const galleryData = [
     photoCount: 33,
     date: "August 2024",
     location: "Welcome Plaza",
-    image: "/images/gallery/orientation.jpg",
+    image: "/images/gallery/orientation-week/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/orientation.jpg"],
+    images: ["/images/gallery/orientation-week/1.jpg"],
   },
   {
     id: 11,
+    slug: "tech-symposium",
     title: "Tech Symposium",
     description:
       "Industry meets academia. Speakers from Google, Meta, and local startups joined students for a day of talks and workshops.",
@@ -169,13 +193,13 @@ export const galleryData = [
     photoCount: 22,
     date: "December 2024",
     location: "Engineering Block Auditorium",
-    image: "/images/gallery/symposium.jpg",
+    image: "/images/gallery/tech-symposium/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/symposium.jpg"],
+    images: ["/images/gallery/tech-symposium/1.jpg"],
   },
   {
     id: 12,
+    slug: "inter-college-debate",
     title: "Inter-College Debate",
     description:
       "Minds sharpened through argument. Our debate society hosted 24 teams in the annual national inter-college championship.",
@@ -183,9 +207,8 @@ export const galleryData = [
     photoCount: 11,
     date: "November 2024",
     location: "Debate Hall, Block B",
-    image: "/images/gallery/debate.jpg",
+    image: "/images/gallery/inter-college-debate/1.jpg",
     featured: false,
-    size: "small",
-    images: ["/images/gallery/debate.jpg"],
+    images: ["/images/gallery/inter-college-debate/1.jpg"],
   },
 ];
