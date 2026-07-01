@@ -170,7 +170,7 @@ export default function GalleryModal({
             ref={closeBtnRef}
             onClick={onClose}
             aria-label="Close photo viewer"
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-white/70 bg-white/[0.07] border border-white/10 hover:bg-white/[0.13] hover:text-white transition-colors duration-200 cursor-pointer shrink-0"
+            className="w-9 h-9 rounded-xl flex items-center justify-center text-white/70 bg-white/[0.07] border border-white/10 hover:bg-white/13 hover:text-white transition-colors duration-200 cursor-pointer shrink-0"
           >
             <svg
               width="18"
@@ -213,12 +213,12 @@ export default function GalleryModal({
             slideLabelMessage: "{{index}} of {{slidesLength}}",
           }}
           onSlideChange={(s) => setPhotoIndex(s.activeIndex)}
-          className="!h-full !w-full"
+          className="h-full! w-full!"
         >
           {photos.map((src, i) => (
             <SwiperSlide
               key={src + i}
-              className="!h-full !flex items-center justify-center"
+              className="h-full! flex! items-center justify-center"
             >
               {/* swiper-zoom-container's default CSS is display:flex, which
                   is fine for the outer wrapper, but the fill-image itself
@@ -244,7 +244,7 @@ export default function GalleryModal({
 
         {/* Prev / Next photo (within album) */}
         <button
-          className="gm-photo-prev absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center text-white bg-white/10 border border-white/15 backdrop-blur-md hover:bg-[#ff6b35] hover:border-[#ff6b35] hover:shadow-[0_4px_16px_rgba(255,107,53,0.4)] transition-colors duration-200 cursor-pointer disabled:opacity-20 disabled:pointer-events-none"
+          className="gm-photo-prev absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center text-white bg-white/10 border border-white/15 backdrop-blur-md hover:bg-primary hover:border-primary hover:shadow-[0_4px_16px_rgba(255,107,53,0.4)] transition-colors duration-200 cursor-pointer disabled:opacity-20 disabled:pointer-events-none"
           aria-label="Previous photo"
           disabled={isFirstPhoto && photos.length <= 1}
         >
@@ -261,7 +261,7 @@ export default function GalleryModal({
           </svg>
         </button>
         <button
-          className="gm-photo-next absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center text-white bg-white/10 border border-white/15 backdrop-blur-md hover:bg-[#ff6b35] hover:border-[#ff6b35] hover:shadow-[0_4px_16px_rgba(255,107,53,0.4)] transition-colors duration-200 cursor-pointer disabled:opacity-20 disabled:pointer-events-none"
+          className="gm-photo-next absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full flex items-center justify-center text-white bg-white/10 border border-white/15 backdrop-blur-md hover:bg-primary hover:border-primary hover:shadow-[0_4px_16px_rgba(255,107,53,0.4)] transition-colors duration-200 cursor-pointer disabled:opacity-20 disabled:pointer-events-none"
           aria-label="Next photo"
           disabled={isLastPhoto && photos.length <= 1}
         >
@@ -297,7 +297,7 @@ function IconButton({ children, label }) {
   return (
     <button
       aria-label={label}
-      className="w-9 h-9 rounded-xl flex items-center justify-center text-white/70 bg-white/[0.07] border border-white/10 hover:bg-white/[0.13] hover:text-white transition-colors duration-200 cursor-pointer shrink-0"
+      className="w-9 h-9 rounded-xl flex items-center justify-center text-white/70 bg-white/[0.07] border border-white/10 hover:bg-white/13 hover:text-white transition-colors duration-200 cursor-pointer shrink-0"
     >
       {children}
     </button>

@@ -123,9 +123,9 @@ export default function GalleryModalCaption({
             onClick={() => onGoToPhoto(i)}
             aria-label={`Go to photo ${i + 1}`}
             aria-current={i === photoIndex}
-            className={`relative shrink-0 w-16 h-12 sm:w-20 sm:h-14 rounded-lg overflow-hidden border-2 transition-colors duration-200 cursor-pointer ${
+            className={`relative shrink-0 w-16 h-12 sm:w-20 sm:h-14 rounded-sm overflow-hidden border-2 transition-colors duration-200 cursor-pointer ${
               i === photoIndex
-                ? "border-[#ff6b35]"
+                ? "border-primary"
                 : "border-transparent opacity-50 hover:opacity-80"
             }`}
           >

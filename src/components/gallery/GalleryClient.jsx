@@ -27,7 +27,7 @@ export default function GalleryClient({ categories, albums }) {
 
   return (
     <>
-      <main className="min-h-screen bg-white py-14 sm:py-16 lg:py-20 pb-24">
+      <main className="min-h-screen bg-white pt-14 sm:pt-16 lg:pt-20">
         <Container size="xl">
 
           {/* ── Page Header ── */}
