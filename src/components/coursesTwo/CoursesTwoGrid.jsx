@@ -1,41 +1,32 @@
+// components/coursesTwo/CoursesTwoGrid.jsx
+
 "use client";
 
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  FaArrowRight,
-  FaAngleDoubleLeft,
-  FaAngleDoubleRight,
-} from "react-icons/fa";
-import { coursesData } from "@/helper/courses/coursesData";
+import { FaStar, FaRegStar, FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import { coursesTwoData } from "@/helper/coursesTwo/coursesTwoData";
 import Container from "../ui/Container";
 
 const ITEMS_PER_PAGE = 6;
 
-const BookIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="28"
-    height="28"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-  </svg>
+const StarRating = ({ rating, max = 5 }) => (
+  <div className="flex items-center gap-0.5">
+    {Array.from({ length: max }, (_, i) => (
+      i < rating
+        ? <FaStar key={i} size={12} className="text-orange-400" />
+        : <FaRegStar key={i} size={12} className="text-orange-300" />
+    ))}
+  </div>
 );
 
-export default function CoursesGrid() {
+export default function CoursesTwoGrid() {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState("default");
 
   const getSortedData = () => {
-    const data = [...coursesData];
+    const data = [...coursesTwoData];
     if (sortOption === "a-z") return data.sort((a, b) => a.title.localeCompare(b.title));
     if (sortOption === "z-a") return data.sort((a, b) => b.title.localeCompare(a.title));
     return data;
@@ -76,14 +67,15 @@ export default function CoursesGrid() {
           </select>
         </div>
 
-        {/* Course Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentCourses.map((course) => (
-            <div
+            <Link
               key={course.id}
-              className="group border border-gray-200 overflow-hidden transition-all duration-300 hover:bg-white hover:shadow-xl"
+              href={`/coursesTwo/${course.slug}`}
+              className="group border border-gray-200 overflow-hidden transition-all duration-300 hover:bg-white hover:shadow-xl block"
             >
-              {/* Image */}
+              {/* Image + Teacher Overlay */}
               <div className="relative w-full h-52 overflow-hidden">
                 <Image
                   src={course.image}
@@ -91,45 +83,66 @@ export default function CoursesGrid() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                {/* Category Badge */}
-                <span className="absolute bottom-3 right-3 bg-orange-500 text-white text-sm px-4 py-1.5 flex items-center gap-1">
-                  {course.category}
-                </span>
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/30" />
+
+                {/* Teacher info bottom-left */}
+                <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                  <div className="relative w-9 h-9 rounded-full overflow-hidden border-2 border-white shrink-0">
+                    <Image
+                      src={course.teacher.avatar}
+                      alt={course.teacher.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-tight">
+                      {course.teacher.name}
+                    </p>
+                    <p className="text-gray-300 text-xs">{course.teacher.role}</p>
+                  </div>
+                </div>
+
+                {/* Star rating bottom-right */}
+                <div className="absolute bottom-4 right-3">
+                  <StarRating rating={course.rating} />
+                </div>
+              </div>
+
+              {/* Info Row */}
+              <div className="grid grid-cols-4 border-b border-gray-100 px-3 py-3 gap-1">
+                {[
+                  { label: "Age:", value: course.age },
+                  { label: "Time:", value: course.time },
+                  { label: "Class Size:", value: course.classSize },
+                  { label: "Fee:", value: `$${course.fee}`, orange: true },
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col">
+                    <span className="text-orange-500 text-xs font-semibold">{item.label}</span>
+                    <span
+                      className="text-xs"
+                      style={{ color: item.orange ? "#f97316" : "#777" }}
+                    >
+                      {item.value}
+                    </span>
+                  </div>
+                ))}
               </div>
 
               {/* Card Body */}
-              <div className="p-5">
+              <div className="px-4 py-4">
                 <h3
-                  className="text-2xl font-semibold mb-2 transition-colors duration-300 group-hover:text-gray-800"
-                
+                  className="text-lg font-semibold mb-2 transition-colors duration-300 group-hover:text-gray-800"
+                  style={{ color: "#777" }}
                 >
                   {course.title}
                 </h3>
-                <p
-                  className="text-sm mb-4 leading-relaxed transition-colors duration-300 group-hover:text-gray-500"
-                  style={{ color: "#777" }}
-                >
+                <p className="text-sm leading-relaxed" style={{ color: "#777" }}>
                   {course.description}
                 </p>
-
-                {/* Bottom Row */}
-                <div className="flex items-center justify-between mt-4">
-                  <Link
-                    href={`/courses/${course.slug}`}
-                    className="text-orange-500 text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all duration-200"
-                  >
-                    Read More <FaArrowRight size={12} />
-                  </Link>
-
-                  <span
-                    style={{ color: "#777" }}
-                    className="group-hover:text-gray-400 transition-colors duration-300"
-                  >
-                    <BookIcon />
-                  </span>
-                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

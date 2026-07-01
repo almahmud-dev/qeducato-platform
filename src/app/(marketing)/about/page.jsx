@@ -1,12 +1,20 @@
+import AboutIntro from "@/components/about/AboutIntro";
+import Scholarship from "@/components/about/Scholarship";
+import AboutFaqContact from "@/components/about/AboutFaqContact";
+import CampusSections from "@/components/about/CampusSections";
+import Testimonials from "@/components/about/Testimonials";
 import PageHero, { heroDataMap } from "@/components/common/PageHero";
-import { metaDataMap } from "@/lib/metadata";
 
-export const metadata = metaDataMap.about;
 
-export default function About() {
+export default function AboutPage() {
   return (
     <>
       <PageHero {...heroDataMap.about} />
+      <AboutIntro />
+      <Scholarship />
+      <AboutFaqContact />
+      <CampusSections />
+      <Testimonials />
     </>
   );
 }
