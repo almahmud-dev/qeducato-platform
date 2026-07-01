@@ -1,0 +1,227 @@
+export const galleryCategories = [
+  { id: "all", label: "All" },
+  { id: "campus-life", label: "Campus Life" },
+  { id: "events", label: "Events" },
+  { id: "academics", label: "Academics" },
+  { id: "sports", label: "Sports" },
+  { id: "clubs", label: "Clubs" },
+  { id: "research", label: "Research" },
+  { id: "graduation", label: "Graduation" },
+];
+
+/**
+ * Each album's photos live in: public/images/gallery/<slug>/1.jpg, 2.jpg, ...
+ * `image`  -> cover thumbnail shown on the gallery card
+ * `images` -> ALL related photos for that album, shown inside the modal viewer
+ */
+export const galleryData = [
+  {
+    id: 1,
+    slug: "beautiful-campus",
+    title: "Beautiful Campus",
+    description:
+      "Discover our green and modern campus from above. Spanning 120 acres of landscaped grounds, our campus blends contemporary architecture with natural beauty.",
+    category: "campus-life",
+    photoCount: 5,
+    date: "March 2024",
+    location: "Main Campus, Qeducato University",
+    image: "/images/gallery/campus/campus.webp",
+    featured: true,
+    images: [
+      "/images/gallery/campus/campus.webp",
+      "/images/gallery/campus/campus2.webp",
+      "/images/gallery/campus/campus3.webp",
+      "/images/gallery/campus/campus4.webp",
+      "/images/gallery/campus/campus5.webp",
+    ],
+  },
+  {
+    id: 2,
+    slug: "convocation-2024",
+    title: "Convocation 2024",
+    description:
+      "A landmark day for Class of 2024. Over 1,200 graduates received their degrees in a ceremony full of pride, joy, and tradition.",
+    category: "graduation",
+    photoCount: 4,
+    date: "May 2024",
+    location: "Grand Auditorium, Qeducato University",
+    image: "/images/gallery/convocation/convocation.png",
+    featured: true,
+    images: [
+      "/images/gallery/convocation/convocation.png",
+      "/images/gallery/convocation/convocation1.png",
+      "/images/gallery/convocation/convocations2.png",
+      "/images/gallery/convocation/convocation3.png",
+    ],
+  },
+  {
+    id: 3,
+    slug: "library-moments",
+    title: "Library Moments",
+    description:
+      "Quiet corners and curious minds. Our library hosts over 500,000 volumes and remains the heart of intellectual life on campus.",
+    category: "academics",
+    photoCount: 3,
+    date: "February 2024",
+    location: "Central Library, Block C",
+    image: "/images/gallery/library/library.webp",
+    featured: true,
+    images: [
+      "/images/gallery/library/library.webp",
+      "/images/gallery/library/library1.webp",
+      "/images/gallery/library/library2.webp",
+    ],
+  },
+  {
+    id: 4,
+    slug: "student-life",
+    title: "Student Life",
+    description:
+      "Friendships forged on the lawns. Campus social life brings together students from 40+ countries in shared moments of learning and laughter.",
+    category: "campus-life",
+    photoCount: 4,
+    date: "April 2024",
+    location: "Central Lawn, Qeducato University",
+    image: "/images/gallery/student-life/student-life.webp",
+    featured: true,
+    images: [
+      "/images/gallery/student-life/student-life.webp",
+      "/images/gallery/student-life/student-life1.webp",
+      "/images/gallery/student-life/student-life2.webp",
+      "/images/gallery/student-life/student-life3.webp",
+    ],
+  },
+  {
+    id: 5,
+    slug: "research-labs",
+    title: "Research & Labs",
+    description:
+      "Pushing the boundaries of what's known. Our labs are equipped with state-of-the-art instruments for biology, chemistry, and materials science.",
+    category: "research",
+    photoCount: 4,
+    date: "January 2024",
+    location: "Science & Research Wing",
+    image: "/images/gallery/research-labs/research.webp",
+    featured: true,
+    images: [
+      "/images/gallery/research-labs/research.webp",
+      "/images/gallery/research-labs/research1.webp",
+      "/images/gallery/research-labs/research2.webp",
+      "/images/gallery/research-labs/research3.webp",
+    ],
+  },
+  {
+    id: 6,
+    slug: "sports-events",
+    title: "Sports Events",
+    description:
+      "Where champions are made. Our inter-university sports meet drew athletes from 18 universities across the region.",
+    category: "sports",
+    photoCount: 6,
+    date: "March 2024",
+    location: "Qeducato Sports Complex",
+    image: "/images/gallery/sports-events/sports.webp",
+    featured: false,
+    images: [
+      "/images/gallery/sports-events/sports.webp",
+      "/images/gallery/sports-events/sports1.webp",
+      "/images/gallery/sports-events/sports2.webp",
+      "/images/gallery/sports-events/sports3.webp",
+      "/images/gallery/sports-events/sports4.webp",
+      "/images/gallery/sports-events/sports5.webp",
+    ],
+  },
+  {
+    id: 7,
+    slug: "annual-fest",
+    title: "Annual Fest",
+    description:
+      "Three nights of music, art, and culture. Annual Fest 2024 broke attendance records with over 8,000 attendees.",
+    category: "events",
+    photoCount: 4,
+    date: "November 2024",
+    location: "Outdoor Amphitheatre",
+    image: "/images/gallery/annual-fest/annual-fast.webp",
+    featured: false,
+    images: [
+      "/images/gallery/annual-fest/annual-fast.webp",
+      "/images/gallery/annual-fest/annual-fast1.webp",
+      "/images/gallery/annual-fest/annual-fast2.webp",
+      "/images/gallery/annual-fest/annual-fast3.webp",
+      "/images/gallery/annual-fest/annual-fast4.webp",
+    ],
+  },
+  {
+    id: 8,
+    slug: "cultural-programs",
+    title: "Cultural Programs",
+    description:
+      "Heritage alive on stage. Our cultural diversity week celebrates traditions from over 30 countries represented in our student body.",
+    category: "events",
+    photoCount: 2,
+    date: "October 2024",
+    location: "Main Stage, Cultural Center",
+    image: "/images/gallery/cultural-programs/cultural-programs.webp",
+    featured: false,
+    images: [
+      "/images/gallery/cultural-programs/cultural-programs.webp",
+      "/images/gallery/cultural-programs/cultural-programs1.webp",
+    ],
+  },
+  {
+    id: 9,
+    slug: "clubs-activities",
+    title: "Clubs & Activities",
+    description:
+      "Over 60 student-run clubs. From robotics to poetry — find your people, build something meaningful.",
+    category: "clubs",
+    photoCount: 5,
+    date: "September 2024",
+    location: "Student Activity Hub",
+    image: "/images/gallery/clubs-activities/club.webp",
+    featured: false,
+    images: ["/images/gallery/clubs-activities/club.webp",
+      "/images/gallery/clubs-activities/club1.webp",
+      "/images/gallery/clubs-activities/club2.webp",
+      "/images/gallery/clubs-activities/club3.webp",
+      "/images/gallery/clubs-activities/club4.webp",
+    ],
+  },
+  {
+    id: 10,
+    slug: "orientation-week",
+    title: "Orientation Week",
+    description:
+      "The beginning of everything. Welcome Week 2024 welcomed 1,800 new students to Qeducato's community.",
+    category: "campus-life",
+    photoCount: 1,
+    date: "August 2024",
+    location: "Welcome Plaza",
+    image: "/images/gallery/orientation-week/orientation-week.webp",
+    featured: false,
+    images: ["/images/gallery/orientation-week/orientation-week.webp"],
+  },
+  {
+    id: 11,
+    slug: "tech-symposium",
+    title: "Tech Symposium",
+    description:
+      "Industry meets academia. Speakers from Google, Meta, and local startups joined students for a day of talks and workshops.",
+    category: "academics",
+    photoCount: 2,
+    date: "December 2024",
+    location: "Engineering Block Auditorium",
+    image: "/images/gallery/tech-symposium/tech-symposium.webp",
+    featured: false,
+    images: ["/images/gallery/tech-symposium/tech-symposium.webp",
+      "/images/gallery/tech-symposium/tech-symposium1.webp",
+    ],
+  },
+];
+export function getAlbumBySlug(slug) {
+  return galleryData.find((album) => album.slug === slug) ?? null;
+}
+
+export function generateGallerySlugs() {
+  return galleryData.map((album) => ({ slug: album.slug }));
+}
