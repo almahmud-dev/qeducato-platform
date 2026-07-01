@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useRef } from "react";
 import Container from "@/components/ui/Container";
 import GalleryFilter from "@/components/gallery/GalleryFilter";
 import FeaturedBento from "@/components/gallery/FeaturedBento";
@@ -32,14 +32,34 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialSlug]);
 
-  // Keep the URL bar in sync with modal state — WITHOUT triggering a
-  // route navigation/remount. Covers open, close, and next/prev album
-  // (all of which are pure client-state changes from useGalleryModal).
+  // Push a new history entry ONLY when the modal transitions open (so the
+  // underlying /gallery entry is preserved, not overwritten). Every
+  // subsequent change while open (next/prev album) uses replaceState so
+  // history doesn't stack — one Back always returns to the grid.
+  const wasOpenRef = useRef(false);
   useEffect(() => {
-    const target =
-      isOpen && activeAlbum ? `/gallery/${activeAlbum.slug}` : "/gallery";
-    window.history.replaceState(null, "", target);
+    if (isOpen && activeAlbum) {
+      const url = `/gallery/${activeAlbum.slug}`;
+      if (!wasOpenRef.current) {
+        window.history.pushState({ galleryModal: true }, "", url);
+      } else {
+        window.history.replaceState({ galleryModal: true }, "", url);
+      }
+      wasOpenRef.current = true;
+    } else {
+      wasOpenRef.current = false;
+    }
   }, [isOpen, activeAlbum]);
+
+  // Back button while modal is open -> close modal instead of leaving
+  // the page (since we pushed a history entry for it above).
+  useEffect(() => {
+    const handlePopState = () => {
+      if (isOpen) closeModal();
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [isOpen, closeModal]);
 
   const filtered = useMemo(
     () =>
@@ -64,18 +84,18 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
         <Container size="xl">
           {/* ── Page Header ── */}
           <header className="text-center max-w-xl mx-auto mb-12 sm:mb-14">
-            <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.1em] uppercase text-[#ff6b35] mb-4">
+            <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-widest uppercase text-primary mb-4">
               <span
-                className="w-1.5 h-1.5 rounded-full bg-[#ff6b35]"
+                className="w-1.5 h-1.5 rounded-full bg-primary"
                 aria-hidden="true"
               />
               Campus Gallery
             </div>
-            <h1 className="font-playfair text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold text-[#0f172a] leading-[1.15] tracking-tight mb-4">
+            <h1 className="font-playfair text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold text-foreground leading-[1.15] tracking-tight mb-4">
               Life at{" "}
-              <em className="italic text-[#ff6b35] not-italic">Qeducato</em>
+              <em className="italic text-primary">Qeducato</em>
             </h1>
-            <p className="text-base text-[#64748b] leading-relaxed">
+            <p className="text-base text-muted leading-relaxed">
               {totalPhotos.toLocaleString()} photographs. Every moment, every
               milestone — archived with care.
             </p>
@@ -115,8 +135,8 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
 
           {/* ── Empty state ── */}
           {filtered.length === 0 && (
-            <div className="flex flex-col items-center text-center py-20 px-5 text-[#64748b]">
-              <div className="w-18 h-18 rounded-2xl bg-[#f8fafc] border border-[#e2e8f0] flex items-center justify-center text-[#94a3b8] mb-5">
+            <div className="flex flex-col items-center text-center py-20 px-5 text-muted">
+              <div className="w-18 h-18 rounded-2xl bg-surface border border-border flex items-center justify-center text-[#94a3b8] mb-5">
                 <svg
                   width="36"
                   height="36"
@@ -131,7 +151,7 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
                   <polyline points="21 15 16 10 5 21" />
                 </svg>
               </div>
-              <h3 className="font-playfair text-xl font-bold text-[#0f172a] mb-2">
+              <h3 className="font-playfair text-xl font-bold text-foreground mb-2">
                 No albums in this category yet
               </h3>
               <p className="text-sm mb-6">
@@ -139,7 +159,7 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
               </p>
               <button
                 onClick={() => setActiveCategory("all")}
-                className="inline-flex items-center px-6 py-2.5 rounded-full bg-[#ff6b35] text-white text-sm font-semibold hover:bg-[#f45a22] transition-colors duration-200 cursor-pointer"
+                className="inline-flex items-center px-6 py-2.5 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 transition-colors duration-200 cursor-pointer"
               >
                 View all albums
               </button>
@@ -166,10 +186,10 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
 function SectionLabel({ children }) {
   return (
     <div className="flex items-center gap-3 mb-5">
-      <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#64748b]">
+      <span className="text-[11px] font-bold tracking-[0.12em] uppercase text-muted">
         {children}
       </span>
-      <span className="flex-1 h-px bg-[#e2e8f0]" aria-hidden="true" />
+      <span className="flex-1 h-px bg-border" aria-hidden="true" />
     </div>
   );
 }
