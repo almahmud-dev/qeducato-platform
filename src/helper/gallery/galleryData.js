@@ -218,3 +218,10 @@ export const galleryData = [
     ],
   },
 ];
+export function getAlbumBySlug(slug) {
+  return galleryData.find((album) => album.slug === slug) ?? null;
+}
+
+export function generateGallerySlugs() {
+  return galleryData.map((album) => ({ slug: album.slug }));
+}

@@ -15,7 +15,7 @@ export default function FeaturedBento({ albums, onOpen }) {
   return (
     <>
       {/* ── Desktop ── */}
-      <div className="hidden md:grid grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-3.5 h-[460px]">
+      <div className="hidden md:grid grid-cols-[2fr_1fr_1fr] grid-rows-2 gap-3.5 h-115">
         {/* Hero spans both rows */}
         <div className="row-span-2">
           <GalleryCard album={hero} onOpen={onOpen} />
