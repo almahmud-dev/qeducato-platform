@@ -23,7 +23,7 @@ export const navLinks = [
       },
       {
         label: "Course Details",
-        href: "/courses-details",
+        href: "/courses/biochemistry",
       },
       {
         label: "Course 02 Details",
