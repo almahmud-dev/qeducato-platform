@@ -3,13 +3,34 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-import banner1 from "@/../public/images/banner/banner1.webp";
-import banner2 from "@/../public/images/banner/banner2.jpg";
-import banner3 from "@/../public/images/banner/banner3.webp";
+import banner1 from "@/../public/images/home/banner/banner1.webp";
+import banner2 from "@/../public/images/home/banner/banner2.jpg";
+import banner3 from "@/../public/images/home/banner/banner3.webp";
+import Container from "./Container";
+
+const featureCards = [
+  {
+    title: "Education Services",
+    desc: "Seamlessly visualize quality intellectual capital without superior collaboration and idea sharing listically",
+    bgColor: "bg-[#104c64]/90",
+  },
+  {
+    title: "International Hubs",
+    desc: "Seamlessly visualize quality intellectual capital without superior collaboration and idea sharing listically",
+    bgColor: "bg-[#ff6f4b]",
+  },
+  {
+    title: "Bachelor's and Master's",
+    desc: "Seamlessly visualize quality intellectual capital without superior collaboration and idea sharing listically",
+    bgColor: "bg-[#104c64]/90",
+  },
+];
 
 const HeroSection = () => {
   const heroBanner = [banner1, banner2, banner3];
 
+  // ইনস্ট্যান্ট কালার চেঞ্জের জন্য activeID স্টেট ব্যবহার করা হয়েছে
+  const [activeID, setActiveID] = useState(0);
   const [currentID, setCurrentID] = useState(0);
   const [nextID, setNextID] = useState(null);
   const [fading, setFading] = useState(false);
@@ -17,7 +38,7 @@ const HeroSection = () => {
   const intervalRef = useRef(null);
   const fadingRef = useRef(false);
 
-  // preload images
+  // Preload images
   useEffect(() => {
     heroBanner.slice(1).forEach((banner) => {
       const img = new window.Image();
@@ -29,6 +50,7 @@ const HeroSection = () => {
     if (fadingRef.current || newID === currentID) return;
 
     fadingRef.current = true;
+    setActiveID(newID); // ডটের কালার সাথে সাথে চেঞ্জ হবে
     setNextID(newID);
     setFading(false);
 
@@ -48,97 +70,118 @@ const HeroSection = () => {
 
   const startAutoPlay = () => {
     clearInterval(intervalRef.current);
-
     intervalRef.current = setInterval(() => {
-      const next = (currentID + 1) % heroBanner.length;
+      const next = (activeID + 1) % heroBanner.length;
       changeBanner(next);
     }, 5000);
   };
 
+  // AutoPlay setup
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrentID((prev) => {
-        const next = (prev + 1) % heroBanner.length;
-
-        if (!fadingRef.current) {
-          changeBanner(next);
-        }
-
-        return prev;
-      });
-    }, 5000);
-
+    startAutoPlay();
     return () => clearInterval(intervalRef.current);
-  }, [currentID]);
+  }, [activeID]);
 
   const handleBannerClick = (id) => {
+    if (fadingRef.current || id === activeID) return;
     changeBanner(id);
-
-    clearInterval(intervalRef.current);
-
-    intervalRef.current = setInterval(() => {
-      const next = (id + 1) % heroBanner.length;
-      changeBanner(next);
-    }, 5000);
   };
 
   return (
-    <section className=" aspect-video w-screen ">
-      <div className=" h-full w-full relative">
-        <div className="absolute inset-0 z-0">
-          {/* Current Image */}
-          <Image
-            src={heroBanner[currentID]}
-            alt={`hero-banner-${currentID}`}
-            fill
-            sizes="100vw"
-            priority={currentID === 0}
-            className="rounded-[6px] object-cover"
-          />
+    <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-between">
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={heroBanner[currentID]}
+          alt={`hero-banner-${currentID}`}
+          fill
+          priority
+          className="object-cover"
+        />
 
-          {/* Next Image */}
-          {nextID !== null && (
-            <div
-              className={`absolute inset-0 z-10 transition-opacity duration-700 ease-in-out ${
-                fading ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              <Image
-                src={heroBanner[nextID]}
-                alt={`hero-banner-${nextID}`}
-                fill
-                sizes="100vw"
-                className="rounded-[6px] object-cover"
-              />
-            </div>
-          )}
+        {nextID !== null && (
+          <div
+            className={`absolute inset-0 z-10 transition-opacity duration-700 ease-in-out ${
+              fading ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={heroBanner[nextID]}
+              alt={`hero-banner-${nextID}`}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
 
-          <div className="absolute inset-0 bg-[#02090f30] z-20" />
-        </div>
-
-        {/* Thumbnail buttons */}
-        <ul className="absolute bottom-[15px] right-[15px] sm:bottom-[20px] sm:right-[20px] md:bottom-[25px] md:right-[25px] lg:bottom-[30px] lg:right-[30px] xl:bottom-[35px] xl:right-[35px] z-[20] flex gap-x-2 sm:gap-x-3 md:gap-x-4 xl:gap-x-5">
-          {heroBanner.map((item, index) => (
-            <li
-              key={index}
-              className={`rounded-[6px] overflow-hidden border cursor-pointer ${
-                currentID === index
-                  ? "border-white"
-                  : "border-bg-secondaryTwo"
-              }`}
-              onClick={() => handleBannerClick(index)}
-            >
-              <Image
-                src={item}
-                alt={`hero-banner-${index}`}
-                width={153}
-                height={153}
-                className="object-cover hover:scale-110 transition duration-400 ease-in-out !h-[80px] !w-[80px] sm:!h-[100px] sm:!w-[100px] md:!h-[120px] md:!w-[120px] lg:!h-[135px] lg:!w-[135px] xl:!h-[153px] xl:!w-[153px]"
-              />
-            </li>
-          ))}
-        </ul>
+        <div className="absolute inset-0 bg-[#0c293a]/60 z-20" />
       </div>
+
+      <Container>
+        <div className="relative z-30  w-full  pt-32 md:pt-44 flex flex-col justify-center grow">
+          <div className="max-w-160 text-white">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="uppercase tracking-widest text-sm font-semibold text-gray-200">
+                Welcome to Qeducato
+              </span>
+              <div className="w-10 h-0.5 bg-[#ff6f4b]" />
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
+              Education is the best key success in life
+            </h1>
+
+            <p className="text-gray-300 text-sm md:text-base mb-8 leading-relaxed">
+              Donec vitae libero non enim placerat eleifend aliquam erat
+              volutpat. Curabitur diam ex, dapibus purus sapien, cursus sed nisl
+              tristique, commodo gravida lectus non.
+            </p>
+
+            <div className="flex flex-wrap gap-4">
+              <button className="bg-[#ff6f4b] hover:bg-[#e05e3a] text-white px-8 py-3.5 rounded font-medium transition duration-300 flex items-center gap-2">
+                Discover More <span>→</span>
+              </button>
+              <button className="border border-white/30 hover:bg-white/10 text-white px-8 py-3.5 rounded font-medium transition duration-300 flex items-center gap-2">
+                Contact Us <span>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="relative z-30 w-full mt-16 lg:mt-24">
+          <ul className="absolute -top-12 right-4 flex gap-x-2">
+            {heroBanner.map((_, index) => (
+              <li
+                key={index}
+                className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-150 ${
+                  activeID === index ? "bg-[#ff6f4b] scale-125" : "bg-white/50"
+                }`}
+                onClick={() => handleBannerClick(index)}
+              />
+            ))}
+          </ul>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 max-w-300mx-auto gap-6 md:gap-8">
+            {featureCards.map((card, i) => (
+              <div
+                key={i}
+                className={`${card.bgColor} text-white p-8 md:p-10 flex flex-col justify-between min-h-55 transition duration-300 hover:-translate-y-1.25`}
+              >
+                <div>
+                  <h3 className="text-xl font-bold mb-3">{card.title}</h3>
+                  <p className="text-white/80 text-sm leading-relaxed mb-4">
+                    {card.desc}
+                  </p>
+                </div>
+                <a
+                  href="#"
+                  className="text-sm font-semibold flex items-center gap-2 hover:underline w-fit"
+                >
+                  Read More <span className="text-lg">→</span>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Container>
     </section>
   );
 };
