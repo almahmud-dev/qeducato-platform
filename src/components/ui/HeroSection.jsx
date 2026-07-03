@@ -117,14 +117,13 @@ const HeroSection = () => {
       </div>
 
       <Container>
-        {" "}
         <div className="relative z-30  w-full  pt-32 md:pt-44 flex flex-col justify-center grow">
-          <div className="max-w-[650px] text-white">
+          <div className="max-w-160 text-white">
             <div className="flex items-center gap-3 mb-4">
               <span className="uppercase tracking-widest text-sm font-semibold text-gray-200">
                 Welcome to Qeducato
               </span>
-              <div className="w-10 h-[2px] bg-[#ff6f4b]" />
+              <div className="w-10 h-0.5 bg-[#ff6f4b]" />
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
@@ -164,7 +163,7 @@ const HeroSection = () => {
             {featureCards.map((card, i) => (
               <div
                 key={i}
-                className={`${card.bgColor} text-white p-8 md:p-10 flex flex-col justify-between min-h-[220px] transition duration-300 hover:translate-y-[-5px]`}
+                className={`${card.bgColor} text-white p-8 md:p-10 flex flex-col justify-between min-h-55 transition duration-300 hover:-translate-y-1.25`}
               >
                 <div>
                   <h3 className="text-xl font-bold mb-3">{card.title}</h3>
