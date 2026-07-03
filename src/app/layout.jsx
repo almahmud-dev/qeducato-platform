@@ -4,6 +4,7 @@ import { inter, playfair } from "@/app/fonts";
 import "@/styles/globals.css";
 
 export const metadata = {
+  metadataBase: new URL("https://qeducato.vercel.app/"),
   title: { default: "Qeducato University", template: "%s | Qeducato" },
   description:
     "A world-class university empowering students through excellence in education, research, and innovation.",

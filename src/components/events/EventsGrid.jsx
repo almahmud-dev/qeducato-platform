@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import EventCard from "./EventCard";
-import Pagination from "./Pagination";
+
 import { allEventsData, EVENTS_PER_PAGE } from "@/helper/events/allEventsData";
+import Pagination from "../common/Pagination";
 
 const TOTAL_PAGES = Math.ceil(allEventsData.length / EVENTS_PER_PAGE);
 

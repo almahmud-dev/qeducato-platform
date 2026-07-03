@@ -1,31 +1,27 @@
+// Courses details page — Events slug page pattern follow kora hoyeche
+
 import { notFound } from "next/navigation";
-import { coursesDetailsData } from "@/helper/courses/coursesDetailsData";
-import CourseDetailsContent from "@/components/courses/CourseDetailsContent";
-import PageHero, { heroDataMap } from "@/components/common/PageHero";
+import { allCoursesDetailsData } from "@/helper/courses/allCoursesDetailsData";
+import CourseDetailsLayout from "@/components/courses/courseDetails/CourseDetailsLayout";
 
 export async function generateStaticParams() {
-  return coursesDetailsData.map((course) => ({ slug: course.slug }));
+  return allCoursesDetailsData.map((course) => ({ slug: course.slug }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
-  const course = coursesDetailsData.find((c) => c.slug === slug);
+  const course = allCoursesDetailsData.find((c) => c.slug === slug);
   if (!course) return { title: "Course Not Found | Qeducato" };
   return {
     title: `${course.title} | Qeducato`,
-    description: course.overview?.[0]?.slice(0, 150),
+    description: course.subtitle?.trim().slice(0, 150),
   };
 }
 
 export default async function CourseDetailsPage({ params }) {
   const { slug } = await params;
-  const course = coursesDetailsData.find((c) => c.slug === slug);
+  const course = allCoursesDetailsData.find((c) => c.slug === slug);
   if (!course) notFound();
 
-  return (
-    <>
-      <PageHero {...heroDataMap["courses-details"]} />
-      <CourseDetailsContent course={course} />
-    </>
-  );
+  return <CourseDetailsLayout course={course} />;
 }
