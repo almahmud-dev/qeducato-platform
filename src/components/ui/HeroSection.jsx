@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-import banner1 from "@/../public/images/banner/banner1.webp";
-import banner2 from "@/../public/images/banner/banner2.jpg";
-import banner3 from "@/../public/images/banner/banner3.webp";
+import banner1 from "@/../public/images/home/banner/banner1.webp";
+import banner2 from "@/../public/images/home/banner/banner2.jpg";
+import banner3 from "@/../public/images/home/banner/banner3.webp";
 import Container from "./Container";
 
 const featureCards = [

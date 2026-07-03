@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 
-import about1 from "@/../public/images/about/about2.jpg";
-import about2 from "@/../public/images/about/about1.png";
+import about1 from "@/../public/images/home/about/about2.jpg";
+import about2 from "@/../public/images/home/about/about1.png";
 import Container from "../ui/Container";
 
 function AboutSection() {
