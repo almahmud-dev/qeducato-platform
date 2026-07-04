@@ -83,4 +83,5 @@ function CoursesSection() {
   );
 }
 
+
 export default CoursesSection;
