@@ -18,16 +18,8 @@ export const navLinks = [
         href: "/courses",
       },
       {
-        label: "Course 02",
-        href: "/coursesTwo",
-      },
-      {
         label: "Course Details",
         href: "/courses/biochemistry",
-      },
-      {
-        label: "Course 02 Details",
-        href: "/coursestwo-details",
       },
     ],
   },

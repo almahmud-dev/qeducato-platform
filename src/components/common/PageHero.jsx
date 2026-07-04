@@ -78,13 +78,6 @@ export const heroDataMap = {
       "Explore undergraduate, postgraduate, and professional courses at Qeducato",
     breadcrumb: "Courses",
   },
-  coursesTwo: {
-    title: "All",
-    colorWord: "Courses",
-    subtitle:
-      "Browse our full catalogue of programs designed for every academic goal",
-    breadcrumb: "All Courses",
-  },
   "courses-details": {
     title: "Course",
     colorWord: "Details",

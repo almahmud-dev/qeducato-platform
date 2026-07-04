@@ -54,11 +54,6 @@ export const metaDataMap = {
     description:
       "Explore undergraduate, postgraduate, and professional courses at Qeducato",
   },
-  "coursesTwo": {
-    title: "All Courses | Qeducato University",
-    description:
-      "Browse our full catalogue of programs designed for every academic goal",
-  },
   "courses-details": {
     title: "Course Details | Qeducato University",
     description:
