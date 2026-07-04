@@ -1,29 +1,13 @@
-// components/contact/ContactForm.jsx
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { toast, Toaster } from "react-hot-toast";
-import {
-  FaUser,
-  FaEnvelope,
-  FaPhone,
-  FaEdit,
-  FaArrowRight,
-} from "react-icons/fa";
 import { contactFormData } from "@/helper/contact/contactData";
 import SectionHeader from "@/components/common/SectionHeader";
 import Container from "@/components/ui/Container";
 
 gsap.registerPlugin(ScrollTrigger);
-
-const iconMap = {
-  FaUser: <FaUser size={13} />,
-  FaEnvelope: <FaEnvelope size={13} />,
-  FaPhone: <FaPhone size={13} />,
-  FaEdit: <FaEdit size={13} />,
-};
 
 const initialState = {
   firstName: "",
@@ -36,7 +20,24 @@ export default function ContactForm() {
   const [formData, setFormData] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
   const panelRef = useRef(null);
+
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.textContent = `
+      @keyframes spin { to { transform: rotate(360deg); } }
+      @keyframes fadeUp { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+      @keyframes drawRing { to { stroke-dashoffset: 0; } }
+      @keyframes drawCheck { to { stroke-dashoffset: 0; } }
+      .confirm-in { animation: fadeUp 0.5s ease-out; }
+      .ring-draw { stroke-dasharray:207; stroke-dashoffset:207; animation: drawRing 0.7s ease-out forwards; }
+      .check-draw { stroke-dasharray:40; stroke-dashoffset:40; animation: drawCheck 0.4s ease-out 0.6s forwards; }
+      .spinner { width:14px; height:14px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff; border-radius:50%; animation:spin 0.7s linear infinite; display:inline-block; }
+    `;
+    document.head.appendChild(style);
+    return () => document.head.removeChild(style);
+  }, []);
 
   useEffect(() => {
     const isMobile =
@@ -65,7 +66,7 @@ export default function ContactForm() {
           onComplete: isMobile
             ? () => gsap.set(panelRef.current, { clearProps: "willChange,transform" })
             : undefined,
-        },
+        }
       );
     }, panelRef);
 
@@ -74,8 +75,7 @@ export default function ContactForm() {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.firstName.trim())
-      newErrors.firstName = "First name is required";
+    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
     if (!formData.email.trim()) {
       newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
@@ -101,101 +101,156 @@ export default function ContactForm() {
     const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      toast.error("Please fix the errors before submitting.");
       return;
     }
     setLoading(true);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      toast.success("Your request has been submitted successfully!");
+      await new Promise((resolve) => setTimeout(resolve, 1400));
+      setSubmitted(true);
       setFormData(initialState);
       setErrors({});
-    } catch {
-      toast.error("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  const fieldClass =
-    "peer w-full bg-white border border-border rounded-xl px-4 py-3.5 pr-10 text-sm text-foreground placeholder:text-muted/60 outline-none transition-colors duration-300 focus:border-primary";
+  const FloatingField = ({ id, name, type = "text", placeholder, value, error, half }) => (
+    <div className={half ? "" : "sm:col-span-2"}>
+      <div className="relative">
+        <input
+          id={id}
+          type={type}
+          name={name}
+          value={value}
+          onChange={handleChange}
+          placeholder=" "
+          className={`peer w-full bg-white rounded-xl px-4 pt-6 pb-2.5 text-[15px] text-foreground outline-none transition-all duration-300 border focus:border-primary ${error ? "border-red-300" : "border-border"}`}
+        />
+        <label
+          htmlFor={id}
+          className="absolute left-4 top-4 text-[15px] text-muted transition-all duration-300 pointer-events-none peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary"
+        >
+          {placeholder}
+        </label>
+      </div>
+      {error && <p className="text-red-400 text-xs mt-1.5 ml-1">{error}</p>}
+    </div>
+  );
 
   return (
-    <section className="relative py-20 sm:py-24 bg-surface">
-      <Toaster position="top-right" />
+    <section className="relative py-20 sm:py-24 overflow-hidden bg-surface">
+      <div className="pointer-events-none absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full blur-[120px] opacity-20 bg-primary" />
+      <div className="pointer-events-none absolute -bottom-32 -right-32 w-[350px] h-[350px] rounded-full blur-[120px] opacity-10 bg-secondary" />
 
       <Container>
         <SectionHeader
-          label="Get A Quote"
+          label="Get In Touch"
           text={contactFormData.heading}
           colorWord="Inquire"
         />
 
         <div
           ref={panelRef}
-          className="relative mt-12 max-w-4xl mx-auto rounded-2xl border border-border bg-white p-6 sm:p-10 shadow-sm"
+          className="relative mt-12 max-w-3xl mx-auto rounded-3xl p-6 sm:p-10 bg-white border border-border shadow-[0_24px_60px_-24px_rgba(18,88,117,0.15)]"
         >
-          <div className="absolute top-0 left-8 h-[3px] w-16 rounded-full bg-primary" />
+          {!submitted ? (
+            <form onSubmit={handleSubmit} noValidate>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                <FloatingField
+                  id="firstName"
+                  name="firstName"
+                  placeholder={contactFormData.fields[0].placeholder}
+                  value={formData.firstName}
+                  error={errors.firstName}
+                  half
+                />
+                <FloatingField
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder={contactFormData.fields[2].placeholder}
+                  value={formData.phone}
+                  error={errors.phone}
+                  half
+                />
+                <FloatingField
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder={contactFormData.fields[1].placeholder}
+                  value={formData.email}
+                  error={errors.email}
+                />
+              </div>
 
-          <form onSubmit={handleSubmit} noValidate>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-              {contactFormData.fields.map((field) => (
-                <div key={field.id} className="relative">
-                  <input
-                    type={field.type}
-                    name={field.name}
-                    value={formData[field.name]}
-                    onChange={handleChange}
-                    placeholder={field.placeholder}
-                    className={fieldClass}
-                  />
-                  <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted/50 peer-focus:text-primary transition-colors">
-                    {iconMap[field.icon]}
-                  </span>
-                  {errors[field.name] && (
-                    <p className="text-red-500 text-xs mt-1.5 ml-1">
-                      {errors[field.name]}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            <div className="relative mb-8">
-              <textarea
-                name={contactFormData.textarea.name}
-                value={formData.message}
-                onChange={handleChange}
-                placeholder={contactFormData.textarea.placeholder}
-                rows={contactFormData.textarea.rows}
-                className={`${fieldClass} resize-none`}
-              />
-              <span className="absolute right-4 top-4 text-muted/50 peer-focus:text-primary transition-colors">
-                {iconMap[contactFormData.textarea.icon]}
-              </span>
-              {errors.message && (
-                <p className="text-red-500 text-xs mt-1.5 ml-1">
-                  {errors.message}
-                </p>
-              )}
-            </div>
-
-            <div className="text-center">
-              <button
-                type="submit"
-                disabled={loading}
-                className="group relative inline-flex items-center gap-2 text-white text-sm font-semibold px-9 py-3.5 rounded-full bg-primary transition-all duration-300 hover:bg-primary-hover hover:scale-[1.03] disabled:opacity-60 disabled:hover:scale-100"
-              >
-                {loading ? "Sending..." : contactFormData.button}
-                {!loading && (
-                  <FaArrowRight
-                    size={12}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
+              <div className="relative mb-8">
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder=" "
+                  rows={contactFormData.textarea?.rows || 4}
+                  className={`peer w-full bg-white rounded-xl px-4 pt-6 pb-2.5 text-[15px] text-foreground outline-none transition-all duration-300 resize-none border focus:border-primary ${errors.message ? "border-red-300" : "border-border"}`}
+                />
+                <label
+                  htmlFor="message"
+                  className="absolute left-4 top-4 text-[15px] text-muted transition-all duration-300 pointer-events-none peer-focus:top-2 peer-focus:text-[11px] peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-2 peer-[:not(:placeholder-shown)]:text-[11px] peer-[:not(:placeholder-shown)]:text-primary"
+                >
+                  {contactFormData.textarea?.placeholder}
+                </label>
+                {errors.message && (
+                  <p className="text-red-400 text-xs mt-1.5 ml-1">{errors.message}</p>
                 )}
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p className="text-xs text-muted order-2 sm:order-1">
+                  We usually reply within one business day.
+                </p>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="order-1 sm:order-2 w-full sm:w-auto inline-flex items-center justify-center gap-2 text-white text-sm font-semibold px-8 py-3.5 rounded-full bg-primary hover:bg-primary-hover transition-all duration-300 hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100 shadow-[0_12px_30px_-10px_rgba(255,107,53,0.45)]"
+                >
+                  {loading ? (
+                    <>
+                      <span className="spinner" />
+                      Sending
+                    </>
+                  ) : (
+                    contactFormData.button
+                  )}
+                </button>
+              </div>
+            </form>
+          ) : (
+            <div className="confirm-in flex flex-col items-center text-center py-8">
+              <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+                <circle cx="36" cy="36" r="33" stroke="#ffe0d3" strokeWidth="3" />
+                <circle cx="36" cy="36" r="33" stroke="url(#primaryGrad)" strokeWidth="3" strokeLinecap="round" className="ring-draw" />
+                <path d="M23 37.5L32 46L49 27" stroke="url(#primaryGrad)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="check-draw" />
+                <defs>
+                  <linearGradient id="primaryGrad" x1="0" y1="0" x2="72" y2="72">
+                    <stop offset="0" stopColor="#ff6b35" />
+                    <stop offset="1" stopColor="#f45a22" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <h3 className="mt-5 text-xl font-semibold text-foreground">
+                Message received
+              </h3>
+              <p className="mt-2 text-sm max-w-sm text-muted">
+                Thanks for reaching out — our team will get back to you within one business day.
+              </p>
+              <button
+                onClick={() => setSubmitted(false)}
+                className="mt-6 text-sm font-medium text-primary hover:underline transition-all"
+              >
+                Send another message →
               </button>
             </div>
-          </form>
+          )}
         </div>
       </Container>
     </section>
