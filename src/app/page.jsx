@@ -8,20 +8,45 @@ import FaqSection from "@/components/sections/FaqSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
+import Trusted from "@/components/sections/Trusted";
+import WhyChooseUs from "@/components/sections/WhyChooseUs";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Trusted />
       <AboutSection />
-      <CoursesSection />
       <FeaturesSection />
+      <WhyChooseUs/>
+      
+      <CoursesSection />
       <EventsSection />
       <ScholarshipBanner />
       <FaqSection />
       <TeachersSection />
       <TestimonialsSection />
       <BlogSection />
+      {/* 
+          ↓
+          Campus Experience / Virtual Tour
+          ↓
+          Student Success Stats
+          ↓
+          Upcoming Events
+          ↓
+          Student Testimonials
+          ↓
+          Latest Blog
+          ↓
+          FAQ
+          ↓
+          CTA Banner (Apply Now)
+          ↓
+          Newsletter
+          ↓
+          Footer 
+      */}
     </>
   );
 }
