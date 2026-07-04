@@ -5,31 +5,62 @@ export const navLinks = [
   },
 
   {
-    label: "About Us",
+    label: "About",
     href: "/about",
   },
 
   {
-    label: "Courses",
+    label: "Academics",
     href: "#",
     dropdown: [
       {
-        label: "Course",
+        label: "All Programs",
         href: "/courses",
       },
       {
-        label: "Course Details",
+        label: "Program Details",
         href: "/courses/biochemistry",
+      },
+      {
+        label: "Our Faculty",
+        href: "/teachers",
+      },
+      {
+        label: "Faculty Details",
+        href: "/teachers/eng-tanvir-hossain-eee",
       },
     ],
   },
 
   {
-    label: "Pages",
+    label: "Admissions",
     href: "#",
     dropdown: [
       {
-        label: "Event",
+        label: "Apply Now",
+        href: "/apply",
+      },
+      {
+        label: "Scholarships",
+        href: "/scholarships",
+      },
+      {
+        label: "Tuition Fees",
+        href: "/pricing",
+      },
+      {
+        label: "FAQ",
+        href: "/faq",
+      },
+    ],
+  },
+
+  {
+    label: "Campus Life",
+    href: "#",
+    dropdown: [
+      {
+        label: "Events",
         href: "/events",
       },
       {
@@ -40,39 +71,19 @@ export const navLinks = [
         label: "Gallery",
         href: "/gallery",
       },
-      {
-        label: "Pricing",
-        href: "/pricing",
-      },
-      {
-        label: "FAQ",
-        href: "/faq",
-      },
-      {
-        label: "Teacher",
-        href: "/teachers",
-      },
-      {
-        label: "Teacher Details",
-        href: "/teachers/eng-tanvir-hossain-eee",
-      },
-      {
-        label: "404 Error",
-        href: "/404",
-      },
     ],
   },
 
   {
-    label: "Blog",
+    label: "News",
     href: "#",
     dropdown: [
       {
-        label: "Blog",
+        label: "Latest News",
         href: "/blog",
       },
       {
-        label: "Blog Details",
+        label: "News Details",
         href: "/blog-details",
       },
     ],
