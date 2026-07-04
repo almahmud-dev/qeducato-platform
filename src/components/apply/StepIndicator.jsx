@@ -27,8 +27,8 @@ export default function StepIndicator({
                   isCompleted
                     ? "bg-primary text-white"
                     : isActive
-                    ? "bg-primary text-white ring-4 ring-primary/20"
-                    : "bg-surface text-muted ring-1 ring-inset ring-border"
+                      ? "bg-primary text-white ring-4 ring-primary/20"
+                      : "bg-surface text-muted ring-1 ring-inset ring-border"
                 } ${isClickable ? "cursor-pointer hover:opacity-90" : "cursor-default"}`}
                 aria-current={isActive ? "step" : undefined}
                 aria-label={`${STEP_TITLES[step - 1]}${isCompleted ? " (completed)" : ""}`}
@@ -37,7 +37,7 @@ export default function StepIndicator({
               </button>
 
               {step !== totalSteps && (
-                <div className="mx-1.5 h-[2px] flex-1 rounded-full bg-border sm:mx-2.5">
+                <div className="mx-1.5 h-0.5 flex-1 rounded-full bg-border sm:mx-2.5">
                   <div
                     className="h-full rounded-full bg-primary transition-all duration-300"
                     style={{ width: isCompleted ? "100%" : "0%" }}

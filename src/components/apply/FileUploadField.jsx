@@ -40,7 +40,11 @@ export default function FileUploadField({
         <span className="text-sm font-medium text-foreground">
           {label}
           {!optional && <span className="ml-0.5 text-primary">*</span>}
-          {optional && <span className="ml-1.5 text-xs font-normal text-muted">(optional)</span>}
+          {optional && (
+            <span className="ml-1.5 text-xs font-normal text-muted">
+              (optional)
+            </span>
+          )}
         </span>
       </div>
 
@@ -55,7 +59,9 @@ export default function FileUploadField({
               )}
             </div>
             <div className="min-w-0">
-              <p className="truncate text-sm font-medium text-foreground">{value.name}</p>
+              <p className="truncate text-sm font-medium text-foreground">
+                {value.name}
+              </p>
               <p className="text-xs text-muted">{formatSize(value.size)}</p>
             </div>
             <HiCheckCircle className="h-4 w-4 shrink-0 text-emerald-500" />
@@ -87,15 +93,16 @@ export default function FileUploadField({
             isDragging
               ? "border-primary bg-primary/5"
               : error
-              ? "border-red-300 bg-red-50/40"
-              : "border-border bg-surface hover:border-primary/50 hover:bg-primary/5"
+                ? "border-red-300 bg-red-50/40"
+                : "border-border bg-surface hover:border-primary/50 hover:bg-primary/5"
           }`}
         >
           <HiOutlineCloudArrowUp
             className={`h-6 w-6 ${isDragging ? "text-primary" : "text-muted"}`}
           />
           <p className="text-sm text-foreground">
-            <span className="font-medium text-primary">Choose a file</span> or drag it here
+            <span className="font-medium text-primary">Choose a file</span> or
+            drag it here
           </p>
           <p className="text-xs text-muted">{hint}</p>
         </button>
@@ -109,7 +116,9 @@ export default function FileUploadField({
         onChange={(e) => handleFile(e.target.files?.[0])}
       />
 
-      {error && <p className="mt-1.5 text-xs font-medium text-red-500">{error}</p>}
+      {error && (
+        <p className="mt-1.5 text-xs font-medium text-red-500">{error}</p>
+      )}
     </div>
   );
 }

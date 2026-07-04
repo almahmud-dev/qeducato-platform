@@ -12,8 +12,8 @@ export default function Step5Scholarship({ data, errors, onChange }) {
       <div className="flex items-start gap-3 rounded-xl bg-secondary/5 p-4">
         <HiOutlineAcademicCap className="mt-0.5 h-5 w-5 shrink-0 text-secondary" />
         <p className="text-sm text-secondary/90">
-          Scholarships are awarded based on merit, need, or talent. This section is optional —
-          you can skip it and still complete your application.
+          Scholarships are awarded based on merit, need, or talent. This section
+          is optional — you can skip it and still complete your application.
         </p>
       </div>
 
@@ -38,7 +38,9 @@ export default function Step5Scholarship({ data, errors, onChange }) {
           ))}
         </div>
         {errors.applying && (
-          <p className="mt-1.5 text-xs font-medium text-red-500">{errors.applying}</p>
+          <p className="mt-1.5 text-xs font-medium text-red-500">
+            {errors.applying}
+          </p>
         )}
       </div>
 
