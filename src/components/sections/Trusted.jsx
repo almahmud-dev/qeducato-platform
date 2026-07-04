@@ -1,17 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import { FiCheckCircle } from "react-icons/fi";
-import { RiBankLine, RiGroupLine, RiGlobalLine, RiAwardLine } from "react-icons/ri";
+import {
+  RiBankLine,
+  RiGroupLine,
+  RiGlobalLine,
+  RiAwardLine,
+} from "react-icons/ri";
 import Container from "../ui/Container";
 
-import harvard from "@/../public/images/brand/harvard.png"
-import mit from "@/../public/images/brand/mit.png"
-import stanford from "@/../public/images/brand/stanford.png"
-import microsoft from "@/../public/images/brand/microsoft.png"
-import google from "@/../public/images/brand/google.jpg"
-import ibm from "@/../public/images/brand/ibm.png"
+import harvard from "@/../public/images/brand/harvard.png";
+import mit from "@/../public/images/brand/mit.png";
+import stanford from "@/../public/images/brand/stanford.png";
+import microsoft from "@/../public/images/brand/microsoft.png";
+import google from "@/../public/images/brand/google.jpg";
+import ibm from "@/../public/images/brand/ibm.png";
+import SectionHeader from "../common/SectionHeader";
 
-// ব্র্যান্ড লোগোগুলোর মক ডাটা (ইমেজ অনুযায়ী লোগো নাম সেট করা)
 const brandLogos = [
   { name: "Harvard University", src: harvard },
   { name: "MIT", src: mit },
@@ -21,7 +26,6 @@ const brandLogos = [
   { name: "IBM", src: ibm },
 ];
 
-// নিচের কাউন্টার কার্ডের ডাটা
 const statsData = [
   {
     icon: <RiBankLine className="w-6 h-6 text-blue-600" />,
@@ -57,18 +61,15 @@ const Trusted = () => {
   return (
     <section className="bg-surface py-16 md:py-24">
       <Container>
-                <div className="text-center max-w-175 mx-auto mb-12">
-          <div className="flex items-center justify-center gap-1.5 mb-3">
-            <FiCheckCircle className="text-[#ff6f4b] text-sm" />
-            <span className="text-[#ff6f4b] font-bold text-xs tracking-widest uppercase">
-              Trusted By
-            </span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#104c64] mb-4">
-            Trusted by <span className="text-[#ff6f4b]">Leading Institutions</span>
-          </h2>
-          <p className="text-gray-500 text-sm sm:text-base leading-relaxed">
-            We collaborate with top universities, organizations, and industry leaders to deliver world-class education and opportunities.
+       <div className="flex flex-col items-center text-center max-w-[700px] mx-auto mb-12">
+          <SectionHeader
+            label="Trusted By"
+            text="Trusted by Leading Institutions"
+            colorWord="Leading"
+          />
+          <p className="text-gray-500 text-sm sm:text-base leading-relaxed mt-4">
+            We collaborate with top universities, organizations, and industry
+            leaders to deliver world-class education and opportunities.
           </p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-16">
@@ -96,7 +97,11 @@ const Trusted = () => {
                 className={`flex flex-col items-center text-center px-4 ${
                   i > 0 ? "pt-6 sm:pt-0 lg:pl-6" : ""
                 }`}
-              >                <div className={`${stat.iconBg} p-3.5 rounded-full mb-4 shadow-sm`}>
+              >
+                {" "}
+                <div
+                  className={`${stat.iconBg} p-3.5 rounded-full mb-4 shadow-sm`}
+                >
                   {stat.icon}
                 </div>
                 <h3 className="text-3xl font-extrabold text-[#104c64] mb-1">
@@ -116,7 +121,6 @@ const Trusted = () => {
           <FiCheckCircle className="text-[#ff6f4b]" />
           <span>Committed to excellence. Trusted worldwide.</span>
         </div>
-
       </Container>
     </section>
   );

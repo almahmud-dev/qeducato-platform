@@ -1,20 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import { FiArrowRight } from "react-icons/fi";
-import { 
-  HiOutlineAcademicCap, 
-  HiOutlineGlobeAlt, 
-  HiOutlineBookOpen, 
+import {
+  HiOutlineAcademicCap,
+  HiOutlineGlobeAlt,
+  HiOutlineBookOpen,
   HiOutlineHeart,
   HiOutlineUsers,
   HiOutlineUserGroup,
-  HiOutlineTrophy
+  HiOutlineTrophy,
 } from "react-icons/hi2";
 import { RiBankLine } from "react-icons/ri";
 
 import about1 from "@/../public/images/home/about/about2.jpg";
 import about2 from "@/../public/images/home/about/about1.png";
 import Container from "../ui/Container";
+import DirectionalButton from "../common/DirectionalButton";
+import SectionHeader from "../common/SectionHeader";
 
 const features = [
   {
@@ -78,19 +80,8 @@ function AboutSection() {
   return (
     <section className="bg-[#f9fbff] py-16 md:py-24 overflow-hidden">
       <Container className="flex flex-col gap-16">
-        
-        {/* Upper Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Side: Perfectly Positioned Image Gallery */}
           <div className="lg:col-span-6 relative w-full h-[520px] sm:h-[600px]">
-            
-            {/* Background Dot Grid Watermark */}
-            <div className="absolute left-[-15px] top-[15%] text-slate-200 -z-10 opacity-60 select-none text-xl tracking-widest leading-none">
-              ••••<br />••••<br />••••<br />••••
-            </div>
-
-            {/* Left Image (Main Tall Building) */}
             <div className="absolute left-0 top-0 w-[58%] h-[88%] rounded-[24px] overflow-hidden shadow-[0_15px_40px_rgba(3,27,78,0.08)] z-10">
               <Image
                 src={about1}
@@ -101,7 +92,6 @@ function AboutSection() {
               />
             </div>
 
-            {/* Right Image (Overlapped Student Image) */}
             <div className="absolute right-6 bottom-0 w-[52%] h-[75%] rounded-[24px] overflow-hidden shadow-[0_15px_35px_rgba(3,27,78,0.06)] z-0">
               <Image
                 src={about2}
@@ -111,19 +101,19 @@ function AboutSection() {
               />
             </div>
 
-            {/* Floating Badge 1: 25+ Years (Top Right - overlapping right image) */}
             <div className="absolute right-0 top-[6%] bg-white p-4 rounded-2xl shadow-[0_10px_35px_rgba(3,27,78,0.1)] flex flex-col items-start gap-1 z-20 min-w-50 border border-slate-50">
               <div className="bg-orange-50 p-2 rounded-xl text-[#ff6f4b]">
                 <HiOutlineAcademicCap className="w-5 h-5" />
               </div>
-              <h3 className="text-xl font-extrabold text-[#031b4e] mt-1">25+</h3>
+              <h3 className="text-xl font-extrabold text-[#031b4e] mt-1">
+                25+
+              </h3>
               <p className="text-[11px] font-bold text-slate-500 leading-tight">
                 Years of Excellence <br />
                 <span className="text-gray-400 font-normal">in Education</span>
               </p>
             </div>
 
-            {/* Floating Badge 2: Join Global Community (Bottom Left - overlapping left image) */}
             <div className="absolute left-[4%] bottom-[4%] bg-white py-3.5 px-4 rounded-2xl shadow-[0_12px_35px_rgba(3,27,78,0.1)] flex flex-col gap-2.5 z-20 min-w-[220px] border border-slate-50">
               <div className="flex items-center gap-2">
                 <div className="bg-[#031b4e] p-1.5 rounded-lg text-white">
@@ -133,7 +123,7 @@ function AboutSection() {
                   Join a Global Community
                 </span>
               </div>
-              
+
               <div className="flex items-center justify-between border-t border-slate-100 pt-2">
                 <div className="flex -space-x-1.5 overflow-hidden">
                   <div className="inline-block h-6 w-6 rounded-full ring-2 ring-white bg-slate-300" />
@@ -145,34 +135,35 @@ function AboutSection() {
                 </div>
                 <div className="text-right">
                   <div className="text-xs font-black text-[#031b4e]">10K+</div>
-                  <div className="text-[9px] text-gray-400 font-medium">Students</div>
+                  <div className="text-[9px] text-gray-400 font-medium">
+                    Students
+                  </div>
                 </div>
               </div>
             </div>
-
           </div>
 
-          {/* Right Side: Copywriting Content */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-xs font-black tracking-widest text-[#ff6f4b] uppercase bg-orange-50 px-3 py-1.5 rounded-md">
-                About Our University
-              </span>
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#031b4e] leading-[1.15] mb-6">
-              Shaping Minds.<br />
-              Building <span className="text-[#ff6f4b]">Futures.</span>
-            </h2>
+            <SectionHeader
+              label="About Our University"
+              text="Shaping Minds, Building  Futures"
+              colorWord="Future"
+              className="text-left"
+            />
 
             <p className="text-slate-500 text-sm md:text-[15px] leading-relaxed mb-8">
-              We are more than a university — we are a community of innovators, leaders, and global citizens. Our mission is to deliver world-class education and create impactful experiences that shape the future.
+              We are more than a university — we are a community of innovators,
+              leaders, and global citizens. Our mission is to deliver
+              world-class education and create impactful experiences that shape
+              the future.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-6 mb-10">
               {features.map((item, index) => (
                 <div key={index} className="flex items-start gap-3.5">
-                  <div className={`${item.iconBg} p-2.5 rounded-xl shrink-0 shadow-sm`}>
+                  <div
+                    className={`${item.iconBg} p-2.5 rounded-xl shrink-0 shadow-sm`}
+                  >
                     {item.icon}
                   </div>
                   <div>
@@ -186,15 +177,24 @@ function AboutSection() {
                 </div>
               ))}
             </div>
-
-            <button className="bg-[#020d37] hover:bg-[#07164e] text-white px-7 py-3.5 rounded-xl font-bold text-sm transition duration-300 flex items-center gap-2 shadow-md w-fit">
-              Discover More About Us <FiArrowRight className="w-4 h-4" />
-            </button>
+            <div>
+              <DirectionalButton
+                href="/contact"
+                label="Discover More About Us "
+                rightIcon={<FiArrowRight size={16} />}
+                bgColor="transparent"
+                flairColor="#0d3d4f"
+                borderColor="var(--text-primary)"
+                textColor="var(--text-primary)"
+                textHoverColor="#ffffff"
+                shadowHover=""
+                size="md"
+                className="font-semibold rounded-lg"
+              />
+            </div>
           </div>
-
         </div>
 
-        {/* Lower Layout: Statistics Footer */}
         <div className="bg-white rounded-[24px] shadow-[0_15px_50px_rgba(3,27,78,0.03)] border border-slate-50/80 p-6 md:p-8 mt-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 lg:divide-x divide-slate-100">
             {stats.map((stat, i) => (
@@ -222,7 +222,6 @@ function AboutSection() {
             ))}
           </div>
         </div>
-
       </Container>
     </section>
   );
