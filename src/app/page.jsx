@@ -8,11 +8,13 @@ import FaqSection from "@/components/sections/FaqSection";
 import TeachersSection from "@/components/sections/TeachersSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
+import Trusted from "@/components/sections/Trusted";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Trusted/>
       <AboutSection />
       <CoursesSection />
       <FeaturesSection />
