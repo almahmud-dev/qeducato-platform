@@ -80,7 +80,7 @@ function WhyChooseUs() {
                   <p className="text-slate-400 text-xs sm:text-[13px] leading-relaxed max-w-[480px]">
                     {item.desc}
                   </p>
-                </div>
+                </div>j
               </div>
             ))}
           </div>
