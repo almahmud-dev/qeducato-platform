@@ -1,72 +1,103 @@
 export const metaDataMap = {
-  blog: {
-    title: "Our Blog | Qeducato University",
-    description: "News, research, and insights from Qeducato University",
-  },
-  "blog-details": {
-    title: "Blog Details | Qeducato University",
-    description: "Read the full article from Qeducato University blog",
-  },
-  teachers: {
-    title: "Our Faculty | Qeducato University",
-    description:
-      "Meet the distinguished academics and educators shaping the next generation",
-  },
-  "teachers-details": {
-    title: "Faculty Profile | Qeducato University",
-    description: "Learn more about our faculty members at Qeducato University",
-  },
-  pricing: {
-    title: "Tuition & Fees | Qeducato University",
-    description:
-      "Transparent and affordable plans for every student — no hidden charges",
-  },
-  faq: {
-    title: "FAQ | Qeducato University",
-    description:
-      "Find answers to the most common questions about Qeducato University",
-  },
-  gallery: {
-    title: "Campus Gallery | Qeducato University",
-    description:
-      "A visual journey through campus life, events, and achievements",
-  },
-  events: {
-    title: "Events & Programs | Qeducato University",
-    description: "Discover upcoming seminars, workshops, and university events",
-  },
-  "event-details": {
-    title: "Event Details | Qeducato University",
-    description: "Full details about this event at Qeducato University",
-  },
   about: {
-    title: "About Us | Qeducato University",
+    title: "About | Qeducato University",
     description:
-      "Empowering minds and shaping futures through world-class university education",
+      "Learn about Qeducato University's mission, vision, values, and commitment to academic excellence.",
   },
-  contact: {
-    title: "Contact Us | Qeducato University",
-    description:
-      "Reach out to our admissions or support team — we are happy to help",
-  },
+
   courses: {
     title: "Academic Programs | Qeducato University",
     description:
-      "Explore undergraduate, postgraduate, and professional courses at Qeducato",
+      "Explore undergraduate, postgraduate, and professional academic programs at Qeducato University.",
   },
+
   "courses-details": {
-    title: "Course Details | Qeducato University",
+    title: "Program Details | Qeducato University",
     description:
-      "Detailed information about this academic program at Qeducato University",
+      "Explore curriculum, eligibility, career opportunities, and course information.",
   },
+
+  teachers: {
+    title: "Our Faculty | Qeducato University",
+    description:
+      "Meet our distinguished professors, researchers, and academic experts.",
+  },
+
+  "teachers-details": {
+    title: "Faculty Profile | Qeducato University",
+    description:
+      "Learn more about our faculty member's academic background, research, and expertise.",
+  },
+
+  apply: {
+    title: "Apply Now | Qeducato University",
+    description:
+      "Start your application and take the first step toward your future at Qeducato University.",
+  },
+
+  scholarships: {
+    title: "Scholarships | Qeducato University",
+    description:
+      "Explore merit-based, need-based, and international scholarship opportunities at Qeducato University.",
+  },
+
+  pricing: {
+    title: "Tuition Fees | Qeducato University",
+    description:
+      "View tuition fees, payment plans, and academic program costs at Qeducato University.",
+  },
+
+  faq: {
+    title: "Frequently Asked Questions | Qeducato University",
+    description:
+      "Find answers to common questions about admissions, academics, tuition, and campus life.",
+  },
+
+  gallery: {
+    title: "Campus Gallery | Qeducato University",
+    description:
+      "Explore photos of campus life, academic activities, events, and student experiences.",
+  },
+
+  events: {
+    title: "University Events | Qeducato University",
+    description:
+      "Stay updated with seminars, workshops, conferences, and upcoming university events.",
+  },
+
+  "event-details": {
+    title: "Event Details | Qeducato University",
+    description:
+      "Learn more about this event, including schedule, speakers, and venue information.",
+  },
+
+  blog: {
+    title: "University News | Qeducato University",
+    description:
+      "Read the latest university news, research highlights, student stories, and campus updates.",
+  },
+
+  "blog-details": {
+    title: "News Details | Qeducato University",
+    description:
+      "Read the full university news article and stay informed about campus developments.",
+  },
+
+  contact: {
+    title: "Contact | Qeducato University",
+    description:
+      "Get in touch with our admissions, academic, or support team. We're here to help.",
+  },
+
   admissions: {
     title: "Admissions | Qeducato University",
     description:
-      "Begin your journey at Qeducato — learn how to apply and what to expect",
+      "Discover admission requirements, tuition information, scholarships, and the application process.",
   },
+
   departments: {
-    title: "Departments | Qeducato University",
+    title: "Academic Departments | Qeducato University",
     description:
-      "Explore our faculties and academic departments across diverse disciplines",
+      "Explore our faculties, schools, and academic departments across diverse disciplines.",
   },
 };
