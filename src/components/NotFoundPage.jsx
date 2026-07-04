@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FiArrowLeft, FiArrowRight, FiCompass } from "react-icons/fi";
-import Container from "@/components/UI/Container";
 import notFoundLinks from "@/helper/notFoundLinks";
 import DirectionalButton from "./common/DirectionalButton";
+import Container from "./ui/Container";
 
 export default function NotFoundPage() {
   return (
