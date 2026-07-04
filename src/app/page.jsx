@@ -10,6 +10,9 @@ import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import BlogSection from "@/components/sections/BlogSection";
 import Trusted from "@/components/sections/Trusted";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
+import CampusExperience from "@/components/sections/CampusExperience";
+import StudentSuccessStats from "@/components/sections/StudentSuccessStats";
+import CtaBannerSection from "@/components/sections/CtaBannerSection";
 
 export default function Home() {
   return (
@@ -18,35 +21,14 @@ export default function Home() {
       <Trusted />
       <AboutSection />
       <FeaturesSection />
-      <WhyChooseUs/>
-      
-      <CoursesSection />
+      <WhyChooseUs />
+      <CampusExperience />
+      <StudentSuccessStats />
       <EventsSection />
-      <ScholarshipBanner />
-      <FaqSection />
-      <TeachersSection />
       <TestimonialsSection />
       <BlogSection />
-      {/* 
-          ↓
-          Campus Experience / Virtual Tour
-          ↓
-          Student Success Stats
-          ↓
-          Upcoming Events
-          ↓
-          Student Testimonials
-          ↓
-          Latest Blog
-          ↓
-          FAQ
-          ↓
-          CTA Banner (Apply Now)
-          ↓
-          Newsletter
-          ↓
-          Footer 
-      */}
+      <FaqSection />
+      <CtaBannerSection />
     </>
   );
 }

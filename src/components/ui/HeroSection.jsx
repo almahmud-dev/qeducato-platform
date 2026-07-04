@@ -7,6 +7,7 @@ import banner1 from "@/../public/images/home/banner/banner1.webp";
 import banner2 from "@/../public/images/home/banner/banner2.jpg";
 import banner3 from "@/../public/images/home/banner/banner3.webp";
 import Container from "./Container";
+import DirectionalButton from "../common/DirectionalButton";
 
 const featureCards = [
   {
@@ -136,13 +137,35 @@ const HeroSection = () => {
               tristique, commodo gravida lectus non.
             </p>
 
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-[#ff6f4b] hover:bg-[#e05e3a] text-white px-8 py-3.5 rounded font-medium transition duration-300 flex items-center gap-2">
-                Discover More <span>→</span>
-              </button>
-              <button className="border border-white/30 hover:bg-white/10 text-white px-8 py-3.5 rounded font-medium transition duration-300 flex items-center gap-2">
-                Contact Us <span>→</span>
-              </button>
+            <div className="flex flex-wrap gap-4 items-center">
+              {/* প্রাইমারি বাটন: Discover More */}
+              <DirectionalButton
+                href="/discover"
+                label="Discover More"
+                rightIcon={<span>→</span>}
+                bgColor="#ff6f4b"
+                flairColor="#031b4e"
+                borderColor="#ff6f4b"
+                textColor="#ffffff"
+                textHoverColor="#ffffff"
+                shadowHover="0px 15px 30px rgba(255, 111, 75, 0.25)"
+                size="md"
+                className="font-medium rounded-sm px-8 py-3.5"
+              />
+
+              <DirectionalButton
+                href="/contact"
+                label="Contact Us"
+                rightIcon={<span>→</span>}
+                bgColor="transparent"
+                flairColor="rgba(255, 255, 255, 0.1)"
+                borderColor="rgba(255, 255, 255, 0.3)"
+                textColor="#ffffff"
+                textHoverColor="#ffffff"
+                shadowHover=""
+                size="md"
+                className="font-medium rounded-sm px-8 py-3.5 backdrop-blur-xs"
+              />
             </div>
           </div>
         </div>
