@@ -194,7 +194,7 @@ export default function NavbarDesktop() {
                 <li key={item.label} className="group relative">
                   <Link
                     href={item.href}
-                    className="flex items-center gap-1 font-semibold text-slate-800 hover:text-[#FF7448] transition"
+                    className="flex items-center gap-1 font-semibold text-slate-800 hover:text-primary transition"
                   >
                     {item.label}
                     {item.dropdown && (
@@ -223,7 +223,7 @@ export default function NavbarDesktop() {
                           key={subItem.label}
                           href={subItem.href}
                           role="menuitem"
-                          className="block px-6 py-4 border-b border-gray-100 text-slate-800 hover:bg-primary hover:!text-white transition-colors duration-300"
+                          className="block px-6 py-4 border-b border-gray-100 text-slate-800 hover:bg-primary hover:text-white! transition-colors duration-300"
                         >
                           {subItem.label}
                         </Link>
