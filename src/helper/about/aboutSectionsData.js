@@ -63,25 +63,25 @@ export const contactContent = {
 export const campusGallery = [
   {
     id: "quad",
-    image: "/images/about/campus-quad.webp",
+    image: "/images/about/campus-quad.jpg",
     alt: "Students walking across the main campus quad",
     size: "large",
   },
   {
     id: "library",
-    image: "/images/about/campus-library.webp",
+    image: "/images/about/campus-library.jpg",
     alt: "Reading hall inside the central library",
     size: "small",
   },
   {
     id: "lab",
-    image: "/images/about/campus-lab.webp",
+    image: "/images/about/campus-lab.jpg",
     alt: "Students working in the computer lab",
     size: "small",
   },
   {
     id: "convocation",
-    image: "/images/about/campus-convocation.webp",
+    image: "/images/about/campus-convocation.jpg",
     alt: "Graduating students celebrating at convocation",
     size: "small",
   },
@@ -93,7 +93,7 @@ export const alumniData = [
     name: "Rashed Karim",
     role: "Senior Engineer",
     company: "Google",
-    image: "/images/alumni/rashed-karim.webp",
+    image: "/images/alumni/rashed-karim.jpg",
     year: "Class of 2018",
   },
   {
@@ -101,7 +101,7 @@ export const alumniData = [
     name: "Nusrat Jahan",
     role: "Product Lead",
     company: "Microsoft",
-    image: "/images/alumni/nusrat-jahan.webp",
+    image: "/images/alumni/nusrat-jahan.jpg",
     year: "Class of 2019",
   },
   {
@@ -109,7 +109,7 @@ export const alumniData = [
     name: "Imtiaz Hossain",
     role: "Founder",
     company: "Paperfly",
-    image: "/images/alumni/imtiaz-hossain.webp",
+    image: "/images/alumni/imtiaz-hossain.jpg",
     year: "Class of 2015",
   },
   {
@@ -117,7 +117,7 @@ export const alumniData = [
     name: "Farhana Akter",
     role: "Research Scientist",
     company: "IBM",
-    image: "/images/alumni/farhana-akter.webp",
+    image: "/images/alumni/farhana-akter.jpg",
     year: "Class of 2017",
   },
 ];
@@ -127,7 +127,7 @@ export const testimonialsData = [
     id: "t1",
     name: "Michael Chang",
     role: "Principal, Greenview International School",
-    image: "/images/testimonials/michael-chang.webp",
+    image: "/images/testimonials/michael-chang.jpg",
     rating: 5,
     quote:
       "Switching our attendance and result workflow onto this platform cut our admin team's paperwork in half within the first term. Parent communication has never been this smooth.",
@@ -136,7 +136,7 @@ export const testimonialsData = [
     id: "t2",
     name: "Ayesha Siddiqua",
     role: "Academic Coordinator, Bright Horizon College",
-    image: "/images/testimonials/ayesha-siddiqua.webp",
+    image: "/images/testimonials/ayesha-siddiqua.jpg",
     rating: 5,
     quote:
       "Onboarding across three campuses took less than a week. The support team stayed with us through every step, and our teachers picked it up almost instantly.",
@@ -145,7 +145,7 @@ export const testimonialsData = [
     id: "t3",
     name: "Tanvir Ahmed",
     role: "IT Director, Sunrise Model University",
-    image: "/images/testimonials/tanvir-ahmed.webp",
+    image: "/images/testimonials/tanvir-ahmed.jpg",
     rating: 4,
     quote:
       "The API access let us plug this straight into our existing student database. Reporting that used to take our staff days now takes minutes.",

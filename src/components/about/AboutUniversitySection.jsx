@@ -89,7 +89,7 @@ export default function AboutUniversitySection() {
             <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0">
               <div className="absolute top-0 left-0 w-[72%] h-[62%] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/about/university-building.webp"
+                  src="/images/about/university-building.jpg"
                   alt="University main building facade"
                   fill
                   sizes="(max-width: 1024px) 60vw, 30vw"
@@ -98,7 +98,7 @@ export default function AboutUniversitySection() {
               </div>
               <div className="absolute bottom-0 right-0 w-[62%] h-[52%] rounded-2xl overflow-hidden shadow-xl border-4 border-background">
                 <Image
-                  src="/images/about/student-walking.webp"
+                  src="/images/about/student-walking.jpg"
                   alt="Student walking through campus grounds"
                   fill
                   sizes="(max-width: 1024px) 50vw, 25vw"
