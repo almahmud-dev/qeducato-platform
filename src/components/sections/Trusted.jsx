@@ -59,7 +59,7 @@ const statsData = [
 
 const Trusted = () => {
   return (
-    <section className="bg-surface py-16 md:py-24">
+    <section className=" py-16 md:py-24">
       <Container>
        <div className="flex flex-col items-center text-center max-w-[700px] mx-auto mb-12">
           <SectionHeader
