@@ -75,11 +75,11 @@ export default function ScholarshipBanner() {
                 borderColor="var(--color-primary)"
                 borderHoverColor="#ffffff"
                 textColor="#ffffff"
-                textHoverColor="var(--color-secondary)"
-                flairColor="#ffffff"
+                textHoverColor="#ffffff"
+                flairColor="#125875"
                 rightIcon={<FiArrowUpRight />}
                 size="md"
-                className="whitespace-nowrap"
+                className="whitespace-nowrap py-5.5"
               />
             </div>
           </div>
