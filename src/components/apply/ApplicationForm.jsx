@@ -1,7 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { HiArrowLeft, HiArrowRight, HiOutlineCheckCircle } from "react-icons/hi2";
+import {
+  HiArrowLeft,
+  HiArrowRight,
+  HiOutlineCheckCircle,
+} from "react-icons/hi2";
 import Container from "@/components/ui/Container";
 // import StepIndicator from "@/components/apply/StepIndicator";
 // import Step1Personal from "./steps/Step1Personal";
@@ -10,7 +14,11 @@ import Step3Academic from "./steps/Step3Academic";
 import Step4Documents from "./steps/Step4Documents";
 import Step5Scholarship from "./steps/Step5Scholarship";
 import Step6Review from "./steps/Step6Review";
-import { initialApplyFormData, STEP_TITLES, STEP_SUBTITLES } from "@/lib/applyOptions";
+import {
+  initialApplyFormData,
+  STEP_TITLES,
+  STEP_SUBTITLES,
+} from "@/lib/applyOptions";
 import StepIndicator from "./StepIndicator";
 import Step1Personal from "./steps/Step1Personal";
 
@@ -20,11 +28,13 @@ function validateStep(step, data) {
   const errors = {};
 
   if (step === 1) {
-    const { firstName, lastName, email, phone, nationality, dob } = data.personal;
+    const { firstName, lastName, email, phone, nationality, dob } =
+      data.personal;
     if (!firstName.trim()) errors.firstName = "First name is required";
     if (!lastName.trim()) errors.lastName = "Last name is required";
     if (!email.trim()) errors.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = "Enter a valid email";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      errors.email = "Enter a valid email";
     if (!phone.trim()) errors.phone = "Phone number is required";
     if (!nationality) errors.nationality = "Please select your nationality";
     if (!dob) errors.dob = "Date of birth is required";
@@ -41,13 +51,16 @@ function validateStep(step, data) {
   if (step === 3) {
     const { qualification, institution, gpa, graduationYear } = data.academic;
     if (!qualification) errors.qualification = "Please select a qualification";
-    if (!institution.trim()) errors.institution = "Institution name is required";
+    if (!institution.trim())
+      errors.institution = "Institution name is required";
     if (!gpa.trim()) errors.gpa = "GPA / CGPA is required";
-    if (!graduationYear) errors.graduationYear = "Please select graduation year";
+    if (!graduationYear)
+      errors.graduationYear = "Please select graduation year";
   }
 
   if (step === 4) {
-    const { passportPhoto, transcript, certificate, passportOrNid } = data.documents;
+    const { passportPhoto, transcript, certificate, passportOrNid } =
+      data.documents;
     if (!passportPhoto) errors.passportPhoto = "Passport photo is required";
     if (!transcript) errors.transcript = "Academic transcript is required";
     if (!certificate) errors.certificate = "Certificate is required";
@@ -57,7 +70,8 @@ function validateStep(step, data) {
   if (step === 5 && data.scholarship.applying === "yes") {
     const { type, familyIncome, essay } = data.scholarship;
     if (!type) errors.type = "Please select a scholarship type";
-    if (!familyIncome) errors.familyIncome = "Please select a family income range";
+    if (!familyIncome)
+      errors.familyIncome = "Please select a family income range";
     if (!essay.trim() || essay.trim().length < 50)
       errors.essay = "Please write at least 50 characters";
   }
@@ -79,7 +93,7 @@ export default function ApplicationForm() {
 
   const progressPercent = useMemo(
     () => Math.round((currentStep / TOTAL_STEPS) * 100),
-    [currentStep]
+    [currentStep],
   );
 
   function updateSection(section, value) {
@@ -141,11 +155,16 @@ export default function ApplicationForm() {
             Application Submitted!
           </h1>
           <p className="mt-3 text-muted">
-            Thank you, {formData.personal.firstName}. We've received your application for{" "}
-            <span className="font-medium text-foreground">{formData.program.intake}</span>. Our
-            admissions team will reach out to{" "}
-            <span className="font-medium text-foreground">{formData.personal.email}</span> within
-            2–3 business days.
+            Thank you, {formData.personal.firstName}. We've received your
+            application for{" "}
+            <span className="font-medium text-foreground">
+              {formData.program.intake}
+            </span>
+            . Our admissions team will reach out to{" "}
+            <span className="font-medium text-foreground">
+              {formData.personal.email}
+            </span>{" "}
+            within 2–3 business days.
           </p>
           <a
             href="/"
@@ -178,7 +197,9 @@ export default function ApplicationForm() {
             <h1 className="mt-1 text-2xl font-bold text-foreground sm:text-[28px]">
               {STEP_TITLES[currentStep - 1]}
             </h1>
-            <p className="mt-1.5 text-sm text-muted">{STEP_SUBTITLES[currentStep - 1]}</p>
+            <p className="mt-1.5 text-sm text-muted">
+              {STEP_SUBTITLES[currentStep - 1]}
+            </p>
 
             <div className="mt-6 hidden lg:block">
               <ol className="space-y-1">
@@ -197,8 +218,8 @@ export default function ApplicationForm() {
                           isActive
                             ? "bg-primary/10 font-semibold text-primary"
                             : isClickable
-                            ? "text-foreground hover:bg-surface"
-                            : "text-muted/60"
+                              ? "text-foreground hover:bg-surface"
+                              : "text-muted/60"
                         }`}
                       >
                         <span
@@ -206,8 +227,8 @@ export default function ApplicationForm() {
                             isDone
                               ? "bg-primary text-white"
                               : isActive
-                              ? "bg-primary text-white"
-                              : "bg-border text-muted"
+                                ? "bg-primary text-white"
+                                : "bg-border text-muted"
                           }`}
                         >
                           {step}
@@ -238,7 +259,10 @@ export default function ApplicationForm() {
                   data={formData.personal}
                   errors={errors}
                   onChange={(field, value) =>
-                    updateSection("personal", { ...formData.personal, [field]: value })
+                    updateSection("personal", {
+                      ...formData.personal,
+                      [field]: value,
+                    })
                   }
                 />
               )}
@@ -247,7 +271,10 @@ export default function ApplicationForm() {
                   data={formData.program}
                   errors={errors}
                   onChange={(field, value) =>
-                    updateSection("program", { ...formData.program, [field]: value })
+                    updateSection("program", {
+                      ...formData.program,
+                      [field]: value,
+                    })
                   }
                 />
               )}
@@ -256,7 +283,10 @@ export default function ApplicationForm() {
                   data={formData.academic}
                   errors={errors}
                   onChange={(field, value) =>
-                    updateSection("academic", { ...formData.academic, [field]: value })
+                    updateSection("academic", {
+                      ...formData.academic,
+                      [field]: value,
+                    })
                   }
                 />
               )}
@@ -265,7 +295,10 @@ export default function ApplicationForm() {
                   data={formData.documents}
                   errors={errors}
                   onChange={(field, value) =>
-                    updateSection("documents", { ...formData.documents, [field]: value })
+                    updateSection("documents", {
+                      ...formData.documents,
+                      [field]: value,
+                    })
                   }
                 />
               )}
@@ -274,7 +307,10 @@ export default function ApplicationForm() {
                   data={formData.scholarship}
                   errors={errors}
                   onChange={(field, value) =>
-                    updateSection("scholarship", { ...formData.scholarship, [field]: value })
+                    updateSection("scholarship", {
+                      ...formData.scholarship,
+                      [field]: value,
+                    })
                   }
                 />
               )}

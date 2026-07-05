@@ -14,7 +14,9 @@ function ReviewRow({ label, value }) {
   return (
     <div className="flex justify-between gap-4 py-1.5 text-sm">
       <span className="text-muted">{label}</span>
-      <span className="text-right font-medium text-foreground">{value || "—"}</span>
+      <span className="text-right font-medium text-foreground">
+        {value || "—"}
+      </span>
     </div>
   );
 }
@@ -43,9 +45,19 @@ function ReviewCard({ icon, title, step, onEdit, children }) {
   );
 }
 
-export default function Step6Review({ data, agreeTerms, onAgreeChange, agreeError, onEditStep }) {
-  const programLabel = programs.find((p) => p.value === data.program.program)?.label;
-  const campusLabel = campuses.find((c) => c.value === data.program.campus)?.label;
+export default function Step6Review({
+  data,
+  agreeTerms,
+  onAgreeChange,
+  agreeError,
+  onEditStep,
+}) {
+  const programLabel = programs.find(
+    (p) => p.value === data.program.program,
+  )?.label;
+  const campusLabel = campuses.find(
+    (c) => c.value === data.program.campus,
+  )?.label;
 
   const uploadedDocs = Object.values(data.documents).filter(Boolean).length;
 
@@ -57,7 +69,10 @@ export default function Step6Review({ data, agreeTerms, onAgreeChange, agreeErro
         step={1}
         onEdit={onEditStep}
       >
-        <ReviewRow label="Name" value={`${data.personal.firstName} ${data.personal.lastName}`} />
+        <ReviewRow
+          label="Name"
+          value={`${data.personal.firstName} ${data.personal.lastName}`}
+        />
         <ReviewRow label="Email" value={data.personal.email} />
         <ReviewRow label="Phone" value={data.personal.phone} />
         <ReviewRow label="Nationality" value={data.personal.nationality} />
@@ -85,7 +100,10 @@ export default function Step6Review({ data, agreeTerms, onAgreeChange, agreeErro
         <ReviewRow label="Qualification" value={data.academic.qualification} />
         <ReviewRow label="Institution" value={data.academic.institution} />
         <ReviewRow label="GPA / CGPA" value={data.academic.gpa} />
-        <ReviewRow label="Graduation Year" value={data.academic.graduationYear} />
+        <ReviewRow
+          label="Graduation Year"
+          value={data.academic.graduationYear}
+        />
       </ReviewCard>
 
       <ReviewCard
@@ -110,7 +128,10 @@ export default function Step6Review({ data, agreeTerms, onAgreeChange, agreeErro
         {data.scholarship.applying === "yes" && (
           <>
             <ReviewRow label="Type" value={data.scholarship.type} />
-            <ReviewRow label="Family Income" value={data.scholarship.familyIncome} />
+            <ReviewRow
+              label="Family Income"
+              value={data.scholarship.familyIncome}
+            />
           </>
         )}
       </ReviewCard>
@@ -124,17 +145,25 @@ export default function Step6Review({ data, agreeTerms, onAgreeChange, agreeErro
         />
         <span className="text-sm text-foreground">
           I confirm that the information provided is accurate and I agree to the{" "}
-          <a href="/terms" className="font-medium text-secondary hover:underline">
+          <a
+            href="/terms"
+            className="font-medium text-secondary hover:underline"
+          >
             Terms & Conditions
           </a>{" "}
           and{" "}
-          <a href="/privacy" className="font-medium text-secondary hover:underline">
+          <a
+            href="/privacy"
+            className="font-medium text-secondary hover:underline"
+          >
             Privacy Policy
           </a>
           .
         </span>
       </label>
-      {agreeError && <p className="text-xs font-medium text-red-500">{agreeError}</p>}
+      {agreeError && (
+        <p className="text-xs font-medium text-red-500">{agreeError}</p>
+      )}
     </div>
   );
 }

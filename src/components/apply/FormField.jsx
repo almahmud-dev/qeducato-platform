@@ -9,7 +9,9 @@ export default function FormField(props) {
   const { label, error, required, hint, className, as } = props;
 
   const fieldStyles = `${baseFieldStyles} ${
-    error ? "border-red-400 focus:border-red-400" : "border-border focus:border-primary"
+    error
+      ? "border-red-400 focus:border-red-400"
+      : "border-border focus:border-primary"
   }`;
 
   return (
@@ -45,7 +47,7 @@ export default function FormField(props) {
               <option key={opt.value} value={opt.value}>
                 {opt.label}
               </option>
-            )
+            ),
           )}
         </select>
       ) : as === "textarea" ? (
