@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
-import banner1 from "@/../public/images/home/banner/banner1.webp";
-import banner2 from "@/../public/images/home/banner/banner2.jpg";
-import banner3 from "@/../public/images/home/banner/banner3.webp";
+import banner1 from "@/../public/images/home/banner/university.webp";
+import banner2 from "@/../public/images/home/banner/students.webp";
+import banner3 from "@/../public/images/home/banner/cap.webp";
 import Container from "./Container";
 import DirectionalButton from "../common/DirectionalButton";
 import { FaArrowRight } from "react-icons/fa";
@@ -46,6 +46,7 @@ const heroImageProps = {
   sizes: "100vw",
   className: "object-cover",
   placeholder: "blur",
+  quality: 70,
 };
 
 const HeroSection = () => {
@@ -53,17 +54,8 @@ const HeroSection = () => {
   const [currentID, setCurrentID] = useState(0);
   const [nextID, setNextID] = useState(null);
   const [fading, setFading] = useState(false);
-
   const intervalRef = useRef(null);
   const fadingRef = useRef(false);
-
-  // Preload images (client-side only, static imports already optimized by Next)
-  useEffect(() => {
-    heroBanner.slice(1).forEach((banner) => {
-      const img = new window.Image();
-      img.src = banner.src;
-    });
-  }, []);
 
   const changeBanner = useCallback(
     (newID) => {
@@ -122,7 +114,7 @@ const HeroSection = () => {
         <Image
           src={heroBanner[currentID]}
           alt="Qeducato University campus banner"
-          priority={currentID === 0}
+          priority
           {...heroImageProps}
         />
 
@@ -135,6 +127,7 @@ const HeroSection = () => {
             <Image
               src={heroBanner[nextID]}
               alt="Qeducato University campus banner"
+              priority
               {...heroImageProps}
             />
           </div>
