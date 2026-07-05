@@ -165,4 +165,9 @@ export const allCoursesData = [
   reviewCount: 124,
   price: 0,
 }
+
+
+
+
+
 ];
