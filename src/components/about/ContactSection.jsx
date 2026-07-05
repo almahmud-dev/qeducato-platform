@@ -199,10 +199,11 @@ export default function ContactSection() {
                   type="submit"
                   bgColor="var(--color-primary)"
                   borderColor="var(--color-primary)"
+                  flairColor="#125875"
                   textColor="#ffffff"
                   textHoverColor="#ffffff"
                   size="lg"
-                  className="w-full"
+                  className="w-full py-5.5"
                 />
               </form>
             )}
