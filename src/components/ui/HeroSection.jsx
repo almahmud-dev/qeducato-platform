@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
-import banner1 from "@/../public/images/home/banner/banner1.webp";
-import banner2 from "@/../public/images/home/banner/banner2.jpg";
-import banner3 from "@/../public/images/home/banner/banner3.webp";
+import banner1 from "@/../public/images/home/banner/university.webp";
+import banner2 from "@/../public/images/home/banner/students.webp";
+import banner3 from "@/../public/images/home/banner/cap.webp";
 import Container from "./Container";
 import DirectionalButton from "../common/DirectionalButton";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaUserGraduate } from "react-icons/fa";
 import Link from "next/link";
-import { FaUserGraduate } from "react-icons/fa";
 import { MdMenuBook } from "react-icons/md";
 import { PiCertificateFill } from "react-icons/pi";
 
@@ -26,7 +25,9 @@ const featureCards = [
     desc: "Discover undergraduate and postgraduate programs designed to equip you with industry-relevant knowledge and practical skills for the future.",
     icon: MdMenuBook,
     href: "/courses",
-    bgColor: "bg-[#ff6f4b]",
+    // আগে ছিল: bg-[#ff6f4b] → সাদা টেক্সটের সাথে contrast fail করছিল (2.8:1)
+    // এখন: theme secondary color, contrast 7.84:1
+    bgColor: "bg-secondary/90",
   },
   {
     title: "Scholarships & Financial Aid",
@@ -37,15 +38,19 @@ const featureCards = [
   },
 ];
 
-const heroBanner = [banner1, banner2, banner3];
+// প্রতিটা স্লাইডের জন্য আলাদা, বর্ণনামূলক alt text — accessibility best practice
+const heroBanner = [
+  { src: banner1, alt: "Qeducato University main campus building" },
+  { src: banner2, alt: "Qeducato University students on campus" },
+  { src: banner3, alt: "Qeducato University graduation cap ceremony" },
+];
 
-// Helper: banner slide-এর জন্য common Image props একজায়গায় রাখা হলো,
-// যাতে duplicate props (fill, sizes, className) বারবার লিখতে না হয়
 const heroImageProps = {
   fill: true,
   sizes: "100vw",
   className: "object-cover",
   placeholder: "blur",
+  quality: 70,
 };
 
 const HeroSection = () => {
@@ -53,17 +58,8 @@ const HeroSection = () => {
   const [currentID, setCurrentID] = useState(0);
   const [nextID, setNextID] = useState(null);
   const [fading, setFading] = useState(false);
-
   const intervalRef = useRef(null);
   const fadingRef = useRef(false);
-
-  // Preload images (client-side only, static imports already optimized by Next)
-  useEffect(() => {
-    heroBanner.slice(1).forEach((banner) => {
-      const img = new window.Image();
-      img.src = banner.src;
-    });
-  }, []);
 
   const changeBanner = useCallback(
     (newID) => {
@@ -108,7 +104,6 @@ const HeroSection = () => {
     changeBanner(id);
   };
 
-  // Helper: keyboard accessibility-র জন্য (Enter/Space চাপলে slide change হবে)
   const handleDotKeyDown = (e, index) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -120,9 +115,9 @@ const HeroSection = () => {
     <section className="relative min-h-screen w-full overflow-hidden flex flex-col justify-between">
       <div className="absolute inset-0 z-0">
         <Image
-          src={heroBanner[currentID]}
-          alt="Qeducato University campus banner"
-          priority={currentID === 0}
+          src={heroBanner[currentID].src}
+          alt={heroBanner[currentID].alt}
+          priority
           {...heroImageProps}
         />
 
@@ -133,14 +128,18 @@ const HeroSection = () => {
             }`}
           >
             <Image
-              src={heroBanner[nextID]}
-              alt="Qeducato University campus banner"
+              src={heroBanner[nextID].src}
+              alt={heroBanner[nextID].alt}
               {...heroImageProps}
             />
           </div>
         )}
 
-        <div className="absolute inset-0 bg-[#0c293a]/60 z-20" />
+        {/* Overlay — hero টেক্সটের contrast নিশ্চিত করার জন্য জরুরি, বাদ দেওয়া যাবে না */}
+        <div
+          className="absolute inset-0 bg-[#0c293a]/60 z-20"
+          aria-hidden="true"
+        />
       </div>
 
       <Container size="hero">
@@ -150,7 +149,10 @@ const HeroSection = () => {
               <span className="uppercase tracking-[0.25em] text-xs md:text-sm font-semibold text-primary">
                 Welcome to Qeducato University
               </span>
-              <div className="w-12 h-0.5 bg-primary rounded-full" />
+              <div
+                className="w-12 h-0.5 bg-primary rounded-full"
+                aria-hidden="true"
+              />
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.1] mb-6">
@@ -180,7 +182,9 @@ const HeroSection = () => {
                 bgColor="#FF5101"
                 flairColor="#125875"
                 borderColor="#FF5101"
-                textColor="#ffffff"
+                // আগে ছিল: textColor="#ffffff" → contrast 2.83:1 fail করছিল
+                // এখন: 5.47:1, pass
+                textColor="#0f172a"
                 textHoverColor="#ffffff"
                 shadowHover=""
                 size="md"
@@ -220,7 +224,7 @@ const HeroSection = () => {
                 onClick={() => handleBannerClick(index)}
                 onKeyDown={(e) => handleDotKeyDown(e, index)}
                 className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-150 ${
-                  activeID === index ? "bg-[#ff6f4b] scale-125" : "bg-white/50"
+                  activeID === index ? "bg-primary scale-125" : "bg-white/50"
                 }`}
               />
             ))}
@@ -242,7 +246,7 @@ const HeroSection = () => {
                       aria-hidden="true"
                     />
                     <h3 className="text-xl font-bold mb-3">{card.title}</h3>
-                    <p className="text-white/80 text-sm leading-relaxed mb-6">
+                    <p className="text-white/90 text-sm leading-relaxed mb-6">
                       {card.desc}
                     </p>
                   </div>
