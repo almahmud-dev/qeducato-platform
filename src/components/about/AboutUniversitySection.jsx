@@ -86,7 +86,7 @@ export default function AboutUniversitySection() {
       <Container size="xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="about-media relative">
-            <div className="relative aspect-[4/5] max-w-md mx-auto lg:mx-0">
+            <div className="relative aspect-4/5 max-w-md mx-auto lg:mx-0">
               <div className="absolute top-0 left-0 w-[72%] h-[62%] rounded-2xl overflow-hidden shadow-xl">
                 <Image
                   src="/images/about/university-building.jpg"
