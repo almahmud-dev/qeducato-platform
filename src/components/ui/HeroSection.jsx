@@ -159,7 +159,6 @@ const HeroSection = () => {
           </div>
         )}
 
-        {/* Overlay — hero টেক্সটের contrast নিশ্চিত করার জন্য জরুরি, বাদ দেওয়া যাবে না */}
         <div
           className="absolute inset-0 bg-[#0c293a]/60 z-20"
           aria-hidden="true"
