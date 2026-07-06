@@ -7,6 +7,7 @@ import FeaturedBento from "@/components/gallery/FeaturedBento";
 import GalleryGrid from "@/components/gallery/GalleryGrid";
 import GalleryModal from "@/components/gallery/GalleryModal";
 import { useGalleryModal } from "@/hooks/useGalleryModal";
+import SectionHeader from "../common/SectionHeader";
 
 export default function GalleryClient({ categories, albums, initialSlug }) {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -84,20 +85,14 @@ export default function GalleryClient({ categories, albums, initialSlug }) {
         <Container size="xl">
           {/* ── Page Header ── */}
           <header className="text-center max-w-xl mx-auto mb-12 sm:mb-14">
-            <div className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-widest uppercase text-primary mb-4">
-              <span
-                className="w-1.5 h-1.5 rounded-full bg-primary"
-                aria-hidden="true"
-              />
-              Campus Gallery
-            </div>
-            <h1 className="font-playfair text-4xl sm:text-5xl lg:text-[3.2rem] font-extrabold text-foreground leading-[1.15] tracking-tight mb-4">
-              Life at{" "}
-              <em className="italic text-primary">Qeducato</em>
-            </h1>
+            <SectionHeader
+              label="Campus Gallery"
+              text="Life at Qeducato University"
+              colorWord="Qeducato University"
+            />
             <p className="text-base text-muted leading-relaxed">
               {totalPhotos.toLocaleString()} photographs. Every moment, every
-              milestone — archived with care.
+              milestone archived with care.
             </p>
           </header>
 

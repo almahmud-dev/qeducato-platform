@@ -21,10 +21,10 @@ export default function NavbarMobile() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" aria-label="QEDUCATO Home">
           <Image
-            src="/images/logo/navlogo.png"
+            src="/images/logo/navlogos.png"
             alt="QEDUCATO Logo"
-            width={240}
-            height={66}
+            width={440}
+            height={151}
             priority
             className="h-12 w-auto"
           />

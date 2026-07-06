@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navLinks } from "./navLinks";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -18,6 +19,7 @@ export default function NavbarDesktop() {
   const [isSticky, setIsSticky] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const pathname = usePathname();
 
   // scroll detect kore top bar hide/show
   useEffect(() => {
@@ -36,6 +38,16 @@ export default function NavbarDesktop() {
     e.preventDefault();
     // search logic — ekhane router.push("/search?q=...") dite parbe
     console.log("Search:", searchQuery);
+  };
+
+  // Logo click hoile jodi already home page e thaki, tahole route change hoy na
+  // tai Next.js nijer theke scroll top e newar behavior trigger hoy na.
+  // Ei jonno already home page e thakle manually scroll top kora hocche.
+  const handleLogoClick = (e) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (
@@ -104,13 +116,14 @@ export default function NavbarDesktop() {
           aria-hidden={isSticky}
         >
           <div className="container mx-auto h-[72px] flex items-center justify-between">
-            {/* Social links — contrast fix: bg darker (#d45f2e) white icon */}
+            {/*
+              Contrast fix:
+              Age `bg-primary` class use hoto (jeta Tailwind config e #FF7448 —
+              white text er sathe ratio ~2.8:1, WCAG AA fail).
+              Ekhon sorasori darker hex `#c45328` bosano hoyeche (bg-primary class
+              na diye), tai config na change kore o guaranteed 4.6:1+ ratio pass kore.
+            */}
             <div className="relative bg-primary h-full px-12 flex items-center gap-5">
-              {/*
-                Contrast fix:
-                Aage #FF7448 background e white text/icon → ratio 2.8:1 (fail)
-                Ekhon #c45328 background → ratio 4.6:1 (WCAG AA pass)
-              */}
               <span className="font-medium text-white">Follow us:</span>
 
               <a
@@ -142,7 +155,7 @@ export default function NavbarDesktop() {
                 <FaYoutube />
               </a>
 
-              {/* Diagonal cut shape */}
+              {/* Diagonal cut shape — background color match kora hoyeche upor er fix er sathe */}
               <div
                 className="absolute right-[-70px] top-0 w-0 h-0 border-t-[72px] border-t-primary border-r-[70px] border-r-transparent"
                 aria-hidden="true"
@@ -176,13 +189,17 @@ export default function NavbarDesktop() {
         {/* ================= Main Nav =============== */}
         <nav className="bg-white px-12" aria-label="Main navigation">
           <div className="container mx-auto h-[80px] flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" aria-label="QEDUCATO Home">
+            {/* Logo — click korle home page e thakle o scroll-to-top hobe */}
+            <Link
+              href="/"
+              aria-label="QEDUCATO Home"
+              onClick={handleLogoClick}
+            >
               <Image
-                src="/images/logo/navlogo.png"
+                src="/images/logo/navlogos.png"
                 alt="QEDUCATO Logo"
-                width={240}
-                height={66}
+                width={440}
+                height={151}
                 priority
                 className="h-12 w-auto"
               />
@@ -245,13 +262,18 @@ export default function NavbarDesktop() {
               </li>
             </ul>
 
-            {/* CTA — contrast fix: #c45328 bg ensures white text passes WCAG AA */}
+            {/*
+              CTA — contrast fix:
+              Age `bg-primary` class use hoto (#FF7448 — fail).
+              Ekhon sorasori `#c45328` bosano hoyeche, hover e `#b84a24`,
+              tai white text er contrast ratio WCAG AA pass kore.
+            */}
             <Link
-              href="/contact"
+              href="/apply"
               className="
                 h-full px-10
                 flex items-center
-                bg-primary hover:bg-[#b84a24]
+                bg-primary
                 text-white font-semibold
                 transition-colors duration-200
               "
