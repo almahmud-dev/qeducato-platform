@@ -52,20 +52,21 @@ export default function DirectionalButton({
     const flair = flairRef.current;
     const labelEl = labelRef.current;
 
-    const setFlairSize = () => {
-      const { width, height } = btn.getBoundingClientRect();
-      const diameter = Math.max(width, height) * 2.2;
-      gsap.set(flair, {
-        width: diameter,
-        height: diameter,
-        xPercent: -50,
-        yPercent: -50,
-        scale: 0,
-        backgroundColor: flairColor,
-      });
-    };
-
-    setFlairSize();
+    // Age getBoundingClientRect() diye button-er width/height mepe flair-er
+    // diameter calculate kora hoto — eta forced synchronous reflow tori kore
+    // chilo, biseshoto ek page e onek DirectionalButton ekshathe mount howar
+    // somoy (write -> read -> write layout thrashing).
+    // Ekhon percentage-based CSS size use kora hocche (btn "relative", flair
+    // "absolute" — tai % neowa btn er box theke), tai kono JS measurement
+    // lagche na, pixel-perfect na hoyeo flair button-er kona porjonto chorai.
+    gsap.set(flair, {
+      width: "260%",
+      height: "260%",
+      xPercent: -50,
+      yPercent: -50,
+      scale: 0,
+      backgroundColor: flairColor,
+    });
     gsap.set(labelEl, { color: textColor });
     gsap.set(btn, { "--btn-border": borderColor });
 
@@ -172,12 +173,10 @@ export default function DirectionalButton({
 
     btn.addEventListener("pointerenter", onEnter);
     btn.addEventListener("pointerleave", onLeave);
-    window.addEventListener("resize", setFlairSize);
 
     return () => {
       btn.removeEventListener("pointerenter", onEnter);
       btn.removeEventListener("pointerleave", onLeave);
-      window.removeEventListener("resize", setFlairSize);
     };
   }, [
     flairColor,
