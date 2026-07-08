@@ -52,7 +52,7 @@ export default function TestimonialsSlider() {
         <div className="text-center mb-14">
           <p className="label text-primary mb-3">Testimonials</p>
           <h2 className="headingTwo text-white">
-            What Our <span className="text-primary">Clients</span> Say
+            What Our <span className="text-primary">Students</span> Say
           </h2>
         </div>
 
